@@ -1,0 +1,53 @@
+# meja02 mei 2025 : 
+# dockerfile inline, dus geen apart bestand meer nodig
+# image keyword verwijderd: dus altijd een build
+# php versie 8.0 -> 8.4
+# mysql versie 5.7 -> lts (8.x)
+name: webapp
+services:
+  web:
+    container_name: php_web
+    build:
+      context: .
+      # pipe symbol op volgende regel laten staan!!!
+      dockerfile_inline: |
+        FROM php:8.4-apache
+        RUN docker-php-ext-install pdo pdo_mysql
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - ./html:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    # Bart beun oplossing voor MAC OS
+    # platform: linux/x86_64
+    image: mysql:lts
+    container_name: mysql_db
+    restart: always
+    environment:
+    # de HOSTNAME is gelijk aan de servicenaam: "db" 
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql
+    # ports blijven default  
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: rootpassword
+    depends_on:
+      - db
+
+volumes:
+  db_data:
