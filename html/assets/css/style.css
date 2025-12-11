@@ -1,0 +1,88 @@
+
+@font-face {
+  font-family: "Tahoma";
+  src: url("/assets/fonts/tahoma.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  width: 100%;
+  height: 100px;
+}
+
+main {
+  font-family: Tahoma;
+}
+
+:root {
+  --color-399ddb: #399ddb;
+  --color-3c39db: #3c39db;
+  --color-396adb: #396adb;
+  --color-63d3db: #63d3db;
+  --color-aa91db: #aa91db;
+  --color-cfdde0: #cfdde0;
+  --color-6b8bdc: #6b8bdc;
+}
+
+.color399DDB {
+  color: var(--color-399ddb);
+}
+.backgroundcolor399DDB {
+  background-color: var(--color-399ddb);
+}
+
+.color3C39DB {
+  color: var(--color-3c39db);
+}
+.backgroundcolor3C39DB {
+  background-color: var(--color-3c39db);
+}
+
+.color396ADB {
+  color: var(--color-396adb);
+}
+.backgroundcolor396ADB {
+  background-color: var(--color-396adb);
+}
+
+.color63D3DB {
+  color: var(--color-63d3db);
+}
+.backgroundcolor63D3DB {
+  background-color: var(--color-63d3db);
+}
+
+.colorAA91DB {
+  color: var(--color-aa91db);
+}
+.backgroundcolorAA91DB {
+  background-color: var(--color-aa91db);
+}
+
+.colorCFDDE0 {
+  color: var(--color-cfdde0);
+}
+.backgroundcolorCFDDE0 {
+  background-color: var(--color-cfdde0);
+}
+
+.color6B8BDC {
+  color: var(--color-6b8bdc);
+}
+.backgroundcolor6B8BDC {
+  background-color: var(--color-6b8bdc);
+}
+
+.flex {
+  display: flex;
+}
+
+.justifycontentcenter {
+  justify-content: center;
+}
