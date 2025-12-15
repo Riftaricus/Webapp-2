@@ -11,6 +11,9 @@
 
 <body>
     <iframe src="loading.html" id="overlay" class="overlay"></iframe>
+    <?php
+    echo "<script>showLoadScreen();</script>";
+    ?>
     <header class="backgroundcolor399DDB flex justifycontentcenter">
         <h1>Volare Airways</h1>
         <nav>

@@ -1,10 +1,10 @@
 console.log("Welcome to Volare Airways!");
 
-document.addEventListener("DOMContentLoaded", () => {
-  showLoadScreen();
+// document.addEventListener("DOMContentLoaded", () => {
+//   showLoadScreen();
 
-  setTimeout(hideLoadScreen, 3000);
-});
+//   setTimeout(hideLoadScreen, 3 * 1000);
+// });
 
 function showLoadScreen() {
   let loadingScreen = document.getElementById("overlay");
