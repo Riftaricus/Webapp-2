@@ -10,10 +10,11 @@
 </head>
 
 <body>
+    <script src="assets/js/script.js"></script>
     <iframe src="loading.html" id="overlay" class="overlay"></iframe>
-    <?php
-    echo "<script>showLoadScreen();</script>";
-    ?>
+    <script>
+        showLoadScreen();
+    </script>
     <header class="backgroundcolor399DDB flex justifycontentcenter">
         <h1>Volare Airways</h1>
         <nav>
@@ -27,7 +28,6 @@
     <footer>
 
     </footer>
-    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
