@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volare Airways</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 </head>
 
 <body>
-    <script src="assets/js/script.js"></script>
-    <iframe src="loading.html" id="overlay" class="overlay"></iframe>
-    <script>
-        showLoadScreen();
-    </script>
-    <header class="backgroundcolor399DDB flex justifycontentcenter">
+    <header class="backgroundcolor399DDB flex justifycontentaround flexcolumn">
         <h1>Volare Airways</h1>
-        <nav>
-
+        <nav class="flex justifycontentcenter alignitemscenter">
+            <ul class="flex flexrow ">
+                <li><a>About</a></li>
+                <li><a>Locations</a></li>
+                <li><a>Contact</a></li>
+                <li><a>Flights</a></li>
+                <li><a>Reviews</a></li>
+            </ul>
         </nav>
 
     </header>
@@ -28,6 +28,7 @@
     <footer>
 
     </footer>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
