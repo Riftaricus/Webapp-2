@@ -1,14 +1,10 @@
 <?php
 session_start();
 
-$_SESSION["username"] = "Null";
-$_SESSION["userId"] = "Null";
+$_SESSION["username"];
+$_SESSION["userId"];
 $_SESSION["isAdmin"] = false;
 
-?>
-
-
-<?php
 $database = "mysql_db";
 $databaseName = "Flights";
 $username = "VolareWebsite";
@@ -30,19 +26,24 @@ try {
     echo "" . $e->getMessage() . "";
 }
 
-
-login("root", "root", $connect);
-
-function getRandomCountry($connection)
+function getRandomCountry()
 {
-    $min = 0;
-    $max = 9;
-
-    $random = rand($min, $max);
-    $sql = "SELECT * FROM Country WHERE Country_Id = $random";
-    $result = runSQL($sql, $connection);
+    $result = getRandomCountrySQL();
 
     return $result[0]['Country_Name'];
+}
+
+function getRandomCountrySQL()
+{
+    global $connect;
+    $min = 0;
+    $max = 9;
+    $random = rand($min, $max);
+    $sql = "SELECT * FROM Country WHERE Country_Id = :random";
+    $stmt = $connect->prepare($sql);
+    $stmt->execute([':random' => $random]);
+    $result = $stmt->fetchAll();
+    return $result;
 }
 
 function breakLine()
@@ -50,11 +51,9 @@ function breakLine()
     echo "<br>";
 }
 
-function getAverageRating($connection)
+function getAverageRating()
 {
-    $sql = "SELECT Rating FROM Review";
-
-    $result = runSQL($sql, $connection);
+    $result = getAverageRatingSQL();
 
     $averageRating = 0;
 
@@ -75,30 +74,31 @@ function getAverageRating($connection)
     return $averageRating;
 }
 
+function getAverageRatingSQL()
+{
+    global $connect;
+    $sql = "SELECT Rating FROM Review";
 
+    $stmt = $connect->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    return $result;
+}
 
-function login($username, $password, $connection)
+function login($username, $password)
 {
     try {
-        $sql = 'SELECT * FROM Account_Data';
+        $result = runLoginSQL($username, $password);
 
-        $result = runSQL($sql, $connection);
-
-        foreach ($result as $row) {
-            if ($row['Password'] == $password && strtolower($row['Username']) == strtolower($username)) {
-                session_reset();
-                $_SESSION['username'] = $row['Username'];
-                $_SESSION['userId'] = $row['UserId'];
-                if ($row['IsAdmin'] == true) {
-                    $_SESSION['isAdmin'] = true;
-                } else {
-                    $_SESSION['isAdmin'] = false;
-                }
-                return true;
-            }
+        if (sizeof($result) == 0) {
+            return false;
+        } else {
+            $_SESSION['username'] = $username;
+            $_SESSION['userId'] = $result[0]['UserId'];
+            $_SESSION['isAdmin'] = (bool)$result[0]['IsAdmin'];
+            return true;
         }
-        return false;
-    } catch (Exception $e) {
+    } catch (Exception) {
         return false;
     }
 }
@@ -114,21 +114,14 @@ function logout($connection)
     }
 }
 
-function runSQL(string $sql, PDO $connection)
+function runLoginSQL($username, $password)
 {
-    $stmt = $connection->prepare($sql);
-    $stmt->execute();
+    global $connect;
+    $sql = 'SELECT * FROM Account_Data WHERE Username = :username AND Password = :password';
+    $stmt = $connect->prepare($sql);
+    $stmt->execute([':username' => $username, ':password' => $password]);
     $result = $stmt->fetchAll();
     return $result;
-}
-
-function debug_to_console($data)
-{
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
 }
 
 function echoMessage($message)

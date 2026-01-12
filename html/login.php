@@ -3,9 +3,7 @@ require __DIR__ . "/index.php";
 
 
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $name = $_POST["name"] ?? "";
+    $name = $_POST["username"] ?? "";
     $password = $_POST["password"] ?? "";
 
-    echoMessage(login($name, $password, $connect));
-}
+    echoMessage(login($name, $password));
