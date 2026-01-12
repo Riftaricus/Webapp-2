@@ -103,10 +103,9 @@ function login($username, $password)
     }
 }
 
-function logout($connection)
+function logout()
 {
     try {
-        session_regenerate_id(true);
         session_unset();
         return true;
     } catch (Exception $e) {
@@ -133,6 +132,16 @@ function echoMessage($message)
 echo $_SESSION["username"] . "";
 echo $_SESSION["userId"] . "";
 
+echo "<br>";
+
+$count = 0;
+
+do {
+    $count++;
+    $fromCountry = getRandomCountry();
+    $toCountry = getRandomCountry();
+} while ($fromCountry == $toCountry);
+echo $fromCountry . " -> " . $toCountry;
 ?>
 
 <!DOCTYPE html>
@@ -166,6 +175,7 @@ echo $_SESSION["userId"] . "";
             <input type="text" id="password" name="password">
             <input type="submit" value="Submit">
         </form>
+        
     </main>
     <footer>
 
