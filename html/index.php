@@ -2,7 +2,7 @@
 session_start();
 
 $_SESSION["username"] = "Null";
-$_SESSION["userid"] = "Null";
+$_SESSION["userId"] = "Null";
 $_SESSION["isAdmin"] = false;
 
 ?>
@@ -26,19 +26,12 @@ $opt = [
 
 try {
     $connect = new PDO($dsn, $username, $password, $opt);
-    echo "Connection succesfully made!";
 } catch (PDOException $e) {
     echo "" . $e->getMessage() . "";
 }
-breakLine();
 
-echo(getRandomCountry($connect));
 
 login("root", "root", $connect);
-
-breakLine();
-
-echo (getAverageRating($connect));
 
 function getRandomCountry($connection)
 {
@@ -82,6 +75,8 @@ function getAverageRating($connection)
     return $averageRating;
 }
 
+
+
 function login($username, $password, $connection)
 {
     try {
@@ -90,9 +85,10 @@ function login($username, $password, $connection)
         $result = runSQL($sql, $connection);
 
         foreach ($result as $row) {
-            if ($row['Password'] == $password) {
+            if ($row['Password'] == $password && strtolower($row['Username']) == strtolower($username)) {
+                session_reset();
                 $_SESSION['username'] = $row['Username'];
-                $_SESSION['userid'] = $row['UserId'];
+                $_SESSION['userId'] = $row['UserId'];
                 if ($row['IsAdmin'] == true) {
                     $_SESSION['isAdmin'] = true;
                 } else {
@@ -107,6 +103,17 @@ function login($username, $password, $connection)
     }
 }
 
+function logout($connection)
+{
+    try {
+        session_regenerate_id(true);
+        session_unset();
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
 function runSQL(string $sql, PDO $connection)
 {
     $stmt = $connection->prepare($sql);
@@ -115,6 +122,23 @@ function runSQL(string $sql, PDO $connection)
     return $result;
 }
 
+function debug_to_console($data)
+{
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+
+    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+}
+
+function echoMessage($message)
+{
+    echo "" . $message . "";
+}
+
+
+echo $_SESSION["username"] . "";
+echo $_SESSION["userId"] . "";
 
 ?>
 
@@ -141,10 +165,14 @@ function runSQL(string $sql, PDO $connection)
                 <li><a>Reviews</a></li>
             </ul>
         </nav>
-
     </header>
 
     <main>
+        <form method="post" action="/login.php">
+            <input type="text" id="username" name="username" value="">
+            <input type="text" id="password" name="password">
+            <input type="submit" value="Submit">
+        </form>
     </main>
     <footer>
 
