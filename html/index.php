@@ -95,7 +95,8 @@ function login($username, $password)
         } else {
             $_SESSION['username'] = $username;
             $_SESSION['userId'] = $result[0]['UserId'];
-            $_SESSION['isAdmin'] = (bool)$result[0]['IsAdmin'];
+            $_SESSION['isAdmin'] = (bool) $result[0]['IsAdmin'];
+
             return true;
         }
     } catch (Exception) {
@@ -118,22 +119,46 @@ function runLoginSQL($username, $password)
     global $connect;
     $sql = 'SELECT * FROM Account_Data WHERE Username = :username AND Password = :password';
     $stmt = $connect->prepare($sql);
-    $stmt->execute([':username' => $username, ':password' => $password]);
+    $stmt->execute([
+        ':username' => $username,
+        ':password' =>
+        password_verify($password, PASSWORD_DEFAULT)
+    ]);
+
+    echo(password_verify($password, PASSWORD_DEFAULT));
     $result = $stmt->fetchAll();
     return $result;
 }
+
+function createAccount($username, $password)
+{
+    global $connect;
+
+    $today = date('Y-m-d');
+
+    $sql = "
+        INSERT INTO Account_Data 
+        (username, password, CreationDate, language, IsAdmin)
+        VALUES 
+        (:username, :password, :today, :language, 0)
+    ";
+
+    $stmt = $connect->prepare($sql);
+    $stmt->execute([
+        ':username' => $username,
+        ':password' => password_hash($password, PASSWORD_DEFAULT),
+        ':today' => $today,
+        ':language' => 'EN'
+    ]);
+
+    return $connect->lastInsertId();
+}
+
 
 function echoMessage($message)
 {
     echo "" . $message . "";
 }
-
-
-echo $_SESSION["username"] . "";
-echo $_SESSION["userId"] . "";
-
-echo "<br>";
-
 $count = 0;
 
 do {
@@ -141,8 +166,10 @@ do {
     $fromCountry = getRandomCountry();
     $toCountry = getRandomCountry();
 } while ($fromCountry == $toCountry);
-echo $fromCountry . " -> " . $toCountry;
+
+// createAccount("root", "root");
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -150,6 +177,7 @@ echo $fromCountry . " -> " . $toCountry;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/img/icon/logo.png">
     <title>Volare Airways</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -167,6 +195,7 @@ echo $fromCountry . " -> " . $toCountry;
                 <li><a>Reviews</a></li>
             </ul>
         </nav>
+        <div></div>
     </header>
 
     <main>
@@ -175,7 +204,9 @@ echo $fromCountry . " -> " . $toCountry;
             <input type="text" id="password" name="password">
             <input type="submit" value="Submit">
         </form>
-        
+
+        </style>
+
     </main>
     <footer>
 
