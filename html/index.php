@@ -23,7 +23,7 @@ $opt = [
 try {
     $connect = new PDO($dsn, $username, $password, $opt);
 } catch (PDOException $e) {
-    echo "" . $e->getMessage() . "";
+    // echo "" . $e->getMessage() . "";
 }
 
 function getRandomCountry()
@@ -171,7 +171,6 @@ do {
     $toCountry = getRandomCountry();
 } while ($fromCountry == $toCountry);
 
-//createAccount("Max", "hollow");
 ?>
 
 
@@ -203,13 +202,6 @@ do {
     </header>
 
     <main>
-        <form method="post" action="/login.php">
-            <input type="text" id="username" name="username" value="">
-            <input type="text" id="password" name="password">
-            <input type="submit" value="Submit">
-        </form>
-
-        </style>
 
     </main>
     <footer>
