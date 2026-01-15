@@ -16,15 +16,16 @@ header {
   font-family: Tahoma;
 }
 
-header h1{
+header h1 {
   font-size: 2vw;
+  -webkit-text-stroke: #000000;
 }
 
 main {
   font-family: Tahoma;
 }
 
-ul{
+ul {
   list-style: none;
   list-style-type: none;
 }
@@ -121,4 +122,7 @@ ul{
 
 nav ul {
   gap: 20px;
+  a {
+    font-size: 10vw;
+  }
 }

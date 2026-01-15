@@ -188,15 +188,15 @@ do {
 
 <body>
 
-    <header class="backgroundcolor399DDB flex justifycontentaround flexcolumn">
-        <h1>Volare Airways</h1>
-        <nav class="flex justifycontentcenter alignitemscenter">
-            <ul class="flex flexrow ">
-                <li><a>About</a></li>
-                <li><a>Locations</a></li>
-                <li><a>Contact</a></li>
-                <li><a>Flights</a></li>
-                <li><a>Reviews</a></li>
+    <header class="backgroundcolor399DDB flex justifycontentaround alignitemscenter flexrow">
+        <h1 class="color396ADB">Volare Airways</h1>
+        <nav class="">
+            <ul class="flex flexrow">
+                <li><a class="colorcfdde0" href="">About</a></li>
+                <li><a href="">Locations</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Flights</a></li>
+                <li><a href="">Reviews</a></li>
             </ul>
         </nav>
         <div></div>
