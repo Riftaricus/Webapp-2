@@ -188,7 +188,8 @@ do {
 <body>
     <?php include './header.php' ?>
     <main>
-        <div class="backgroundcolorcfdde0 box flex justifyselfcenter"><h2></h2></div>
+        <div class="background"><img src="assets/img/background.png" alt="a green/blue background"></div>
+        <div class="backgroundcolorcfdde0 box flex justifyselfcenter justifycontentcenter alignitemscenter"><h1 class="herotext">We bring you to your dreams</h1></div>
 
 
     </main>

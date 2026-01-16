@@ -19,7 +19,7 @@ header {
 
 header h1 {
   font-size: 2vw;
-  text-shadow: black 0px 0px 2px 2px;
+  -webkit-text-stroke: 0.2px black;
 }
 
 main {
@@ -127,7 +127,7 @@ a {
   align-items: center;
 }
 
-.justifyselfcenter{
+.justifyselfcenter {
   justify-self: center;
 }
 
@@ -145,23 +145,53 @@ nav ul {
   font-size: 100%;
 }
 
-header div img {  
+header div img {
   height: 10vh;
 }
 
-main{
+main {
   background-image: url("assets/img/background.png");
 }
 
-.box{
+.box {
   width: 80vw;
   height: 50vh;
+  margin: 10vh auto auto auto;
   background-color: var(--color-cfdde0);
-  margin-top: 40px;
 }
 
-#searchhidden{
+#searchhidden {
   display: none;
   width: 100px;
   background-color: red;
+}
+
+.herotext {
+  font-family: "Tahoma";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 4.5vw;
+  line-height: 54px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-indent: 4px;
+  text-transform: capitalize;
+
+  color: #ffffff;
+
+  -webkit-text-stroke: 0.2px #000000;
+}
+
+footer {
+  background-color: #399DDB;
+  width: 100vw;
+  height: 20vh;
+}
+
+.background{
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: 100%;
 }
