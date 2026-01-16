@@ -167,9 +167,6 @@ main {
 }
 
 .herotext {
-  font-family: "Tahoma";
-  font-style: normal;
-  font-weight: 400;
   font-size: 4.5vw;
   line-height: 54px;
   display: flex;
