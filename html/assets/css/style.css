@@ -14,7 +14,7 @@ body {
 
 header {
   width: 100vw;
-  height: auto;
+  height: 10vh;
   font-family: Tahoma;
 }
 
@@ -154,10 +154,36 @@ main {
   overflow: hidden;
 }
 
+.indexbox {
+  margin: 10vh auto 10vh auto;
+}
+
+.aboutboxleft {
+  margin: 5vh auto 20vh 0px;
+  p {
+    padding: 1%;
+  }
+}
+
+.aboutboxright {
+  margin: 20vh 0px 5vh auto;
+  p {
+    padding: 1%;
+  }
+}
+
+.aboutboxright,
+.aboutboxleft {
+  width: 60vw;
+  height: 20vh;
+  background-color: var(--color-cfdde0);
+}
+
+
+.indexbox,
 .box {
   width: 80vw;
   height: 50vh;
-  margin: 10vh auto 10vh auto;
   background-color: var(--color-cfdde0);
 }
 
@@ -184,5 +210,5 @@ main {
 footer {
   background-color: #399ddb;
   width: 100vw;
-  height: 20vh;
+  height: 10vh;
 }

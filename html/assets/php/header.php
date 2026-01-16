@@ -2,7 +2,7 @@
     <h1 class="color396ADB">Volare Airways</h1>
     <nav class="">
         <ul class="flex flexrow">
-            <li><a class="colorcfdde0" href="">About</a></li>
+            <li><a class="colorcfdde0" href="../about.php">About</a></li>
             <li><a href="">Locations</a></li>
             <li><a href="">Contact</a></li>
             <li><a href="">Flights</a></li>

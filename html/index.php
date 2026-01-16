@@ -188,9 +188,7 @@ $count = 0;
 <body>
     <?php include './assets/php/header.php' ?>
     <main>
-        <div class="backgroundcolorcfdde0 box flex justifyselfcenter justifycontentcenter alignitemscenter"><h1 class="herotext">We bring you to your dreams</h1></div>
-
-
+        <div class="indexbox backgroundcolorcfdde0 flex justifyselfcenter justifycontentcenter alignitemscenter"><h1 class="herotext">We bring you to your dreams</h1></div>
     </main>
     <?php include './assets/php/footer.php' ?>
     <script src="assets/js/script.js"></script>
