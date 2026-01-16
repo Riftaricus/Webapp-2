@@ -188,7 +188,6 @@ $count = 0;
 <body>
     <?php include './header.php' ?>
     <main>
-        <div class="background"><img src="assets/img/background.png" alt="a green/blue background"></div>
         <div class="backgroundcolorcfdde0 box flex justifyselfcenter justifycontentcenter alignitemscenter"><h1 class="herotext">We bring you to your dreams</h1></div>
 
 
