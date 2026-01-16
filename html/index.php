@@ -165,11 +165,11 @@ function echoMessage($message)
 }
 $count = 0;
 
-do {
-    $count++;
-    $fromCountry = getRandomCountry();
-    $toCountry = getRandomCountry();
-} while ($fromCountry == $toCountry);
+// do {
+//     $count++;
+//     $fromCountry = getRandomCountry();
+//     $toCountry = getRandomCountry();
+// } while ($fromCountry == $toCountry);
 
 ?>
 
