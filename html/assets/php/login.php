@@ -10,4 +10,4 @@ require __DIR__ . "/index.php";
         logout();
     }
 
-    echoMessage(login($name, $password));
+    login($name, $password);
