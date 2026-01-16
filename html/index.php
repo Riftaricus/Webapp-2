@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-$_SESSION["username"];
-$_SESSION["userId"];
+$_SESSION["username"] = "none";
+$_SESSION["userId"] = "none";
 $_SESSION["isAdmin"] = false;
 
 $database = "mysql_db";
@@ -186,27 +186,13 @@ do {
 </head>
 
 <body>
-
-    <header class="backgroundcolor399DDB flex justifycontentaround alignitemscenter flexrow">
-        <h1 class="color396ADB">Volare Airways</h1>
-        <nav class="">
-            <ul class="flex flexrow">
-                <li><a class="colorcfdde0" href="">About</a></li>
-                <li><a href="">Locations</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a href="">Flights</a></li>
-                <li><a href="">Reviews</a></li>
-            </ul>
-        </nav>
-        <div></div>
-    </header>
-
+    <?php include './header.php' ?>
     <main>
+        <div class="backgroundcolorcfdde0 box flex justifyselfcenter"><h2></h2></div>
+
 
     </main>
-    <footer>
-
-    </footer>
+    <?php include './footer.php' ?>
     <script src="assets/js/script.js"></script>
 </body>
 
