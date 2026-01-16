@@ -1,3 +1,10 @@
+<?php
+require("assets/php/functions/flights.php");
+
+$flights = getFlights();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +19,14 @@
 <body>
     <?php include './assets/php/header.php' ?>
     <main>
-        <div class="backgroundcolorcfdde0 box flex justifyselfcenter justifycontentcenter alignitemscenter"><h1 class="herotext">We bring you to your dreams</h1></div>
+        <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminflightbox">
+            <?php
+
+            for ($i = 0; $i < count($flights); $i++) {
+                echo "<div class='adminflights'><h2>$flights[i]['From_Country']</h2></div>";
+            }
+            ?>
+        </div>
 
 
     </main>
