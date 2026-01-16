@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   max-width: 100vw;
+  overflow: hidden;
 }
 
 header {
@@ -156,7 +157,7 @@ main {
 .box {
   width: 80vw;
   height: 50vh;
-  margin: 10vh auto auto auto;
+  margin: 10vh auto 10vh auto;
   background-color: var(--color-cfdde0);
 }
 
