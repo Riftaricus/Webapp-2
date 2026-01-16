@@ -1,1 +1,0 @@
-<img src="assets/img/background.png" alt="green/blue background" class="background">
