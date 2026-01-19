@@ -22,6 +22,52 @@ function getRandomCountrySQL()
     $result = $stmt->fetchAll();
     return $result;
 }
+function getCountryNameFromId($id)
+{
+    global $connect;
+
+    $sql = 'SELECT * FROM Country WHERE Country_Id = :id';
+
+    $stmt = $connect->prepare($sql);
+
+    $stmt->execute([':id' => $id]);
+
+    $result = $stmt->fetchAll();
+
+    $name = $result[0]['Country_Name'];
+
+    return $name;
+}
+
+function getCountryIdFromName($name)
+{
+    global $connect;
+
+    $sql = 'SELECT * FROM Country WHERE Country_Name = :name';
+
+    $stmt = $connect->prepare($sql);
+
+    $stmt->execute([':name' => $name]);
+
+    $result = $stmt->fetchAll();
+
+    $name = $result[0]['Country_Id'];
+
+    return $name;
+}
+
+function createFlight($flight_cost, $flight_duration, $fromCountry, $toCountry)
+{
+    global $connect;
+    $sql = 'INSERT INTO Available_Flights (Flight_Id, Flight_Cost, Flight_Duration, From_Country_Id, To_Country_Id)
+    VALUES (:flight_id, :flight_cost, :flight_duration, :fromCountry, :toCountry);';
+
+    $flight_id = sizeof(getFlights());
+
+    $stmt = $connect->prepare($sql);
+    $stmt->execute([':flight_id' => $flight_id, ':flight_cost' => $flight_cost, ':flight_duration' => $flight_duration, ':fromCountry' => $fromCountry, ':toCountry' => $toCountry]);
+
+}
 
 function getFlights()
 {

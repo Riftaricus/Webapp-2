@@ -218,6 +218,11 @@ footer {
   min-width: 100px;
   min-height: 100px;
   background-color: #737373;
+  text-align: center;
+}
+
+.adminflights h2{
+  font-size: x-small;
 }
 
 .wrap{
@@ -227,4 +232,6 @@ footer {
   gap: 20px;
   padding: 5px;
   height: fit-content;
+  min-height: 100px;
+  justify-self: center;
 }
