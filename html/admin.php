@@ -29,7 +29,6 @@ $to = getCountryIdFromName(getRandomCountry());
             <div
                 class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminflightbox">
                 <?php
-
                 for ($i = 0; $i < count($flights); $i++) {
                     echo "<div class='adminflights flex alignitemscenter justifycontentcenter flexcolumn'>";
                     $from = $flights[$i]["From_Country_Id"];
