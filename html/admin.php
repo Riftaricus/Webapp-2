@@ -52,7 +52,6 @@ $to = getCountryIdFromName(getRandomCountry());
 
     </main>
     <?php include './assets/php/footer.php' ?>
-    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

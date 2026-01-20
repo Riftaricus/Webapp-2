@@ -4,5 +4,5 @@
     <link rel="icon" type="image/x-icon" href="/assets/img/icon/logo.png">
     <title>Volare Airways</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script href="assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script>
 </head>
