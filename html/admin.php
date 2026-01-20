@@ -7,9 +7,9 @@ $from = getCountryIdFromName(getRandomCountry());
 
 $to = getCountryIdFromName(getRandomCountry());
 
-// createFlight(100, 10, $from, $to);
+generateRandomFlight(1);
 
-?>
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
