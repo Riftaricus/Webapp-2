@@ -22,6 +22,7 @@ function getRandomCountrySQL()
     $result = $stmt->fetchAll();
     return $result;
 }
+
 function getCountryNameFromId($id)
 {
     global $connect;
