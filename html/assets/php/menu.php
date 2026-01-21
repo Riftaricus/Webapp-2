@@ -1,3 +1,4 @@
+<?php require_once("assets/php/functions/session.php"); ?>
 <section>
     <div>
         <div>Login</div>
