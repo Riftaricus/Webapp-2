@@ -58,15 +58,15 @@ function getCountryIdFromName($name)
 
 function generateRandomFlight($amount)
 {
-    $flight_cost = mt_rand(50, 200);
-    $flight_duration = mt_rand(0, 10);
-    do {
-        $from_country = getCountryIdFromName(getRandomCountry());
-        $to_country = getCountryIdFromName(getRandomCountry());
-    } while ($from_country != $to_country);
+    for ($i = 0; $i < $amount; $i++) {
 
-    while ($amount != 0) {
-        $amount--;
+        $flight_cost = mt_rand(50, 200);
+        $flight_duration = mt_rand(0, 10);
+        do {
+            $from_country = getCountryIdFromName(getRandomCountry());
+            $to_country = getCountryIdFromName(getRandomCountry());
+        } while ($from_country == $to_country);
+
         createFlight($flight_cost, $flight_duration, $from_country, $to_country);
     }
 }

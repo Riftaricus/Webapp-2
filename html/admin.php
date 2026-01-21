@@ -3,13 +3,11 @@ require("assets/php/functions/flights.php");
 
 $flights = getFlights();
 
-$from = getCountryIdFromName(getRandomCountry());
+if (count($flights) == 0) {
+    generateRandomFlight(20);
+}
 
-$to = getCountryIdFromName(getRandomCountry());
-
-generateRandomFlight(1);
-
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
