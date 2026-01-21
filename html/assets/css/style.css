@@ -212,23 +212,32 @@ footer {
   height: 10vh;
 }
 
-.adminflights {
+.gap-100{
+  gap: 100px;
+}
+
+.adminlist {
   width: 5%;
-  height: 20%;
+  height: 10%;
   min-width: 100px;
   min-height: 100px;
   background-color: #737373;
   text-align: center;
 }
 
-.adminflights h2{
+.adminlist h2{
   font-size: x-small;
+  color: white;
+
+  letter-spacing: 1.5px;
+
+  -webkit-text-stroke: rgb(220, 241, 243) 0.1px;
 }
 
 .wrap{
   flex-wrap: wrap;
 }
-.adminflightbox{
+.adminbox{
   gap: 20px;
   padding: 5px;
   height: fit-content;

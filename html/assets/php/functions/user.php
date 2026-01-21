@@ -1,6 +1,7 @@
 <?php
 
-require("connection.php");
+require_once("connection.php");
+
 function login($username, $password)
 {
     try {
@@ -23,6 +24,20 @@ function login($username, $password)
     } catch (Exception $e) {
         return false;
     }
+}
+
+function getAccounts(){
+    global $connect;
+
+    $sql = "SELECT * FROM Account_Data";
+
+    $stmt = $connect->prepare($sql);
+
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
 }
 
 function logout()

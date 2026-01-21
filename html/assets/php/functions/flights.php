@@ -1,6 +1,6 @@
 <?php
 
-require("connection.php");
+require_once("connection.php");
 
 
 function getRandomCountry()
@@ -61,7 +61,7 @@ function generateRandomFlight($amount)
 {
     for ($i = 0; $i < $amount; $i++) {
 
-        $flight_cost = mt_rand(50, 200);
+        $flight_cost = mt_rand(100, 2000);
         $flight_duration = mt_rand(0, 10);
         do {
             $from_country = getCountryIdFromName(getRandomCountry());
