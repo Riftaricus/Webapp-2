@@ -18,6 +18,6 @@
                 <div class="searchbox"></div>
             </div>
         </div>
-        <a href=""><img src="assets/img/account_icon.png" alt="account icon"></a>
+        <a href="" class="flex justifycontentflexend"><img class="user-icon" src="assets/img/account_icon.png" alt="account icon"></a>
     </div>
 </header>
