@@ -1,7 +1,10 @@
 <?php
 session_start();
 
-$_SESSION["username"] = "none";
-$_SESSION["userId"] = "none";
-$_SESSION["isAdmin"] = false;
+if (isset($_SESSION["userId"])) {
+
+    $_SESSION["username"] = "none";
+    $_SESSION["userId"] = "none";
+    $_SESSION["isAdmin"] = false;
+}
 ?>
