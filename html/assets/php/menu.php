@@ -1,3 +1,4 @@
+<?php require("assets/php/functions/user.php") ?>
 <section class="menu-section justifycontentflexend flex">
     <div class="menu flex directioncolumn">
         <div class="menu-login">
@@ -12,6 +13,9 @@
             Settings
             <div class="menu-settings-menu"></div>
         </div>
-        <?php if ($_SESSION["isAdmin"] === true) echo "<div href=\"admin.php\">Admin</div>";?>
+        <?php 
+        login("admin", "admin");
+        if (!isset($_SESSION['isAdmin']) and $_SESSION['isAdmin'] === true) echo "<div href=\"admin.php\">Admin</div>";
+        ?>
     </div>
 </section>
