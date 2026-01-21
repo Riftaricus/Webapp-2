@@ -16,8 +16,6 @@ function login($username, $password)
             return false;
         }
 
-        global $_SESSION;
-
         $_SESSION['username'] = $user['Username'];
         $_SESSION['userId'] = $user['UserId'];
         $_SESSION['isAdmin'] = (bool) $user['IsAdmin'];
