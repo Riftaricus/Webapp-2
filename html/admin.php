@@ -3,6 +3,11 @@ require_once("assets/php/functions/session.php");
 require("assets/php/functions/flights.php");
 require("assets/php/functions/user.php");
 
+if (!isset($_SESSION['isAdmin']) and $_SESSION['isAdmin'] != true) {
+
+    header("location: index.php");
+}
+
 $flights = getFlights();
 
 $accounts = getAccounts();
@@ -55,7 +60,7 @@ if (count($flights) == 0) {
         <section>
             <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminbox">
                 <?php
-                for ($i = 0; $i < count(value: $accounts); $i++) {
+                for ($i = 0; $i < count($accounts); $i++) {
                     echo "<div class='adminlist flex alignitemscenter justifycontentcenter flexcolumn'>";
                     $username = $accounts[$i]["Username"];
                     $creationDate = $accounts[$i]["CreationDate"];

@@ -1,6 +1,7 @@
 <?php
 
 require_once("connection.php");
+require_once("assets/php/functions/session.php");
 
 function login($username, $password)
 {
@@ -14,6 +15,8 @@ function login($username, $password)
         if (!password_verify($password, $user['Password'])) {
             return false;
         }
+
+        global $_SESSION;
 
         $_SESSION['username'] = $user['Username'];
         $_SESSION['userId'] = $user['UserId'];
