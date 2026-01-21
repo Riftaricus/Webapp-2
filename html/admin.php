@@ -1,4 +1,5 @@
 <?php
+require_once("assets/php/functions/session.php");
 require("assets/php/functions/flights.php");
 require("assets/php/functions/user.php");
 require("assets/php/functions/session.php");
