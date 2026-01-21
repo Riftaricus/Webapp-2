@@ -111,12 +111,24 @@ main a{
   display: flex;
 }
 
+.directionrow {
+  flex-direction: row;
+}
+
+.directioncolumn {
+  flex-direction: column;
+}
+
 .justifycontentcenter {
   justify-content: center;
 }
 
 .justifycontentaround {
   justify-content: space-around;
+}
+
+.justifycontentflexend {
+  justify-content: flex-end;
 }
 
 .flexrow {
@@ -137,6 +149,11 @@ main a{
 
 nav ul {
   gap: 20px;
+}
+
+.user-icon {
+  width: 75%;
+  height: auto;
 }
 
 .searchbar {
@@ -237,10 +254,35 @@ footer {
 .wrap{
   flex-wrap: wrap;
 }
+
 .adminbox{
   gap: 20px;
   padding: 5px;
   height: fit-content;
   min-height: 100px;
   justify-self: center;
+}
+
+.menu-section {
+  position: absolute;
+  width: 90%;
+  height: auto;
+}
+
+.menu {
+  width: fit-content + 5%;
+  height: auto;
+  padding: 5px;
+  background-color: #C9C9C9;
+  border-radius: 15px;
+}
+
+.menu-admin {
+  width: fit-content;
+}
+
+.menu-login,
+.menu-sign-up,
+.menu-settings {
+  width: fit-content;
 }

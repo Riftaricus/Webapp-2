@@ -1,10 +1,16 @@
-<section>
-    <div>
-        <div>Login</div>
-        <div>Sign-Up</div>
-        <div>
+<section class="menu-section justifycontentflexend flex">
+    <div class="menu flex directioncolumn">
+        <div class="menu-login">
+            Login
+            <div class="menu-login-menu"></div>
+        </div>
+        <div class="menu-sign-up">
+            Sign-Up
+            <div class="menu-sign-up-menu"></div>
+        </div>
+        <div class="menu-settings">
             Settings
-            <div></div>
+            <div class="menu-settings-menu"></div>
         </div>
         <?php if ($_SESSION["isAdmin"] === true) echo "<div href=\"admin.php\">Admin</div>";?>
     </div>
