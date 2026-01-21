@@ -1,3 +1,5 @@
+<?php require_once("assets/php/functions/session.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
