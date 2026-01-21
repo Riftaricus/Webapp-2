@@ -53,6 +53,7 @@ function logout()
 
 function runLoginSQL($username)
 {
+    echo $username;
     global $connect;
 
     $sql = "SELECT * FROM Account_Data WHERE Username = :username";

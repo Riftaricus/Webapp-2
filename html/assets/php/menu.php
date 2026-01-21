@@ -13,9 +13,10 @@
             Settings
             <div class="menu-settings-menu"></div>
         </div>
-        <?php 
-        login("admin", "admin");
-        if (!isset($_SESSION['isAdmin']) and $_SESSION['isAdmin'] === true) echo "<div href=\"admin.php\">Admin</div>";
+        <?php
+        createAccount("admin", "admin");
+        // login("admin", "admin");
+        if (isset($_SESSION['isAdmin']) and $_SESSION['isAdmin'] === true) echo "<div href=\"admin.php\">Admin</div>";
         ?>
     </div>
 </section>
