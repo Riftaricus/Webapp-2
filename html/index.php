@@ -1,4 +1,16 @@
-<?php require_once("assets/php/functions/session.php"); ?>
+<?php
+require_once("assets/php/functions/session.php");
+require_once("assets/php/functions/user.php");
+
+
+login("test", "test");
+
+echo $_SESSION['username'][0];
+
+// logout();
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +20,7 @@
 <body>
     <?php include './assets/php/header.php' ?>
     <main>
+
         <div class="indexbox backgroundcolorcfdde0 flex justifyselfcenter justifycontentcenter alignitemscenter">
             <h1 class="herotext">We bring you to your dreams</h1>
         </div>
