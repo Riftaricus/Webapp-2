@@ -1,5 +1,5 @@
 <header class="backgroundcolor399DDB flex justifycontentaround alignitemscenter flexrow">
-    <h1 class="color396ADB">Volare Airways</h1>
+    <a href="index.php"><h1 class="color396ADB">Volare Airways</h1></a>
     <nav class="">
         <ul class="flex flexrow">
             <li><a class="colorcfdde0" href="../about.php">About</a></li>
