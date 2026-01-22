@@ -13,12 +13,12 @@
             <a>Settings</a>
             <div class="menu-settings-menu"></div>
         </div>
-        <?php 
+        <?php
 
 
         login("admin", "admin");
         if (isset($_SESSION['isAdmin']) and $_SESSION['isAdmin'] === true)
-             echo "<div href=\"admin.php\"><a>Admin</a></div>";
+            echo "<div href=\"admin.php\"><a>Admin</a></div>";
         ?>
     </div>
 </section>
