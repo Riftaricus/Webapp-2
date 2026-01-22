@@ -1,11 +1,13 @@
-<?php 
+<?php
 // if (isset($_GET["page"]) && $_GET["page"] === "account") {
 //     include("assets/php/menu.php");
 // }
 ?>
 
 <header class="backgroundcolor399DDB flex justifycontentaround alignitemscenter flexrow">
-    <a href="index.php"><h1 class="color396ADB">Volare Airways</h1></a>
+    <a href="index.php">
+        <h1 class="color396ADB">Volare Airways</h1>
+    </a>
     <nav class="">
         <ul class="flex flexrow">
             <li><a class="colorcfdde0" href="../about.php">About</a></li>
@@ -17,13 +19,16 @@
     </nav>
     <div class="flex flexrow justifycontentcenter alignitemscenter">
         <div>
-            <input type="text" id="searchbar" oninput="showHiddenSearch()" class="searchbar flex alignitemscenter" placeholder="Search Flights...">
+            <!-- Negotiable usage -->
+            <input type="text" id="searchbar" oninput="showHiddenSearch()" class="searchbar flex alignitemscenter"
+                placeholder="Search Flights...">
             <div id="searchhidden">
                 <div class="searchbox"></div>
                 <div class="searchbox"></div>
                 <div class="searchbox"></div>
             </div>
         </div>
-        <a href="?page=account" class="flex justifycontentflexend"><img class="user-icon" src="assets/img/account_icon.png" alt="account icon"></a>
+        <a href="?page=account" class="flex justifycontentflexend"><img class="user-icon"
+                src="assets/img/account_icon.png" alt="account icon"></a>
     </div>
 </header>
