@@ -1,9 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const searchbar = document.getElementById("searchbar");
+  const stars = document.querySelectorAll(".star");
 
-    const hiddensearch = document.getElementById("searchbar");
+  stars.forEach((star, index) => {
+    star.addEventListener("click", () => {
+      // The clicked star index is the rating
+      const rating = index;
 
-    function showHiddenSearch() {
-    
-    }
+      // Update star images
+      stars.forEach((s, i) => {
+        s.src = i <= rating 
+          ? "assets/img/star.png"       // filled star
+          : "assets/img/empty_star.png"; // empty star
+      });
+    });
+  });
 });
