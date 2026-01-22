@@ -7,8 +7,42 @@
 
 <body>
     <?php include './assets/php/header.php' ?>
-    <main>
-        <div class="backgroundcolorcfdde0 box flex justifyselfcenter justifycontentcenter alignitemscenter"><h1 class="herotext">We bring you to your dreams</h1></div>
+    <main class="flex gap-100 flexcolumn">
+        <div class="leftflightbox flex flexrow">
+            <div class="leftflightboxmain">
+                <h1>Flight name</h1>
+
+                <h2>From...</h2>
+
+                <h2>To...</h2>
+            </div>
+            <div class="leftflightboxsecondary flex">
+                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </h2>
+            </div>
+        </div>
+
+        <div class="rightflightbox flex flexrow">
+            <div class="rightflightboxsecondary flex">
+                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </h2>
+            </div>
+            <div class="rightflightboxmain">
+                <h1>Flight name</h1>
+
+                <h2>From...</h2>
+
+                <h2>To...</h2>
+            </div>
+        </div>
 
 
     </main>
