@@ -62,7 +62,7 @@ function isUserAdmin($username) {
         $stmt->execute([':username' => $username]);
         $result = $stmt->fetch();
 
-        if ($result === 1) return true;
+        if ($result["IsAdmin"] === 1) return true;
         else return false;
     } catch (Exception $e) {
         return false;

@@ -3,9 +3,7 @@ require_once("assets/php/functions/session.php");
 require("assets/php/functions/flights.php");
 require("assets/php/functions/user.php");
 
-if (!isset($_SESSION['isAdmin']) and $_SESSION['isAdmin'] != true) {
-    header("location: index.php");
-} elseif (!isUserAdmin($_SESSION['username'])) {
+if (!isset($_SESSION['isAdmin']) and $_SESSION['isAdmin'] != true || !isUserAdmin($_SESSION['username'])) {
     header("location: index.php");
 }
 
@@ -31,7 +29,7 @@ if (count($flights) == 0) {
             <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminbox">
                 <?php
                 for ($i = 0; $i < count($flights); $i++) {
-                    echo "<div class='adminlist flex alignitemscenter justifycontentcenter flexcolumn'>";
+                    echo "<div class='adminflightlist flex alignitemscenter justifycontentcenter flexcolumn'>";
                     $from = $flights[$i]["From_Country_Id"];
                     $to = $flights[$i]["To_Country_Id"];
 
