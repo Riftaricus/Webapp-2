@@ -35,6 +35,14 @@ a {
   font-size: 1.5vw;
   text-decoration: none;
   color: white;
+
+  transition-duration: 0.2s;
+}
+
+a:hover{
+  scale: 1.2;
+
+  color: lightblue;
 }
 
 main a{
@@ -264,10 +272,11 @@ footer {
 }
 
 .menu-section {
-  position: absolute;
-  right: 80px;
-  width: 90%;
-  height: auto;
+  position: relative;
+  left: 800px;
+  top: 200px;
+  width: fit-content;
+  height: fit-content;
 }
 
 .menu {
