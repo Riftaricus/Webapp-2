@@ -25,11 +25,11 @@ if (count($flights) == 0) {
 <body>
     <?php include './assets/php/header.php' ?>
     <main class="gap-100 flex justifycontentcenter flexcolumn">
-        <section class="flex justifycontentcenter">
+        <section class="flex justifycontentcenter adminflightsection">
             <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminbox">
                 <?php
                 for ($i = 0; $i < count($flights); $i++) {
-                    echo "<div class='adminflightlist flex alignitemscenter justifycontentcenter flexcolumn'>";
+                    echo "<div id="."adminflightbyid".$flights[$i]["Flight_Id"]." class='adminflightlist flex alignitemscenter justifycontentcenter flexcolumn'>";
                     $from = $flights[$i]["From_Country_Id"];
                     $to = $flights[$i]["To_Country_Id"];
 
@@ -55,6 +55,9 @@ if (count($flights) == 0) {
             </div>
         </section>
 
+        <section class="adminflightsettingcontainer">
+
+        </section>
 
         <section class="flex justifycontentcenter">
             <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminbox">

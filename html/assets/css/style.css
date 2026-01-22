@@ -297,10 +297,18 @@ footer {
   border-radius: 360deg;
 
   transform-origin: center;
+  transition: transform 220ms ease;
 }
 
 .adminflightlist:hover {
-  transform: scale(4%);
+  transform: scale(106%);
+  cursor: pointer;
+}
+
+.adminflightlist:active {
+  transition: transform 22ms ease;
+  transform: scale(98%);
+  cursor: pointer;
 }
 
 .adminflightlist h2{
@@ -310,6 +318,10 @@ footer {
   letter-spacing: 1.5px;
 
   -webkit-text-stroke: rgb(220, 241, 243) 0.1px;
+}
+
+.adminflightsection {
+  margin-top: 5vh;
 }
 
 .wrap{
@@ -322,6 +334,14 @@ footer {
   height: fit-content;
   min-height: 100px;
   justify-self: center;
+}
+
+.adminflightsettingcontainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: #00000040;
 }
 
 .menu-section {
