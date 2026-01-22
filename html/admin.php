@@ -4,7 +4,8 @@ require("assets/php/functions/flights.php");
 require("assets/php/functions/user.php");
 
 if (!isset($_SESSION['isAdmin']) and $_SESSION['isAdmin'] != true) {
-
+    header("location: index.php");
+} elseif (!isUserAdmin($_SESSION['username'])) {
     header("location: index.php");
 }
 
@@ -25,8 +26,8 @@ if (count($flights) == 0) {
 
 <body>
     <?php include './assets/php/header.php' ?>
-    <main class="gap-100 flex justify-contentcenter flexcolumn">
-        <section>
+    <main class="gap-100 flex justifycontentcenter flexcolumn">
+        <section class="flex justifycontentcenter">
             <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminbox">
                 <?php
                 for ($i = 0; $i < count($flights); $i++) {
@@ -57,7 +58,7 @@ if (count($flights) == 0) {
         </section>
 
 
-        <section>
+        <section class="flex justifycontentcenter">
             <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminbox">
                 <?php
                 for ($i = 0; $i < count($accounts); $i++) {

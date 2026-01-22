@@ -52,6 +52,23 @@ function logout()
     }
 }
 
+function isUserAdmin($username) {
+    global $connect;
+
+    $sql = "SELECT * FROM Account_Data WHERE Username = :username";
+    $stmt = $connect->prepare($sql);
+
+    try {
+        $stmt->execute([':username' => $username]);
+        $result = $stmt->fetch();
+
+        if ($result === 1) return true;
+        else return false;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
 function runLoginSQL($username)
 {
     global $connect;

@@ -153,6 +153,10 @@ main a{
   align-items: center;
 }
 
+.aligncontentcenter {
+  align-content: center;
+}
+
 .justifyselfcenter {
   justify-self: center;
 }
