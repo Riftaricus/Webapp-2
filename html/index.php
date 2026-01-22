@@ -3,10 +3,6 @@ require_once("assets/php/functions/session.php");
 require_once("assets/php/functions/user.php");
 
 
-login("test", "test");
-
-// logout();
-
 ?>
 
 

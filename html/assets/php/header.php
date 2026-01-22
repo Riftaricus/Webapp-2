@@ -10,11 +10,11 @@
     </a>
     <nav class="">
         <ul class="flex flexrow">
-            <li><a class="colorcfdde0" href="../about.php">About</a></li>
-            <li><a href="">Locations</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a href="">Flights</a></li>
-            <li><a href="">Reviews</a></li>
+            <li><a class="colorcfdde0" href="/about.php">About</a></li>
+            <li><a href="/locations.php">Locations</a></li>
+            <li><a href="/contact.php">Contact</a></li>
+            <li><a href="/flights.php">Flights</a></li>
+            <li><a href="/reviews.php">Reviews</a></li>
         </ul>
     </nav>
     <div class="flex flexrow justifycontentcenter alignitemscenter">

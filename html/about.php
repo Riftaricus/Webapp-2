@@ -7,7 +7,6 @@
 
 <body>
     <?php include './assets/php/header.php' ?>
-    <?php include './assets/php/menu.php' ?>
     <main class="about">
         <img src="assets/img/airplane.png" class="airplane">
         <div class="aboutboxleft backgroundcolorcfdde0 flex">
