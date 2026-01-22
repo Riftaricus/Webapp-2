@@ -2,7 +2,7 @@
 require_once("assets/php/functions/session.php");
 require_once("assets/php/functions/user.php");
 
-echo $_SESSION['username'];
+login("admin", "admin");
 ?>
 
 
