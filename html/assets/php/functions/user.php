@@ -27,7 +27,8 @@ function login($username, $password)
     }
 }
 
-function getAccounts(){
+function getAccounts()
+{
     global $connect;
 
     $sql = "SELECT * FROM Account_Data";
@@ -57,9 +58,15 @@ function runLoginSQL($username)
 
     $sql = "SELECT * FROM Account_Data WHERE Username = :username";
     $stmt = $connect->prepare($sql);
-    $stmt->execute([':username' => $username]);
 
-    return $stmt->fetch();
+    try {
+
+        $stmt->execute([':username' => $username]);
+
+        return $stmt->fetch();
+    } catch (Exception $e) {
+        return null;
+    }
 }
 
 

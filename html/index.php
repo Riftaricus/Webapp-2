@@ -5,8 +5,6 @@ require_once("assets/php/functions/user.php");
 
 login("test", "test");
 
-echo $_SESSION['username'][0];
-
 // logout();
 
 ?>

@@ -265,6 +265,7 @@ footer {
 
 .menu-section {
   position: absolute;
+  right: 80px;
   width: 90%;
   height: auto;
 }
@@ -274,7 +275,7 @@ footer {
   height: auto;
   padding: 5px;
   background-color: #C9C9C9;
-  border-radius: 15px;
+  border-radius: 15px 0px 15px 15px;
 }
 
 .menu-admin {
@@ -285,4 +286,26 @@ footer {
 .menu-sign-up,
 .menu-settings {
   width: fit-content;
+}
+.line{
+  width: 1vw;
+  height: 70%;
+  margin: auto 10px auto 10px;
+  background-color: black;
+}
+
+.airplane{
+  position: absolute;
+  z-index: -1;
+  left: 10vw;
+  width: 40vw;
+}
+
+.about{
+  height: 100vh;
+}
+
+.paragraftext{
+  font-size: 1rem;
+  font-weight: bold;
 }

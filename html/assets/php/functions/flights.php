@@ -14,7 +14,7 @@ function getRandomCountrySQL()
 {
     global $connect;
     $min = 0;
-    $max = 9;
+    $max = 39;
     $random = rand($min, $max);
     $sql = "SELECT * FROM Country WHERE Country_Id = :random";
     $stmt = $connect->prepare($sql);
