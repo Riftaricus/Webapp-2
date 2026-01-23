@@ -85,13 +85,20 @@ function createFlight($flight_cost, $flight_duration, $fromCountry, $toCountry)
 
 }
 
-function getFlights()
+function getFlights($id = null)
 {
     global $connect;
-    $sql = 'SELECT * FROM Available_Flights';
 
-    $stmt = $connect->prepare($sql);
-    $stmt->execute();
+    if ($id !== null) {
+        $sql = 'SELECT * FROM Available_Flights WHERE Flight_Id = :id';
+        $stmt = $connect->prepare($sql);
+        $stmt->execute([':id' => $id]);
+    } else {
+        $sql = 'SELECT * FROM Available_Flights';
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+    }
+
     $result = $stmt->fetchAll();
     return $result;
 }
