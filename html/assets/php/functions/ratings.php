@@ -28,11 +28,36 @@ function getAverageRating()
         $amountOfReviews++;
     }
 
-    $averageRating = $totalRating / $amountOfReviews;
+    if ($amountOfReviews === 0) {
+        $averageRating = 0;
+    } else {
+
+        $averageRating = $totalRating / $amountOfReviews;
+    }
 
     $averageRating = round($averageRating, 1);
 
     return $averageRating;
+}
+
+function leaveRating($rating, $message, $userId)
+{
+    global $connect;
+    $sql = "
+        INSERT INTO Review 
+        (Rating, Message, UserId)
+        VALUES 
+        (:rating, :message, :userid)
+    ";
+
+    $stmt = $connect->prepare($sql);
+    $stmt->execute([
+        ':rating' => $rating,
+        ':message' => $message,
+        ':userid' => $userId,
+    ]);
+
+    return $connect->lastInsertId();
 }
 
 function getRatings()
