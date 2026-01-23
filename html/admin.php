@@ -40,6 +40,7 @@ if (count($flights) == 0) {
                     if (!is_array($to)) {
                         $to = [$to];
                     }
+
                     echo "<h2>"
                         . getCountryNameFromId($from[0])
                         . "<br>"
@@ -55,8 +56,36 @@ if (count($flights) == 0) {
             </div>
         </section>
 
-        <section class="adminflightsettingcontainer">
+        <section class="adminflightsettingcontainer flex justifycontentcenter alignitemscenter">
+            <div class="adminflightsettings backgroundcolorCFDDE0 flex flexcolumn justifycontentcenter alignitemscenter">
+                <div class="settingclosemenu flex alignitemsflexend">
+                    <div class="flex window-option-close justifycontentcenter alignitemscenter"><img class="window-option-img" src="assets/img/Close.svg" alt="Close"></div>
+                </div>
 
+                <div class="flex flightsettinginfo justifycontentcenter alignitemscenter">
+                    <?php
+                    $flightData = getFlights();
+
+                    echo "<h2>"
+                        . getCountryNameFromId($flightData["From_Country_Id"])
+                        . "<br>"
+                        . " ↓ "
+                        . "<br>"
+                        . getCountryNameFromId($flightData["To_Country_Id"])
+                        . "</h2>";
+                    echo "<h2>Cost: " . $flightData["Flight_Cost"] . "$</h2>";
+                    echo "<h2>Duration: " . $flightData["Flight_Duration"] . " Hours</h2>";
+                    echo "</div>";
+                    ?>
+                </div>
+
+                <form action="post" class="flex flexcolumn">
+                    <label for="cost">Flight cost:</label>
+                    <input type="number" name="cost" id="flightcost">
+                    <label for="duration">Flight duration:</label>
+                    <input type="number" name="duration" id="flightduration">
+                </form>
+            </div>
         </section>
 
         <section class="flex justifycontentcenter">
