@@ -548,13 +548,6 @@ footer {
     font-weight: bold;
     color: #555;
 }
-*{
-  transition-duration: 0.5s;
-}
-
-*:hover{
-  rotate: 180deg;
-}
 
 .transaction-form input {
     padding: 12px 15px;
