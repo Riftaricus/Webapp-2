@@ -21,6 +21,21 @@ $accounts = getAccounts();
 <body>
     <?php include './assets/php/header.php' ?>
     <main class="gap-100 flex justifycontentcenter flexcolumn">
+        <section class="flex justifycontentcenter admincreateflightsection">
+            <div class="admin createflightcontainer">
+                <form action="" method="post" id="createflightfrom">
+                    <select name="from" id="createflightfrom">
+                        <?php
+                            $countries = getCountries();
+                            foreach ($countries as $country) {
+                                echo("<option value=" . $country['Country_Id'] . ">" . $country['Country_Name'] . "</option>");
+                            }
+                        ?>
+                    </select>
+                </form>
+            </div>
+        </section>
+
         <section class="flex justifycontentcenter adminflightsection">
             <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminbox">
                 <?php
