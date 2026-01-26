@@ -86,6 +86,7 @@ function createFlight($flight_cost, $flight_duration, $fromCountry, $toCountry)
 
 function getFlights($id = null)
 {
+
     global $connect;
 
     if ($id !== null) {
@@ -99,6 +100,7 @@ function getFlights($id = null)
     }
 
     $result = $stmt->fetchAll();
+
     return $result;
 }
 ?>

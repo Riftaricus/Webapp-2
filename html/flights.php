@@ -1,4 +1,7 @@
-<?php require_once("assets/php/functions/session.php"); ?>
+<?php require_once("assets/php/functions/session.php");
+require_once("assets/php/functions/locations.php");
+require_once("assets/php/functions/flights.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,46 +11,49 @@
 <body>
     <?php include './assets/php/header.php' ?>
     <main class="flex gap-100 flexcolumn">
-        <div class="leftflightbox flex flexrow">
-            <div class="leftflightboxmain">
-                <h1>Flight name</h1>
+        <?php
 
-                <h2>From...</h2>
+        $i = 1;
 
-                <h2>To...</h2>
-            </div>
-            <div class="leftflightboxsecondary flex flexcolumn">
-                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+        $flights = getFlights();
+
+
+        foreach ($flights as $flight) {
+            switch ($i) {
+                case 1:
+                    $i = 0;
+                    echo '        <div class="leftflightbox flex flexrow">
+    <div class="leftflightboxmain">
+            <h2>
+                From ' . getCountryNameFromId($flight['From_Country_Id']) . '
+                <br>
+                To ' . getCountryNameFromId($flight['To_Country_Id']) . '
+                
                 </h2>
-                <a class="green-button">Book Flight</a>
-            </div>
-
-        </div>
-
-        <div class="rightflightbox flex flexrow">
+    </div>
+    <div class="leftflightboxsecondary flex flexcolumn">
+    </div>
+</div>';
+                    break;
+                case 0:
+                    $i = 1;
+                    echo '        <div class="rightflightbox flex flexrow">
             <div class="rightflightboxsecondary flex flexcolumn">
-                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </h2>
-                <a class="green-button">Book Flight</a>
             </div>
             <div class="rightflightboxmain">
-                <h1>Flight name</h1>
-
-                <h2>From...</h2>
-
-                <h2>To...</h2>
+            <h2>
+                From ' . getCountryNameFromId($flight['From_Country_Id']) . '
+                <br>
+                To ' . getCountryNameFromId($flight['To_Country_Id']) . '
+                
+                </h2>
             </div>
-        </div>
+        </div>';
+                    break;
+            }
+        }
 
-
+        ?>
     </main>
     <?php include './assets/php/footer.php' ?>
 </body>

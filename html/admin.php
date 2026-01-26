@@ -11,10 +11,6 @@ $flights = getFlights();
 
 $accounts = getAccounts();
 
-if (count($flights) == 0) {
-    generateRandomFlight(40);
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +25,7 @@ if (count($flights) == 0) {
             <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminbox">
                 <?php
                 for ($i = 0; $i < count($flights); $i++) {
-                    echo "<div id="."adminflightbyid".$flights[$i]["Flight_Id"]." class='adminflightlist flex alignitemscenter justifycontentcenter flexcolumn'>";
+                    echo "<div id=" . "adminflightbyid" . $flights[$i]["Flight_Id"] . " class='adminflightlist flex alignitemscenter justifycontentcenter flexcolumn'>";
                     $from = $flights[$i]["From_Country_Id"];
                     $to = $flights[$i]["To_Country_Id"];
 
@@ -57,9 +53,11 @@ if (count($flights) == 0) {
         </section>
 
         <section class="adminflightsettingcontainer flex justifycontentcenter alignitemscenter">
-            <div class="adminflightsettings backgroundcolorCFDDE0 flex flexcolumn justifycontentcenter alignitemscenter">
+            <div
+                class="adminflightsettings backgroundcolorCFDDE0 flex flexcolumn justifycontentcenter alignitemscenter">
                 <div class="settingclosemenu flex alignitemsflexend">
-                    <div class="flex window-option-close justifycontentcenter alignitemscenter"><img class="window-option-img" src="assets/img/Close.svg" alt="Close"></div>
+                    <div class="flex window-option-close justifycontentcenter alignitemscenter"><img
+                            class="window-option-img" src="assets/img/Close.svg" alt="Close"></div>
                 </div>
 
                 <div class="flex flexcolumn flightsettinginfo justifycontentcenter aligncontentscenter"></div>
