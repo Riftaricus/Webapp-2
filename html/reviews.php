@@ -48,10 +48,11 @@ login("admin", "admin");
             <h2>We are currently rated <?php echo ($rating) ?> / 5 stars average!</h2>
         </div>
 
-        <div class="flex flexrow alignitemscenter">
-            <div class="nextreview flex justifycontentcenter alignitemscenter"><img src="/assets/img/arrowright.png">
+        <div class="flex flexrow alignitemscenter" onclick="lastReview()">
+            <div class="nextreview flex justifycontentcenter alignitemscenter">
+                <img src="/assets/img/arrowright.png">
             </div>
-            <div class="review flex alignitemscenter justifycontentcenter flexcolumn" id="reviews">
+            <div class="review flex alignitemscenter justifycontentcenter flexcolumn">
                 <div>
                     <?php
                     $url = $_SERVER['REQUEST_URI'];
@@ -63,7 +64,9 @@ login("admin", "admin");
                     $ratings = getRatings();
 
                     if ($number >= sizeof($ratings)) {
-                        echo "<script>window.location.href = '/reviews.php#reviews?comment0'</script>";
+                        echo "<script>window.location.href = '/reviews.php?comment0'</script>";
+                    } else if ($number < 0) {
+                        echo "<script>window.location.href = '/reviews.php?comment" . sizeof($ratings) - 1 . "'</script>";
                     }
 
                     $rating = (int) $ratings[$number]['Rating'];
@@ -82,8 +85,8 @@ login("admin", "admin");
                     echo ("<h3>" . $ratings[$number]['Message'] . "</h3>");
                     ?>
                 </div>
-                <div class="nextreview flex justifycontentcenter alignitemscenter" onclick="nextReview()"><img
-                        src="/assets/img/arrowleft.png">
+                <div class="nextreview flex justifycontentcenter alignitemscenter" onclick="nextReview()">
+                    <img src="/assets/img/arrowleft.png">
                 </div>
             </div>
     </main>

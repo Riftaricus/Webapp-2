@@ -67,5 +67,21 @@ function nextReview() {
   }
   index++;
 
-  window.location.href = "/reviews.php#reviews" + "?comment" + (Number(output) + 1);
+  window.location.href = "/reviews.php" + "?comment" + (Number(output) + 1);
+}
+
+function lastReview() {
+  let url = window.location.href;
+
+  splitUrl = url.split("comment");
+
+  output = splitUrl[1];
+
+  if (isNaN(output)) {
+    output = 0;
+  }
+
+  index--;
+
+  window.location.href = "/reviews.php" + "?comment" + (Number(output) - 1);
 }
