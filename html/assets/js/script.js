@@ -94,11 +94,19 @@ window.onload = () => {
 
   const splitUrl = url.split("?");
 
-  if (typeof splitUrl[1] !== "undefined") {
-    if (splitUrl[1].includes("transaction")) {
-      showTransactionMenu();
-    } else {
-      hideTransactionMenu();
+  const splitTransaction = splitUrl[1]?.split("=") || [];
+
+  console.log(splitUrl);
+
+  console.log(splitTransaction);
+
+  if (typeof splitTransaction[1] !== "undefined") {
+    if (typeof splitUrl[1] !== "undefined") {
+      if (splitUrl[1].includes("transaction")) {
+        showTransactionMenu(parseInt(splitTransaction[1]));
+      } else {
+        hideTransactionMenu();
+      }
     }
   }
 };
@@ -124,8 +132,12 @@ function hideTransactionMenu() {
   transaction.style.display = "none";
 }
 
-function showTransactionMenu() {
+function showTransactionMenu(flightId) {
   const transaction = document.getElementById("transaction");
+
+  const hiddenFlightId = document.getElementById("flightId");
+
+  hiddenFlightId.value = flightId;
 
   transaction.style.display = "flex";
 }

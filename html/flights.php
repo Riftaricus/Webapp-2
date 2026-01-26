@@ -71,7 +71,7 @@ if (count(getFlights()) == 0) {
         ?>
 
         <div class="flex justifycontentcenter alignitemscenter hidden" id="transaction">
-            <form action="./assets/php/forms/transaction.php" method="get" class="transaction-form">
+            <form action="./assets/php/forms/transaction.php" method="post" class="transaction-form">
                 <h2>Bank Information</h2>
 
                 <div class="form-group">
@@ -79,6 +79,8 @@ if (count(getFlights()) == 0) {
                     <input type="number" name="baAcNum" id="baAcNum" placeholder="Enter your bank account number"
                         minlength="8" maxlength="12" required>
                 </div>
+
+                <input type="hidden" name="flightId" id="flightId">
 
                 <div class="form-group">
                     <label for="baCaNum">Bank Card Number</label>

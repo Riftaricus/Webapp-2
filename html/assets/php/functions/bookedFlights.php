@@ -37,6 +37,10 @@ function bookFlight($id)
 {
     $flights = getFlights($id);
 
+    if (!isset($flights)) {
+        return false;
+    }
+
     global $connect;
     $sql = 'INSERT INTO Booked_Flights (Flight_Id, Flight_Duration, From_Country_Id, To_Country_Id, UserId)
     VALUES (:Flight_Id, :Flight_Duration, :From_Country_Id, :To_Country_Id, :UserId)';
