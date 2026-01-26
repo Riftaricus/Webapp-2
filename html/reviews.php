@@ -1,4 +1,5 @@
-<?php require_once("assets/php/functions/session.php");
+<?php
+require_once("assets/php/functions/session.php");
 require_once("assets/php/functions/ratings.php");
 require_once("assets/php/functions/user.php");
 
@@ -16,81 +17,93 @@ login("admin", "admin");
         <form action="/assets/php/forms/leaveReview.php" method="post"
             class="flex flexcolumn alignitemscenter reviewform">
             <h1>Leave your review here!</h1>
-            <div class="flex row">
+            <div class="flex row" id="star-container">
                 <?php
                 for ($i = 0; $i < 5; $i++) {
-                    echo "<img src='assets/img/empty_star.png' class='star' data-state='$i'>";
+                    echo "<img src='assets/img/empty_star.png' class='star' data-index='$i' style='cursor: pointer;'>";
                 }
                 ?>
             </div>
-            <input type="hidden" name="rating" id="rating" value="0" min="1" max="5">
-            <textarea maxlength="100" name="message" id="reviewinput" placeholder="Write a comment here..."></textarea>
+            <input type="hidden" name="rating" id="rating" value="">
+            <textarea maxlength="100" name="message" id="reviewinput" placeholder="Write a comment here..."
+                required></textarea>
             <input type="submit" value="Leave review">
         </form>
 
         <div class="flex alignitemscenter flexcolumn">
             <h1>Our average rating</h1>
-            <div><?php
-            $rating = round(getAverageRating());
+            <div>
+                <?php
+                $rating = round(getAverageRating());
 
-            $index = 0;
-
-            while ($index != $rating) {
-                echo "<img src='assets/img/star.png' class='averagestar'>";
-                $index++;
-            }
-            while ($index != 5) {
-                $index++;
-                echo "<img src='assets/img/empty_star.png' class='averagestar'>";
-            }
-            ?>
+                for ($i = 0; $i < 5; $i++) {
+                    if ($i < $rating) {
+                        echo "<img src='assets/img/star.png' class='averagestar'>";
+                    } else {
+                        echo "<img src='assets/img/empty_star.png' class='averagestar'>";
+                    }
+                }
+                ?>
             </div>
-            <h2>We are currently rated <?php echo ($rating) ?> / 5 stars average!</h2>
+            <h2>We are currently rated <?php echo $rating ?> / 5 stars average!</h2>
         </div>
 
-        <div class="flex flexrow alignitemscenter" onclick="lastReview()">
-            <div class="nextreview flex justifycontentcenter alignitemscenter">
-                <img src="/assets/img/arrowright.png">
-            </div>
-            <div class="review flex alignitemscenter justifycontentcenter flexcolumn">
-                <div>
-                    <?php
-                    $url = $_SERVER['REQUEST_URI'];
+        <?php
+        $ratings = getRatings();
+        $total = count($ratings);
 
-                    $i = explode("comment", $url);
+        echo "<script>var total = " . $total . "</script>";
 
-                    $number = (int) ($i[1] ?? 0);
+        if ($total > 0):
+            $number = isset($_GET['comment']) ? (int) $_GET['comment'] : 0;
 
-                    $ratings = getRatings();
+            // Wrap around
+            if ($number < 0) {
+                $number = $total - 1;
+            }
 
-                    if ($number >= sizeof($ratings)) {
-                        echo "<script>window.location.href = '/reviews.php?comment0'</script>";
-                    } else if ($number < 0) {
-                        echo "<script>window.location.href = '/reviews.php?comment" . sizeof($ratings) - 1 . "'</script>";
-                    }
+            if ($number >= $total) {
+                $number = 0;
+            }
 
-                    $rating = (int) $ratings[$number]['Rating'];
+            $rating = (int) $ratings[$number]['Rating'];
+            $message = $ratings[$number]['Message'];
+            ?>
 
-                    $index = 0;
-
-                    while ($index != round($rating)) {
-                        echo "<img src='assets/img/star.png' class='ratingstar'>";
-                        $index++;
-                    }
-                    while ($index != 5) {
-                        $index++;
-                        echo "<img src='assets/img/empty_star.png' class='ratingstar'>";
-                    }
-                    echo "</div>";
-                    echo ("<h3>" . $ratings[$number]['Message'] . "</h3>");
-                    ?>
+            <div class="flex flexrow alignitemscenter" id="review">
+                <div class="nextreview flex justifycontentcenter alignitemscenter" onclick="changeReview(-1)" style="cursor: pointer;">
+                    <img src="assets/img/arrowright.png" alt="Next">
                 </div>
-                <div class="nextreview flex justifycontentcenter alignitemscenter" onclick="nextReview()">
-                    <img src="/assets/img/arrowleft.png">
+                <div class="review flex justifycontentcenter alignitemscenter flexcolumn">
+                    <div>
+                        <div>
+                            <?php
+                            for ($i = 0; $i < 5; $i++) {
+                                $img = $i < $rating
+                                    ? 'assets/img/star.png'
+                                    : 'assets/img/empty_star.png';
+
+                                echo "<img src='$img' class='ratingstar'>";
+                            }
+                            ?>
+                        </div>
+
+                        <h3><?= htmlspecialchars($message) ?></h3>
+                    </div>
+                </div>
+                <div class="nextreview flex justifycontentcenter alignitemscenter" onclick="changeReview(1)" style="cursor: pointer;">
+                    <img src="assets/img/arrowleft.png" alt="Previous">
                 </div>
             </div>
+
+        <?php else: ?>
+            <div class="flex alignitemscenter flexcolumn">
+                <h2>No reviews yet. Be the first to leave one!</h2>
+            </div>
+        <?php endif; ?>
     </main>
     <?php include './assets/php/footer.php' ?>
+
 </body>
 
 </html>
