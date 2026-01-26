@@ -63,8 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const costInput = document.getElementById('flightcost');
           const durationInput = document.getElementById('flightduration');
+          const flightIdInput = document.getElementById('flightid');
           if (costInput) costInput.value = flight.cost;
           if (durationInput) durationInput.value = flight.duration;
+          if (flightIdInput) flightIdInput.value = id;
 
           flightSettingContainer.removeAttribute("inert");
           flightSettingContainer.style.display = "flex";

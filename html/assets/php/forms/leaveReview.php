@@ -19,3 +19,4 @@ if (
 
 header("Location: /reviews.php?success=$success");
 exit;
+?>

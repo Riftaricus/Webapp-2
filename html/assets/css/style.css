@@ -338,6 +338,7 @@ footer {
 .window-option-close {
   border-radius: 2rem;
   background-color: #737373;
+  cursor: pointer;
   padding: 0.75rem;
 }
 
@@ -372,7 +373,25 @@ footer {
   justify-content: flex-start;
   width: 20%;
   height: fit-content;
-  margin: 0.5rem;
+  outline-color: #737373;
+  outline-width: 4px;
+  outline-style: outset;
+  padding: 0.5rem;
+}
+
+.flightoptioninfosection {
+  position: relative;
+  bottom: 2rem;
+}
+
+#flightoptiondelete,
+#flightoptionsave {
+  margin-top: 0.2rem;
+  border-radius: 0.2rem;
+}
+
+#flightoptiondelete {
+  background-color: #E60026;
 }
 
 .menu-section {
