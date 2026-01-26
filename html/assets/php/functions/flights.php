@@ -2,6 +2,8 @@
 
 require_once("connection.php");
 
+require_once("session.php");
+
 function getRandomCountry()
 {
     $result = getRandomCountrySQL();

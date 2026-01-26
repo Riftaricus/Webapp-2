@@ -94,6 +94,10 @@ a:hover {
   color: lightblue;
 }
 
+a:active{
+  scale: 0.9;
+}
+
 main a {
   color: black;
 }
@@ -598,4 +602,10 @@ footer {
 
 .admincreateflightsection {
   margin-top: 5vh;
+}
+
+*{
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

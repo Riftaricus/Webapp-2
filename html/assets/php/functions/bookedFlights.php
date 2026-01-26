@@ -1,6 +1,6 @@
 <?php
-require_once("./connection.php");
-require_once("./flights.php");
+require_once("connection.php");
+require_once("flights.php");
 
 function getBookedFlights()
 {
@@ -35,7 +35,7 @@ function removeAllBookedFlightsById($id)
 
 function bookFlight($id)
 {
-    $flight = getFlights($id);
+    $flights = getFlights($id);
 
     global $connect;
     $sql = 'INSERT INTO Booked_Flights (Flight_Id, Flight_Duration, From_Country_Id, To_Country_Id, UserId)
@@ -43,11 +43,11 @@ function bookFlight($id)
 
     $stmt = $connect->prepare($sql);
     $stmt->execute([
-        ':Flight_Id' => $flight['Flight_Id'],
-        ':Flight_Duration' => $flight['Flight_Duration'],
-        ':From_Country_Id' => $flight['From_Country_Id'],
-        ':To_Country_Id' => $flight['To_Country_Id'],
-        ':UserId' => $_SESSION['UserId']
+        ':Flight_Id' => $flights[0]['Flight_Id'],
+        ':Flight_Duration' => $flights[0]['Flight_Duration'],
+        ':From_Country_Id' => $flights[0]['From_Country_Id'],
+        ':To_Country_Id' => $flights[0]['To_Country_Id'],
+        ':UserId' => $_SESSION['userId']
     ]);
 }
 
