@@ -14,3 +14,4 @@ if (
 
 header("Location: /flights.php?success=$success");
 exit;
+?>

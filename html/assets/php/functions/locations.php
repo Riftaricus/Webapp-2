@@ -10,11 +10,7 @@ function getLocations(){
 
     $stmt->execute();
     $result = $stmt->fetchAll();
+
     return $result;
-    
-
 }
-
-
-
 ?>

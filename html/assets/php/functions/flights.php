@@ -135,7 +135,8 @@ function editFlight($cost, $duration, $id)
     return $connect->lastInsertId();
 }
 
-function deleteFlight($id) {
+function deleteFlight($id) 
+{
     if (!is_numeric($id) || !isUserAdmin($_SESSION['username'])) {
         return;
     }

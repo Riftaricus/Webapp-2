@@ -1,6 +1,6 @@
 <?php
-
 require_once("connection.php");
+
 function getAverageRatingSQL()
 {
     global $connect;
