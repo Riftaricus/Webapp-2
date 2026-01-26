@@ -49,10 +49,10 @@ if (count(getFlights()) == 0) {
                     </select>
 
                     <label for="cost">Flight cost:</label>
-                    <input type="number" name="flightcost" id="createflightcost">
+                    <input type="number" min="-1" max="1000000" name="flightcost" id="createflightcost">
 
                     <label for="duration">Flight duration:</label>
-                    <input type="number" name="flightduration" id="createflightduration">
+                    <input type="number" min="-1" max="1000000" name="flightduration" id="createflightduration">
 
                     <button type="submit" name="save" id="createflight">Create</button>
                 </form>
@@ -103,11 +103,15 @@ if (count(getFlights()) == 0) {
 
                     <form action="./assets/php/forms/flightSettingsForm.php" method="post" id="flightSettingsForm" class="flex flexcolumn">
                         <input type="hidden" name="flightid" id="flightid">
+                        
                         <label for="cost">Flight cost:</label>
-                        <input type="number" name="flightcost" id="flightcost">
+                        <input type="number" min="-1" max="1000000" name="flightcost" id="flightcost">
+
                         <label for="duration">Flight duration:</label>
-                        <input type="number" name="flightduration" id="flightduration">
+                        <input type="number" min="-1" max="1000000" name="flightduration" id="flightduration">
+
                         <button type="submit" name="save" id="flightoptionsave">Save</button>
+
                         <button type="submit" name="delete" id="flightoptiondelete">Delete</button>
                     </form>
                 </div>
