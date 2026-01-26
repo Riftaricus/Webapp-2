@@ -60,15 +60,19 @@ $accounts = getAccounts();
                             class="window-option-img" src="assets/img/Close.svg" alt="Close"></div>
                 </div>
 
-                <div class="flex flexcolumn flightsettinginfo justifycontentcenter aligncontentscenter"></div>
+                <div class="flightoptioninfosection">
+                    <div class="flex flexcolumn flightsettinginfo justifycontentcenter aligncontentscenter"></div>
 
-                <form action="post" id="flightSettingsForm" class="flex flexcolumn">
-                    <label for="cost">Flight cost:</label>
-                    <input type="number" name="cost" id="flightcost">
-                    <label for="duration">Flight duration:</label>
-                    <input type="number" name="duration" id="flightduration">
-                    <button type="submit" name="save" id="flightoptionsave">Save</button>
-                </form>
+                    <form action="./assets/php/forms/flightSettingsForm.php" method="post" id="flightSettingsForm" class="flex flexcolumn">
+                        <input type="hidden" name="flightid" id="flightid">
+                        <label for="cost">Flight cost:</label>
+                        <input type="number" name="flightcost" id="flightcost">
+                        <label for="duration">Flight duration:</label>
+                        <input type="number" name="flightduration" id="flightduration">
+                        <button type="submit" name="save" id="flightoptionsave">Save</button>
+                        <button type="submit" name="delete" id="flightoptiondelete">Delete</button>
+                    </form>
+                </div>
             </div>
         </section>
 

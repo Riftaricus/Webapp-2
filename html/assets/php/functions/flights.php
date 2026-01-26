@@ -103,4 +103,43 @@ function getFlights($id = null)
 
     return $result;
 }
+
+function editFlight($cost, $duration, $id)
+{
+    if (!is_numeric($cost) || !is_numeric($duration) || !is_numeric($id)) {
+        return;
+    }
+
+    global $connect;
+    $sql = "
+        UPDATE `Available_Flights` 
+        SET `Flight_Cost`=:cost,`Flight_Duration`=:duration
+        WHERE Flight_Id = :id
+    ";
+
+    $stmt = $connect->prepare($sql);
+    $stmt->execute([
+        ':cost' => $cost,
+        ':duration' => $duration,
+        ':id' => $id
+    ]);
+
+    return $connect->lastInsertId();
+}
+
+function deleteFlight($id) {
+    if (!is_numeric($id) || !isUserAdmin($_SESSION['username'])) {
+        return;
+    }
+
+    global $connect;
+    $sql = "DELETE FROM `Available_Flights` WHERE Flight_Id = :id";
+
+    $stmt = $connect->prepare($sql);
+    $stmt->execute([
+        ':id' => $id
+    ]);
+
+    return $connect->lastInsertId();
+}
 ?>
