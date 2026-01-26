@@ -49,10 +49,34 @@ login("admin", "admin");
         </div>
 
         <div class="flex flexrow alignitemscenter">
-            <div class="nextreview flex justifycontentcenter alignitemscenter"><img src="/assets/img/arrowright.png"></div>
-            <div class="review"></div>
-            <div class="nextreview flex justifycontentcenter alignitemscenter"><img src="/assets/img/arrowleft.png"></div>
-        </div>
+            <div class="nextreview flex justifycontentcenter alignitemscenter"><img src="/assets/img/arrowright.png">
+            </div>
+            <div class="review flex alignitemscenter justifycontentcenter flexcolumn">
+                <div>
+                    <?php
+                    $number = 8;
+
+                    $ratings = getRatings();
+
+                    $rating = (int) $ratings[$number]['Rating'];
+
+                    $index = 0;
+
+                    while ($index != round($rating)) {
+                        echo "<img src='assets/img/star.png' class='ratingstar'>";
+                        $index++;
+                    }
+                    while ($index != 5) {
+                        $index++;
+                        echo "<img src='assets/img/empty_star.png' class='ratingstar'>";
+                    }
+                    echo "</div>";
+                    echo ("<h3>" . $ratings[$number]['Message'] . "</h3>");
+                    ?>
+                </div>
+                <div class="nextreview flex justifycontentcenter alignitemscenter"><img src="/assets/img/arrowleft.png">
+                </div>
+            </div>
     </main>
     <?php include './assets/php/footer.php' ?>
 </body>

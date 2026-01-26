@@ -433,6 +433,12 @@ footer {
   height: 150px;
 }
 
+.ratingstar {
+  cursor: default;
+  width: 50px;
+  height: 50px;
+}
+
 .star {
   width: 50px;
   height: 50px;
@@ -474,9 +480,10 @@ footer {
   border-radius: 9px;
 }
 
-.review{
+.review {
   width: 50vw;
   height: 45vh;
-  background-color: #A3A3A3;
+  background-color: #a3a3a3;
   border-radius: 9px;
+  padding: 15px;
 }
