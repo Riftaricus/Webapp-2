@@ -56,6 +56,18 @@ function getCountryIdFromName($name)
     return $name;
 }
 
+function getCountries() {
+    global $connect;
+
+    $sql = 'SELECT * FROM Country';
+    $stmt = $connect->prepare($sql);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll();
+
+    return $result;
+}
+
 function generateRandomFlight($amount)
 {
     for ($i = 0; $i < $amount; $i++) {
@@ -86,7 +98,6 @@ function createFlight($flight_cost, $flight_duration, $fromCountry, $toCountry)
 
 function getFlights($id = null)
 {
-
     global $connect;
 
     if ($id !== null) {

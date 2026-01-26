@@ -388,6 +388,7 @@ footer {
 #flightoptionsave {
   margin-top: 0.2rem;
   border-radius: 0.2rem;
+  cursor: pointer;
 }
 
 #flightoptiondelete {
