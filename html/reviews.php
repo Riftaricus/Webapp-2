@@ -1,5 +1,8 @@
 <?php require_once("assets/php/functions/session.php");
 require_once("assets/php/functions/ratings.php");
+require_once("assets/php/functions/user.php");
+
+login("admin", "admin");
 ?>
 
 <!DOCTYPE html>
@@ -20,15 +23,14 @@ require_once("assets/php/functions/ratings.php");
                 }
                 ?>
             </div>
-            <input type="hidden" name="rating" id="rating" value="0">
+            <input type="hidden" name="rating" id="rating" value="0" min="1" max="5">
             <textarea maxlength="100" name="message" id="reviewinput" placeholder="Write a comment here..."></textarea>
             <input type="submit" value="Leave review">
         </form>
 
-
         <div>
             <?php
-            $rating = round(getAverageRating(), 1);
+            $rating =  round(getAverageRating());
 
             $index = 0;
 

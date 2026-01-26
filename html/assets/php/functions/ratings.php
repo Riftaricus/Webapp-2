@@ -42,10 +42,14 @@ function getAverageRating()
 
 function leaveRating($rating, $message, $userId)
 {
+    if (empty($userId) || $rating < 1 || $rating > 5) {
+        return;
+    }
+
     global $connect;
     $sql = "
-        INSERT INTO Review 
-        (Rating, Message, UserId)
+        INSERT INTO `Review` 
+        (Rating, Message, User_Id)
         VALUES 
         (:rating, :message, :userid)
     ";

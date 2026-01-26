@@ -2,14 +2,20 @@
 require_once("../functions/session.php");
 require_once("../functions/ratings.php");
 
-if (isset($_POST['rating'], $_POST['message'])) {
-    if (isset($_SESSION['userId'])) {
-        $rating = max(0, min(5, (int) $_POST['rating']));
-        $message = htmlspecialchars($_POST['message']);
-        leaveRating($_SESSION['userId'], $message, $rating);
-        echo json_encode(['success' => true]);
-        exit;
+$success = 0;
 
-    }
-    exit;
+if (
+    isset($_POST['rating'], $_SESSION['userId']) &&
+    is_numeric($_POST['rating']) &&
+    is_numeric($_SESSION['userId']) &&
+    $_POST['rating'] > 0
+) {
+    $rating = max(1, min(5, (int) $_POST['rating']));
+    $message = isset($_POST['message']) ? trim($_POST['message']) : '';
+
+    leaveRating($rating, $message, (int) $_SESSION['userId']);
+    $success = 1;
 }
+
+header("Location: /reviews.php?success=$success");
+exit;

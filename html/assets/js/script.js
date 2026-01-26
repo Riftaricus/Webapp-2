@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const value = index;
 
-      ratingInput.value = value;
+      ratingInput.value = value + 1;
 
       // Update star images
       stars.forEach((s, i) => {
