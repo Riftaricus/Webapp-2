@@ -64,11 +64,12 @@ if (count($flights) == 0) {
 
                 <div class="flex flexcolumn flightsettinginfo justifycontentcenter aligncontentscenter"></div>
 
-                <form action="post" class="flex flexcolumn">
+                <form action="post" id="flightSettingsForm" class="flex flexcolumn">
                     <label for="cost">Flight cost:</label>
                     <input type="number" name="cost" id="flightcost">
                     <label for="duration">Flight duration:</label>
                     <input type="number" name="duration" id="flightduration">
+                    <button type="submit" name="save" id="flightoptionsave">Save</button>
                 </form>
             </div>
         </section>

@@ -3,8 +3,9 @@ header('Content-Type: application/json');
 
 require_once(__DIR__ . '/../functions/session.php');
 require_once(__DIR__ . '/../functions/flights.php');
+require_once(__DIR__ . '/../functions/user.php');
 
-if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != true || isUserAdmin($_SESSION['username'])) {
+if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != true || !isUserAdmin($_SESSION['username'])) {
     echo json_encode(['success' => false, 'error' => 'Unauthorized']);
     exit;
 }

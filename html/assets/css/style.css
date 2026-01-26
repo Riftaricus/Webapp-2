@@ -371,7 +371,8 @@ footer {
 .adminflightsettings {
   justify-content: flex-start;
   width: 20%;
-  height: 50vh;
+  height: fit-content;
+  margin: 0.5rem;
 }
 
 .menu-section {
