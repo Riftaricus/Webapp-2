@@ -518,3 +518,24 @@ footer {
 #review{
   margin-bottom: 100px;
 }
+
+.createflightcontainer {
+  width: 20%;
+  height: fit-content;
+  color: white;
+  background-color: var(--color-cfdde0);
+  padding: 0.5rem;
+}
+
+#createflightform {
+  background-color: #737373;
+  padding: 0.5rem;
+}
+
+#createflightduration {
+  margin-bottom: 0.5rem;
+}
+
+.admincreateflightsection {
+  margin-top: 5vh;
+}
