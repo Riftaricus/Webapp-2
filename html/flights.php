@@ -1,6 +1,10 @@
 <?php require_once("assets/php/functions/session.php");
 require_once("assets/php/functions/locations.php");
 require_once("assets/php/functions/flights.php");
+
+if (count(getFlights()) == 0) {
+    generateRandomFlight(27);
+}
 ?>
 
 <!DOCTYPE html>
