@@ -21,70 +21,87 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const flightContainer = document.querySelector(".adminbox");
-  const flightSettingContainer = document.querySelector(
-    ".adminflightsettingcontainer",
-  );
+  if (window.location.href.includes("admin.php")) {
+    const flightContainer = document.querySelector(".adminbox");
+    const flightSettingContainer = document.querySelector(
+      ".adminflightsettingcontainer",
+    );
 
-  if (
-    !flightSettingContainer.hasAttribute("inert") ||
-    flightSettingContainer.style.display !== "none"
-  ) {
-    flightSettingContainer.setAttribute("inert", "");
-    flightSettingContainer.style.display = "none";
-  }
+    if (
+      !flightSettingContainer.hasAttribute("inert") ||
+      flightSettingContainer.style.display !== "none"
+    ) {
+      flightSettingContainer.setAttribute("inert", "");
+      flightSettingContainer.style.display = "none";
+    }
 
-  if (flightContainer) {
-    flightContainer.addEventListener("click", (event) => {
-      const flightElement = event.target.closest("[id^='adminflightbyid']");
+    if (flightContainer) {
+      flightContainer.addEventListener("click", (event) => {
+        const flightElement = event.target.closest("[id^='adminflightbyid']");
 
-      if (flightElement) {
-        const flightId = flightElement.id.replace("adminflightbyid", "");
+        if (flightElement) {
+          const flightId = flightElement.id.replace("adminflightbyid", "");
 
-        openFlightSettingMenu(flightId);
-      }
-    });
-  }
+          openFlightSettingMenu(flightId);
+        }
+      });
+    }
 
-  function openFlightSettingMenu(id) {
-    fetch(`assets/php/api/get-flight.php?id=${id}`)
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          const flight = data.flight;
-          const infoDiv = flightSettingContainer.querySelector('.flightsettinginfo');
-          if (infoDiv) {
-            infoDiv.innerHTML = `
+    function openFlightSettingMenu(id) {
+      fetch(`assets/php/api/get-flight.php?id=${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            const flight = data.flight;
+            const infoDiv =
+              flightSettingContainer.querySelector(".flightsettinginfo");
+            if (infoDiv) {
+              infoDiv.innerHTML = `
               <h2>${flight.fromCountry}<br>↓<br>${flight.toCountry}</h2>
               <h2>Cost: ${flight.cost}$</h2>
               <h2>Duration: ${flight.duration} Hours</h2>
             `;
+            }
+
+            const costInput = document.getElementById("flightcost");
+            const durationInput = document.getElementById("flightduration");
+            const flightIdInput = document.getElementById("flightid");
+            if (costInput) costInput.value = flight.cost;
+            if (durationInput) durationInput.value = flight.duration;
+            if (flightIdInput) flightIdInput.value = id;
+
+            flightSettingContainer.removeAttribute("inert");
+            flightSettingContainer.style.display = "flex";
+
+            const closeButton = document.querySelector(".window-option-close");
+            if (closeButton) {
+              closeButton.addEventListener("click", (event) => {
+                flightSettingContainer.setAttribute("inert", "");
+                flightSettingContainer.style.display = "none";
+              });
+            }
+          } else {
+            console.error("Failed to load flight:", data.error);
           }
-
-          const costInput = document.getElementById('flightcost');
-          const durationInput = document.getElementById('flightduration');
-          const flightIdInput = document.getElementById('flightid');
-          if (costInput) costInput.value = flight.cost;
-          if (durationInput) durationInput.value = flight.duration;
-          if (flightIdInput) flightIdInput.value = id;
-
-          flightSettingContainer.removeAttribute("inert");
-          flightSettingContainer.style.display = "flex";
-
-          const closeButton = document.querySelector(".window-option-close");
-          if (closeButton) {
-            closeButton.addEventListener("click", (event) => {
-              flightSettingContainer.setAttribute("inert", "");
-              flightSettingContainer.style.display = "none";      
-            });
-          }
-        } else {
-          console.error('Failed to load flight:', data.error);
-        }
-      })
-      .catch(error => console.error('Error fetching flight:', error));
+        })
+        .catch((error) => console.error("Error fetching flight:", error));
+    }
   }
 });
+
+window.onload = () => {
+  const url = window.location.href;
+
+  const splitUrl = url.split("?");
+
+  if (typeof splitUrl[1] !== "undefined") {
+    if (splitUrl[1].includes("transaction")) {
+      showTransactionMenu();
+    } else {
+      hideTransactionMenu();
+    }
+  }
+};
 
 function changeReview(delta) {
   const params = new URLSearchParams(window.location.search);
@@ -101,14 +118,14 @@ function changeReview(delta) {
   window.location.href = `/reviews.php?comment=${index + delta}#review`;
 }
 
-function hideTransactionMenu(){
-  const transaction = document.getElementById("transaction")
+function hideTransactionMenu() {
+  const transaction = document.getElementById("transaction");
 
-  transaction.style.display = "none"
+  transaction.style.display = "none";
 }
 
-function showTransactionMenu(){
-  const transaction = document.getElementById("transaction")
+function showTransactionMenu() {
+  const transaction = document.getElementById("transaction");
 
-  transaction.style.display = "flex"
+  transaction.style.display = "flex";
 }

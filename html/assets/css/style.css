@@ -38,7 +38,7 @@ main {
   height: 100%;
   background-color: #adadad;
 
-  -webkit-text-stroke: #eeff00 0.2px;
+  -webkit-text-stroke: #00ddff 0.2px;
 
   text-align: center;
 }
@@ -62,7 +62,7 @@ main {
   height: 100%;
   background-color: #adadad;
 
-  -webkit-text-stroke: #eeff00 0.2px;
+  -webkit-text-stroke: #00ddff 0.2px;
 
   text-align: center;
 }
@@ -524,6 +524,7 @@ footer {
 }
 
 .transaction-form {
+  width: 20vw;
   max-width: 400px;
   margin: 50px auto;
   padding: 30px;
