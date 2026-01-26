@@ -26,8 +26,9 @@ if (count(getFlights()) == 0) {
     <?php include './assets/php/header.php' ?>
     <main class="gap-100 flex justifycontentcenter flexcolumn">
         <section class="flex justifycontentcenter admincreateflightsection">
-            <div class="admin createflightcontainer">
-                <form action="" method="post" id="createflightfrom">
+            <div class="flex justifycontentcenter aligncontentscenter createflightcontainer">
+                <form action="./assets/php/forms/createflightform.php" method="post" id="createflightform" class="flex flexcolumn">
+                    <label for="createflightfrom">From:</label>
                     <select name="from" id="createflightfrom">
                         <?php
                             $countries = getCountries();
@@ -36,6 +37,24 @@ if (count(getFlights()) == 0) {
                             }
                         ?>
                     </select>
+
+                    <label for="createflightto">To:</label>
+                    <select name="to" id="createflightto">
+                        <?php
+                            $countries = getCountries();
+                            foreach ($countries as $country) {
+                                echo("<option value=" . $country['Country_Id'] . ">" . $country['Country_Name'] . "</option>");
+                            }
+                        ?>
+                    </select>
+
+                    <label for="cost">Flight cost:</label>
+                    <input type="number" name="flightcost" id="createflightcost">
+
+                    <label for="duration">Flight duration:</label>
+                    <input type="number" name="flightduration" id="createflightduration">
+
+                    <button type="submit" name="save" id="createflight">Create</button>
                 </form>
             </div>
         </section>

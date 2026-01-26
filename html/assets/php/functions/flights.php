@@ -93,7 +93,6 @@ function createFlight($flight_cost, $flight_duration, $fromCountry, $toCountry)
 
     $stmt = $connect->prepare($sql);
     $stmt->execute([':flight_id' => $flight_id, ':flight_cost' => $flight_cost, ':flight_duration' => $flight_duration, ':fromCountry' => $fromCountry, ':toCountry' => $toCountry]);
-
 }
 
 function getFlights($id = null)
