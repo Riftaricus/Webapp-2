@@ -51,12 +51,20 @@ login("admin", "admin");
         <div class="flex flexrow alignitemscenter">
             <div class="nextreview flex justifycontentcenter alignitemscenter"><img src="/assets/img/arrowright.png">
             </div>
-            <div class="review flex alignitemscenter justifycontentcenter flexcolumn">
+            <div class="review flex alignitemscenter justifycontentcenter flexcolumn" id="reviews">
                 <div>
                     <?php
-                    $number = 8;
+                    $url = $_SERVER['REQUEST_URI'];
+
+                    $i = explode("comment", $url);
+
+                    $number = (int) ($i[1] ?? 0);
 
                     $ratings = getRatings();
+
+                    if ($number >= sizeof($ratings)) {
+                        echo "<script>window.location.href = '/reviews.php#reviews?comment0'</script>";
+                    }
 
                     $rating = (int) $ratings[$number]['Rating'];
 
@@ -74,7 +82,8 @@ login("admin", "admin");
                     echo ("<h3>" . $ratings[$number]['Message'] . "</h3>");
                     ?>
                 </div>
-                <div class="nextreview flex justifycontentcenter alignitemscenter"><img src="/assets/img/arrowleft.png">
+                <div class="nextreview flex justifycontentcenter alignitemscenter" onclick="nextReview()"><img
+                        src="/assets/img/arrowleft.png">
                 </div>
             </div>
     </main>

@@ -52,3 +52,20 @@ document.addEventListener("DOMContentLoaded", () => {
     flightSettingContainer.id = id;
   }
 });
+
+var index = 0;
+
+function nextReview() {
+  let url = window.location.href;
+
+  splitUrl = url.split("comment");
+
+  output = splitUrl[1];
+
+  if (isNaN(output)) {
+    output = 0;
+  }
+  index++;
+
+  window.location.href = "/reviews.php#reviews" + "?comment" + (Number(output) + 1);
+}
