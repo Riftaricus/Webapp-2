@@ -60,7 +60,7 @@ function generateRandomFlight($amount)
 {
     for ($i = 0; $i < $amount; $i++) {
 
-        $flight_cost = mt_rand(100, 2000);
+        $flight_cost = mt_rand(100, 10000);
         $flight_duration = mt_rand(2, 24);
         do {
             $from_country = getCountryIdFromName(getRandomCountry());
