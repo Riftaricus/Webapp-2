@@ -94,7 +94,7 @@ a:hover {
   color: lightblue;
 }
 
-a:active{
+a:active {
   scale: 0.9;
 }
 
@@ -396,7 +396,7 @@ footer {
 }
 
 #flightoptiondelete {
-  background-color: #E60026;
+  background-color: #e60026;
 }
 
 .menu-section {
@@ -471,7 +471,7 @@ footer {
   width: 50px;
   height: 50px;
 
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .reviewform {
@@ -519,68 +519,72 @@ footer {
   text-align: center;
 }
 
-#review{
+#review {
   margin-bottom: 100px;
 }
 
 .transaction-form {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 30px;
-    background: #f9f9f9;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    font-family: 'Arial', sans-serif;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: "Arial", sans-serif;
 }
 
 .transaction-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
 }
 
 .transaction-form input {
-    padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 
 .transaction-form input:focus {
-    border-color: #396adb;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-    outline: none;
+  border-color: #396adb;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  outline: none;
 }
 
 .submit-btn {
-    padding: 12px;
-    background-color: #396adb;
-    color: #fff;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+  padding: 12px;
+  background-color: #396adb;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    transform 0.2s;
 }
 
 .submit-btn:hover {
-    background-color: #396adb;
-    transform: translateY(-2px);
+  background-color: #396adb;
+  transform: translateY(-2px);
 }
 
 .createflightcontainer {
@@ -604,8 +608,15 @@ footer {
   margin-top: 5vh;
 }
 
-*{
+* {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.hidden {
+  display: none;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
 }

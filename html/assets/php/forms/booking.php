@@ -8,10 +8,27 @@ if (!isset($_POST['flight_id'])) {
 
 $flightId = (int) $_POST['flight_id'];
 
+// Perform booking
 bookFlight($flightId);
-
-header('Location: /flights.php');
-exit;
-
-
 ?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function showTransaction() {
+            alert("Booked flight!")
+            // Redirect after showing the message
+            window.location.href = "/flights.php";
+        }
+
+        // Run on page load
+        window.onload = showTransaction;
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -100,3 +100,15 @@ function changeReview(delta) {
 
   window.location.href = `/reviews.php?comment=${index + delta}#review`;
 }
+
+function hideTransactionMenu(){
+  const transaction = document.getElementById("transaction")
+
+  transaction.style.display = "none"
+}
+
+function showTransactionMenu(){
+  const transaction = document.getElementById("transaction")
+
+  transaction.style.display = "flex"
+}
