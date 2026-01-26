@@ -11,6 +11,10 @@ $flights = getFlights();
 
 $accounts = getAccounts();
 
+if (count(getFlights()) == 0) {
+    generateRandomFlight(27);
+}
+
 ?>
 
 <!DOCTYPE html>
