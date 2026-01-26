@@ -47,9 +47,40 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function openFlightSettingMenu(id) {
-    flightSettingContainer.removeAttribute("inert");
-    flightSettingContainer.style.display = "flex";
-    flightSettingContainer.id = id;
+    fetch(`assets/php/api/get-flight.php?id=${id}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          const flight = data.flight;
+          const infoDiv = flightSettingContainer.querySelector('.flightsettinginfo');
+          if (infoDiv) {
+            infoDiv.innerHTML = `
+              <h2>${flight.fromCountry}<br>↓<br>${flight.toCountry}</h2>
+              <h2>Cost: ${flight.cost}$</h2>
+              <h2>Duration: ${flight.duration} Hours</h2>
+            `;
+          }
+
+          const costInput = document.getElementById('flightcost');
+          const durationInput = document.getElementById('flightduration');
+          if (costInput) costInput.value = flight.cost;
+          if (durationInput) durationInput.value = flight.duration;
+
+          flightSettingContainer.removeAttribute("inert");
+          flightSettingContainer.style.display = "flex";
+
+          const closeButton = document.querySelector(".window-option-close");
+          if (closeButton) {
+            closeButton.addEventListener("click", (event) => {
+              flightSettingContainer.setAttribute("inert", "");
+              flightSettingContainer.style.display = "none";      
+            });
+          }
+        } else {
+          console.error('Failed to load flight:', data.error);
+        }
+      })
+      .catch(error => console.error('Error fetching flight:', error));
   }
 });
 

@@ -62,22 +62,7 @@ if (count($flights) == 0) {
                     <div class="flex window-option-close justifycontentcenter alignitemscenter"><img class="window-option-img" src="assets/img/Close.svg" alt="Close"></div>
                 </div>
 
-                <div class="flex flightsettinginfo justifycontentcenter alignitemscenter">
-                    <?php
-                    $flightData = getFlights();
-
-                    echo "<h2>"
-                        . getCountryNameFromId($flightData["From_Country_Id"])
-                        . "<br>"
-                        . " ↓ "
-                        . "<br>"
-                        . getCountryNameFromId($flightData["To_Country_Id"])
-                        . "</h2>";
-                    echo "<h2>Cost: " . $flightData["Flight_Cost"] . "$</h2>";
-                    echo "<h2>Duration: " . $flightData["Flight_Duration"] . " Hours</h2>";
-                    echo "</div>";
-                    ?>
-                </div>
+                <div class="flex flexcolumn flightsettinginfo justifycontentcenter aligncontentscenter"></div>
 
                 <form action="post" class="flex flexcolumn">
                     <label for="cost">Flight cost:</label>

@@ -315,8 +315,11 @@ footer {
   color: white;
 
   letter-spacing: 1.5px;
+}
 
-  -webkit-text-stroke: rgb(220, 241, 243) 0.1px;
+.flightsettinginfo h2 {
+  text-align: center;
+  color: #000000;
 }
 
 .adminflightsection {
@@ -324,7 +327,7 @@ footer {
 }
 
 #flightcost {
-  margin-bottom: 2.5vw;
+  margin-bottom: 0.5rem;
 }
 
 .settingclosemenu {
@@ -339,7 +342,7 @@ footer {
 }
 
 .window-option-img {
-  width: 1.5rem;
+  width: 1rem;
   height: auto;
 }
 
@@ -368,7 +371,7 @@ footer {
 .adminflightsettings {
   justify-content: flex-start;
   width: 20%;
-  height: 40vh;
+  height: 50vh;
 }
 
 .menu-section {
