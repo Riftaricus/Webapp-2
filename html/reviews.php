@@ -12,7 +12,7 @@ login("admin", "admin");
 
 <body>
     <?php include './assets/php/header.php' ?>
-    <main class="flex alignitemscenter flexcolumn">
+    <main class="flex alignitemscenter flexcolumn gap-100">
         <form action="/assets/php/forms/leaveReview.php" method="post"
             class="flex flexcolumn alignitemscenter reviewform">
             <h1>Leave your review here!</h1>
@@ -28,9 +28,10 @@ login("admin", "admin");
             <input type="submit" value="Leave review">
         </form>
 
-        <div>
-            <?php
-            $rating =  round(getAverageRating());
+        <div class="flex alignitemscenter flexcolumn">
+            <h1>Our average rating</h1>
+            <div><?php
+            $rating = round(getAverageRating());
 
             $index = 0;
 
@@ -43,6 +44,14 @@ login("admin", "admin");
                 echo "<img src='assets/img/empty_star.png' class='averagestar'>";
             }
             ?>
+            </div>
+            <h2>We are currently rated <?php echo ($rating) ?> / 5 stars average!</h2>
+        </div>
+
+        <div class="flex flexrow alignitemscenter">
+            <div class="nextreview flex justifycontentcenter alignitemscenter"><img src="/assets/img/arrowright.png"></div>
+            <div class="review"></div>
+            <div class="nextreview flex justifycontentcenter alignitemscenter"><img src="/assets/img/arrowleft.png"></div>
         </div>
     </main>
     <?php include './assets/php/footer.php' ?>
