@@ -86,13 +86,13 @@ function generateRandomFlight($amount)
 function createFlight($flight_cost, $flight_duration, $fromCountry, $toCountry)
 {
     global $connect;
-    $sql = 'INSERT INTO Available_Flights (Flight_Id, Flight_Cost, Flight_Duration, From_Country_Id, To_Country_Id)
-    VALUES (:flight_id, :flight_cost, :flight_duration, :fromCountry, :toCountry);';
+    $sql = 'INSERT INTO Available_Flights (Flight_Cost, Flight_Duration, From_Country_Id, To_Country_Id)
+    VALUES (:flight_cost, :flight_duration, :fromCountry, :toCountry);';
 
     $flight_id = sizeof(getFlights());
 
     $stmt = $connect->prepare($sql);
-    $stmt->execute([':flight_id' => $flight_id, ':flight_cost' => $flight_cost, ':flight_duration' => $flight_duration, ':fromCountry' => $fromCountry, ':toCountry' => $toCountry]);
+    $stmt->execute([':flight_cost' => $flight_cost, ':flight_duration' => $flight_duration, ':fromCountry' => $fromCountry, ':toCountry' => $toCountry]);
 }
 
 function getFlights($id = null)
