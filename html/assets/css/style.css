@@ -446,7 +446,7 @@ footer {
   width: 50px;
   height: 50px;
 
-  cursor: pointer;
+  cursor: pointer;  
 }
 
 .reviewform {
@@ -454,6 +454,8 @@ footer {
   background-color: #868686;
   color: white;
   height: 40vh;
+  margin-top: 100px;
+  border-radius: 10px;
 }
 
 #reviewinput {
@@ -489,4 +491,9 @@ footer {
   background-color: #a3a3a3;
   border-radius: 9px;
   padding: 15px;
+  text-align: center;
+}
+
+#review{
+  margin-bottom: 100px;
 }

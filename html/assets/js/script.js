@@ -84,35 +84,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-var index = 0;
+function changeReview(delta) {
+  const params = new URLSearchParams(window.location.search);
+  let index = parseInt(params.get("comment")) || 0;
 
-function nextReview() {
-  let url = window.location.href;
-
-  splitUrl = url.split("comment");
-
-  output = splitUrl[1];
-
-  if (isNaN(output)) {
-    output = 0;
+  if (index + delta >= total) {
+    index = 0;
+    delta = 0;
   }
-  index++;
-
-  window.location.href = "/reviews.php" + "?comment" + (Number(output) + 1);
-}
-
-function lastReview() {
-  let url = window.location.href;
-
-  splitUrl = url.split("comment");
-
-  output = splitUrl[1];
-
-  if (isNaN(output)) {
-    output = 0;
+  if (index + delta < 0) {
+    index = total;
   }
 
-  index--;
-
-  window.location.href = "/reviews.php" + "?comment" + (Number(output) - 1);
+  window.location.href = `/reviews.php?comment=${index + delta}#review`;
 }
