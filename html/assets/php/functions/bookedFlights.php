@@ -15,16 +15,17 @@ function getBookedFlights()
     return $result;
 }
 
-function getBookedFlight($id)
+function getBookedFlightsById($id, $isUserId = false)
 {
     global $connect;
-    $sql = "SELECT * FROM Booked_Flights WHERE Flight_Id = :id";
+    $sql = ($isUserId === true) ? "SELECT * FROM Booked_Flights WHERE UserId = :id" : "SELECT * FROM Booked_Flights WHERE Flight_Id = :id";
 
     $stmt = $connect->prepare($sql);
     $stmt->execute([':id' => $id]);
     $result = $stmt->fetchAll();
     return $result;
 }
+
 function removeAllBookedFlightsById($id)
 {
     global $connect;

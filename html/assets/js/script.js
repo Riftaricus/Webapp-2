@@ -153,6 +153,11 @@ document.addEventListener("DOMContentLoaded", () => {
               closeButton.addEventListener("click", (event) => {
                 userSettingContainer.setAttribute("inert", "");
                 userSettingContainer.style.display = "none";
+
+                const bookedFlightsContainer = document.querySelector(".bookedflightscontainer");
+                if (bookedFlightsContainer) {
+                  bookedFlightsContainer.style.display = "none";
+                }
               });
             }
           } else {
@@ -160,6 +165,53 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         })
         .catch((error) => console.error("Error fetching user:", error));
+    }
+
+    const bookedFlightsButton = document.querySelector(".bookedflightsbutton");
+    const bookedFlightsContainer = document.querySelector(".bookedflightscontainer");
+    const closeBookedFlightsButton = bookedFlightsContainer.querySelector(".closehitbox");
+
+    if (bookedFlightsButton && bookedFlightsContainer) {
+      bookedFlightsButton.addEventListener("click", () => {
+        const userIdInput = document.getElementById("userid");
+        if (!userIdInput || !userIdInput.value) {
+          console.error("No user ID found");
+          return;
+        }
+
+        const userId = userIdInput.value;
+        
+        fetch(`assets/php/api/get-booked-flights.php?userId=${userId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              const bookedFlightsList = bookedFlightsContainer.querySelector(".bookedflightslist");
+              
+              if (data.bookedFlights.length === 0) {
+                bookedFlightsList.innerHTML = "<p>No booked flights for this user.</p>";
+              } else {
+                bookedFlightsList.innerHTML = data.bookedFlights.map(flight => `
+                  <div class="bookedflightitem flex flexcolumn">
+                    <h3>${flight.fromCountry} → ${flight.toCountry}</h3>
+                    <p>Duration: ${flight.duration} Hours</p>
+                    <p>Flight ID: ${flight.flightId}</p>
+                  </div>
+                `).join("");
+              }
+              
+              bookedFlightsContainer.style.display = "flex";
+            } else {
+              console.error("Failed to load booked flights:", data.error);
+            }
+          })
+          .catch((error) => console.error("Error fetching booked flights:", error));
+      });
+    }
+
+    if (closeBookedFlightsButton && bookedFlightsContainer) {
+      closeBookedFlightsButton.addEventListener("click", () => {
+        bookedFlightsContainer.style.display = "none";
+      });
     }
   }
 });

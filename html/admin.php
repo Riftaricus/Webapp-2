@@ -169,7 +169,7 @@ if (count(getFlights()) == 0) {
             </div>
         </section>
 
-        <section class="adminusersettingcontainer flex justifycontentcenter alignitemscenter">
+        <section class="adminusersettingcontainer gap-25 flex justifycontentcenter alignitemscenter">
             <div class="adminusersettings backgroundcolorCFDDE0 flex flexcolumn justifycontentcenter alignitemscenter">
                 <div class="settingclosemenu flex alignitemsflexend">
                     <div class="flex window-option-close justifycontentcenter alignitemscenter">
@@ -211,6 +211,19 @@ if (count(getFlights()) == 0) {
                         Show Booked Flights
                     </button>
                 </div>
+            </div>
+
+            <div class="bookedflightscontainer" style="display: none;">
+                <div class="bookedflightsheader flex justifycontentspacebetween alignitemscenter">
+                    <h2>Booked Flights</h2>
+                    <div class="settingclosemenu flex alignitemsflexend">
+                        <div class="flex window-option-close justifycontentcenter alignitemscenter">
+                            <img class="window-option-img" src="assets/img/Close.svg" alt="Close">
+                            <div class="closehitbox"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bookedflightslist flex flexcolumn gap-10"></div>
             </div>
         </section>
 

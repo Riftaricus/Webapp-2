@@ -791,3 +791,49 @@ textarea {
 .bookedflightsbutton:active {
   transform: translateY(0px) scale(0.99);
 }
+
+.bookedflightscontainer {
+  flex-direction: column;
+  background-color: #CFDDE0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  outline: 4px outset #737373;
+  min-width: 250px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.bookedflightsheader {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #737373;
+  margin-bottom: 0.5rem;
+}
+
+.bookedflightsheader h2 {
+  margin: 0;
+  color: #000;
+  font-size: 1.1rem;
+}
+
+.bookedflightslist {
+  gap: 0.5rem;
+}
+
+.bookedflightitem {
+  background-color: #e6e6e6;
+  padding: 0.75rem;
+  border-radius: 0.35rem;
+  border: 1px solid #b5b5b5;
+}
+
+.bookedflightitem h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  color: #2b2b2b;
+}
+
+.bookedflightitem p {
+  margin: 0.15rem 0;
+  font-size: 0.85rem;
+  color: #4a4a4a;
+}
