@@ -347,18 +347,18 @@ footer {
 
 .settingclosemenu {
   justify-content: flex-end;
+  cursor: pointer;
   width: 100%;
 }
 
 .window-option-close {
   border-radius: 2rem;
   background-color: #737373;
-  cursor: pointer;
   padding: 0.75rem;
 }
 
 .window-option-img {
-  width: 1rem;
+  width: 0.5rem;
   height: auto;
 }
 
@@ -387,11 +387,12 @@ footer {
 
 .adminflightsettings {
   justify-content: flex-start;
+  width: fit-content;
+  padding-inline: 2rem;
   height: fit-content;
   outline-color: #737373;
   outline-width: 4px;
   outline-style: outset;
-  padding: 0.5rem;
 }
 
 .flightoptioninfosection {
@@ -420,7 +421,8 @@ footer {
 }
 
 .menu {
-  width: fit-content + 5%;
+  width: fit-content;
+  padding-inline: 2.5%;
   height: auto;
   padding: 5px;
   background-color: #c9c9c9;
@@ -734,6 +736,7 @@ textarea {
 
   margin-bottom: 100px;
 }
+
 .reviewtext{
   max-width: 50%;
   justify-self: center;
@@ -747,4 +750,11 @@ textarea {
   background-color: #D9D9D9;
   padding: 10px;
   border-radius: 10px;
+}
+
+.closehitbox {
+  position: absolute;
+  z-index: 999999;
+  width: 2rem;
+  height: 2rem;
 }

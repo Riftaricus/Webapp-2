@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             flightSettingContainer.removeAttribute("inert");
             flightSettingContainer.style.display = "flex";
 
-            const closeButton = document.querySelector(".settingclosemenu");
+            const closeButton = document.querySelector(".closehitbox");
             if (closeButton) {
               closeButton.addEventListener("click", (event) => {
                 flightSettingContainer.setAttribute("inert", "");
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
             userSettingContainer.removeAttribute("inert");
             userSettingContainer.style.display = "flex";
 
-            const closeButton = userSettingContainer.querySelector(".settingclosemenu");
+            const closeButton = userSettingContainer.querySelector(".closehitbox");
             if (closeButton) {
               closeButton.addEventListener("click", (event) => {
                 userSettingContainer.setAttribute("inert", "");
