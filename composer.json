@@ -1,4 +1,6 @@
 {
   "name": "rifttaricus/webapp-2",
+  "description": "A simple web application",
+  "license": "MIT",
   "require": {}
 }
