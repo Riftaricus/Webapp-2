@@ -16,7 +16,7 @@ if (count(getFlights()) == 0) {
 
     <?php include './assets/php/header.php'; ?>
 
-    <main class="flex gap-100 flexcolumn">
+    <main class="flex gap-100 flexcolumn alignitemscenter">
         <?php
         $i = 1;
         $flights = getFlights();
@@ -34,7 +34,7 @@ if (count(getFlights()) == 0) {
                             </h2>
                         </div>
 
-                        <div class="leftflightboxsecondary flex flexcolumn">
+                        <div class="leftflightboxsecondary flex flexcolumn justifycontentcenter alignitemscenter">
                             <form method="post" action="/assets/php/forms/booking.php">
                                 <input type="hidden" name="flight_id" value="' . $flight["Flight_Id"] . '">
                                 <button type="submit" class="green-button">
@@ -49,7 +49,7 @@ if (count(getFlights()) == 0) {
                     $i = 1;
                     echo '
                     <div class="rightflightbox flex flexrow">
-                        <div class="rightflightboxsecondary flex flexcolumn">
+                        <div class="rightflightboxsecondary flex flexcolumn justifycontentcenter alignitemscenter">
                             <form method="post" action="/assets/php/forms/booking.php">
                                 <input type="hidden" name="flight_id" value="' . $flight["Flight_Id"] . '">
                                 <button type="submit" class="green-button">
