@@ -149,9 +149,16 @@ function updateCounter() {
 
   let amountOfChars = message.value.length.toString();
 
-  if (amountOfChars.includes((68 - 1).toString())){
-    amountOfChars = amountOfChars.replaceAll((68 - 1).toString(), "##")
+  if (amountOfChars.includes((68 - 1).toString())) {
+    amountOfChars = amountOfChars.replaceAll((68 - 1).toString(), "##");
   }
 
   counter.textContent = amountOfChars + "/1000";
+
+  const textarea = document.getElementById("contactmessage");
+
+  textarea.addEventListener("input", () => {
+    textarea.style.height = "auto"; // reset
+    textarea.style.height = textarea.scrollHeight + "px";
+  });
 }
