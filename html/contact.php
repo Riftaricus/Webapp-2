@@ -7,8 +7,8 @@
 
 <body>
     <?php include './assets/php/header.php' ?>
-    <main>
-        <form action="" method="post">
+    <main class="flex flexcolumn alignitemscenter">
+        <form action="" method="post" class="flex alignitemscenter flexcolumn contactform">
             <div class="flex alignitemscenter">
                 <input type="email" name="email" id="contactemail" placeholder="Enter your email here...">
             </div>

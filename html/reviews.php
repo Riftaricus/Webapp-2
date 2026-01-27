@@ -25,7 +25,7 @@ login("admin", "admin");
                 ?>
             </div>
             <input type="hidden" name="rating" id="rating" value="">
-            <textarea maxlength="100" name="message" id="reviewinput" placeholder="Write a comment here..."
+            <textarea maxlength="197" name="message" id="reviewinput" placeholder="Write a comment here..."
                 required></textarea>
             <input type="submit" value="Leave review">
         </form>

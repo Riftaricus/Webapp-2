@@ -622,10 +622,13 @@ footer {
   transform: translateX(-50%);
 }
 
+textarea {
+  resize: none;
+}
+
 #contactmessage{
   width: 50vw;
   height: 30vh;
-  resize: none;
   overflow: hidden;
   border-radius: 20px;
   background-color: rgb(188, 188, 188);
@@ -638,4 +641,14 @@ footer {
   border-radius: 20px;
   padding: 5px;
   background-color: rgb(188, 188, 188);
+}
+
+.contactform{
+  gap: 20px;
+
+  width: fit-content;
+  padding: 10px;
+  background-color: #737373;
+
+  margin-top: 100px;
 }
