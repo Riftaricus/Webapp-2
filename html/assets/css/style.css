@@ -734,3 +734,8 @@ textarea {
 
   border-radius: 30px;
 }
+.reviewtext{
+  max-width: 50%;
+  justify-self: center;
+  overflow-wrap: break-word;
+}
