@@ -42,6 +42,17 @@ function getAccounts()
     return $result;
 }
 
+function getNameFromId($id){
+    global $connect;
+    $sql = "SELECT * FROM Account_Data WHERE UserId = :userid";
+    $stmt = $connect->prepare($sql);
+    $stmt->execute([":userid"=> $id]);
+
+    $result = $stmt->fetch();
+
+    return $result["Username"];
+}
+
 function logout()
 {
     try {

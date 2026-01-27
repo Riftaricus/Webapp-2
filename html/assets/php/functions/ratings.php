@@ -67,7 +67,7 @@ function leaveRating($rating, $message, $userId)
 function getRatings()
 {
     global $connect;
-    $sql = 'SELECT * FROM Review';
+    $sql = 'SELECT * FROM Review ORDER BY Message';
 
     $stmt = $connect->prepare($sql);
     $stmt->execute();
