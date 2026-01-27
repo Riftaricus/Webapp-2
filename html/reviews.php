@@ -71,7 +71,8 @@ login("admin", "admin");
             ?>
 
             <div class="flex flexrow alignitemscenter" id="review">
-                <div class="nextreview flex justifycontentcenter alignitemscenter" onclick="changeReview(-1)" style="cursor: pointer;">
+                <div class="nextreview flex justifycontentcenter alignitemscenter" onclick="changeReview(-1)"
+                    style="cursor: pointer;">
                     <img src="assets/img/arrowright.png" alt="Next">
                 </div>
                 <div class="review flex justifycontentcenter alignitemscenter flexcolumn">
@@ -87,11 +88,13 @@ login("admin", "admin");
                             }
                             ?>
                         </div>
-
-                        <h3><?= htmlspecialchars($message) ?></h3>
+                        <div class="flex justifycontentcenter">
+                            <h3 class="reviewtext"><?= htmlspecialchars($message) ?></h3>
+                        </div>
                     </div>
                 </div>
-                <div class="nextreview flex justifycontentcenter alignitemscenter" onclick="changeReview(1)" style="cursor: pointer;">
+                <div class="nextreview flex justifycontentcenter alignitemscenter" onclick="changeReview(1)"
+                    style="cursor: pointer;">
                     <img src="assets/img/arrowleft.png" alt="Previous">
                 </div>
             </div>
