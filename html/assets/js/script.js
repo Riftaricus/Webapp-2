@@ -154,11 +154,4 @@ function updateCounter() {
   }
 
   counter.textContent = amountOfChars + "/1000";
-
-  const textarea = document.getElementById("contactmessage");
-
-  textarea.addEventListener("input", () => {
-    textarea.style.height = "auto"; // reset
-    textarea.style.height = textarea.scrollHeight + "px";
-  });
 }

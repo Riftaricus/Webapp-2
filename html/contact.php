@@ -7,13 +7,14 @@
 
 <body>
     <?php include './assets/php/header.php' ?>
-    <main>
-        <form action="" method="post">
+    <main class="flex flexcolumn alignitemscenter">
+        <form action="./assets/php/forms/contact.php" method="post" class="flex alignitemscenter flexcolumn contactform">
+            <h1>Contact us here!</h1>
             <div class="flex alignitemscenter">
                 <input type="email" name="email" id="contactemail" placeholder="Enter your email here...">
             </div>
             <label for="message" id="contactmessagecounter">0/1000</label>
-            <textarea name="message" id="contactmessage" maxlength="1000" oninput="updateCounter()" required></textarea>
+            <textarea name="message" id="contactmessage" maxlength="1000" oninput="updateCounter()" required placeholder="Write a message here..."></textarea>
 
             <button type="submit">Submit message</button>
         </form>
