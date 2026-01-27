@@ -91,11 +91,12 @@ if (count(getFlights()) == 0) {
         </section>
 
         <section class="adminflightsettingcontainer flex justifycontentcenter alignitemscenter">
-            <div
-                class="adminflightsettings backgroundcolorCFDDE0 flex flexcolumn justifycontentcenter alignitemscenter">
+            <div class="adminflightsettings backgroundcolorCFDDE0 flex flexcolumn justifycontentcenter alignitemscenter">
                 <div class="settingclosemenu flex alignitemsflexend">
-                    <div class="flex window-option-close justifycontentcenter alignitemscenter"><img
-                            class="window-option-img" src="assets/img/Close.svg" alt="Close"></div>
+                    <div class="flex window-option-close justifycontentcenter alignitemscenter">
+                        <img class="window-option-img" src="assets/img/Close.svg" alt="Close">
+                        <div class="closehitbox"></div>
+                    </div>
                 </div>
 
                 <div class="flightoptioninfosection">
@@ -139,11 +140,12 @@ if (count(getFlights()) == 0) {
         </section>
 
         <section class="adminusersettingcontainer flex justifycontentcenter alignitemscenter">
-            <div
-                class="adminusersettings backgroundcolorCFDDE0 flex flexcolumn justifycontentcenter alignitemscenter">
+            <div class="adminusersettings backgroundcolorCFDDE0 flex flexcolumn justifycontentcenter alignitemscenter">
                 <div class="settingclosemenu flex alignitemsflexend">
-                    <div class="flex window-option-close justifycontentcenter alignitemscenter"><img
-                            class="window-option-img" src="assets/img/Close.svg" alt="Close"></div>
+                    <div class="flex window-option-close justifycontentcenter alignitemscenter">
+                        <img class="window-option-img" src="assets/img/Close.svg" alt="Close">
+                        <div class="closehitbox"></div>
+                    </div>
                 </div>
 
                 <div class="useroptioninfosection">
