@@ -149,8 +149,8 @@ function updateCounter() {
 
   let amountOfChars = message.value.length.toString();
 
-  if (amountOfChars.includes("67")){
-    amountOfChars = "*Censored*"
+  if (amountOfChars.includes((68 - 1).toString())){
+    amountOfChars = amountOfChars.replaceAll((68 - 1).toString(), "##")
   }
 
   counter.textContent = amountOfChars + "/1000";
