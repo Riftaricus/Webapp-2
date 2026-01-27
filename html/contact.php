@@ -13,7 +13,7 @@
                 <input type="email" name="email" id="contactemail" placeholder="Enter your email here...">
             </div>
             <label for="message" id="contactmessagecounter">0/1000</label>
-            <textarea name="message" id="contactmessage" maxlength="1000" oninput="updateCounter()"></textarea>
+            <textarea name="message" id="contactmessage" maxlength="1000" oninput="updateCounter()" required></textarea>
 
             <button type="submit">Submit message</button>
         </form>
