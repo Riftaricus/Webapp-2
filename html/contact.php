@@ -8,6 +8,10 @@
 <body>
     <?php include './assets/php/header.php' ?>
     <main class="flex flexcolumn alignitemscenter">
+        <div class="flex alignitemscenter flexcolumn contactbox">
+            <h1>Email: Volare@vola.com</h1>
+            <h1>Phone Number: +1 505-646-7257</h1>
+        </div>
         <form action="./assets/php/forms/contact.php" method="post" class="flex alignitemscenter flexcolumn contactform">
             <h1>Contact us here!</h1>
             <div class="flex alignitemscenter">
