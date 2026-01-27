@@ -22,9 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if (window.location.href.includes("admin.php")) {
-    const flightContainer = document.querySelector(".adminbox");
+    const flightContainer = document.querySelector(".adminboxflight");
+    const userContainer = document.querySelector(".adminboxuser");
     const flightSettingContainer = document.querySelector(
       ".adminflightsettingcontainer",
+    );
+    const userSettingContainer = document.querySelector(
+      ".adminusersettingcontainer",
     );
 
     if (
@@ -35,14 +39,33 @@ document.addEventListener("DOMContentLoaded", () => {
       flightSettingContainer.style.display = "none";
     }
 
+    if (
+      userSettingContainer &&
+      (!userSettingContainer.hasAttribute("inert") ||
+        userSettingContainer.style.display !== "none")
+    ) {
+      userSettingContainer.setAttribute("inert", "");
+      userSettingContainer.style.display = "none";
+    }
+
     if (flightContainer) {
       flightContainer.addEventListener("click", (event) => {
         const flightElement = event.target.closest("[id^='adminflightbyid']");
 
         if (flightElement) {
           const flightId = flightElement.id.replace("adminflightbyid", "");
-
           openFlightSettingMenu(flightId);
+        }
+      });
+    }
+
+    if (userContainer) {
+      userContainer.addEventListener("click", (event) => {
+        const userElement = event.target.closest("[id^='adminuserbyid']");
+
+        if (userElement) {
+          const userId = userElement.id.replace("adminuserbyid", "");
+          openUserSettingMenu(userId);
         }
       });
     }
@@ -73,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             flightSettingContainer.removeAttribute("inert");
             flightSettingContainer.style.display = "flex";
 
-            const closeButton = document.querySelector(".window-option-close");
+            const closeButton = document.querySelector(".settingclosemenu");
             if (closeButton) {
               closeButton.addEventListener("click", (event) => {
                 flightSettingContainer.setAttribute("inert", "");
@@ -85,6 +108,51 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         })
         .catch((error) => console.error("Error fetching flight:", error));
+    }
+
+    function openUserSettingMenu(id) {
+      fetch(`assets/php/api/get-user.php?id=${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            const user = data.user;
+            const infoDiv =
+              userSettingContainer.querySelector(".usersettinginfo");
+            if (infoDiv) {
+              infoDiv.innerHTML = `
+              <h2>${user.username}</h2>
+              <h2>Created: ${user.creationDate}</h2>
+            `;
+            }
+
+            const userIdInput = document.getElementById("userid");
+            const usernameInput = document.getElementById("username");
+            const isAdminRadio = document.getElementById("isadmin");
+            const isNotAdminRadio = document.getElementById("isnotadmin");
+
+            if (userIdInput) userIdInput.value = id;
+            if (usernameInput) usernameInput.value = user.username;
+            if (user.isAdmin && isAdminRadio) {
+              isAdminRadio.checked = true;
+            } else if (isNotAdminRadio) {
+              isNotAdminRadio.checked = true;
+            }
+
+            userSettingContainer.removeAttribute("inert");
+            userSettingContainer.style.display = "flex";
+
+            const closeButton = userSettingContainer.querySelector(".settingclosemenu");
+            if (closeButton) {
+              closeButton.addEventListener("click", (event) => {
+                userSettingContainer.setAttribute("inert", "");
+                userSettingContainer.style.display = "none";
+              });
+            }
+          } else {
+            console.error("Failed to load user:", data.error);
+          }
+        })
+        .catch((error) => console.error("Error fetching user:", error));
     }
   }
 });

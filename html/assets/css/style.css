@@ -299,6 +299,10 @@ footer {
   gap: 100px;
 }
 
+.gap-25 {
+  gap: 25px;
+}
+
 .adminflightlist {
   width: 5%;
   height: 10%;
@@ -337,10 +341,6 @@ footer {
   color: #000000;
 }
 
-.adminflightsection {
-  margin-top: 5vh;
-}
-
 #flightcost {
   margin-bottom: 0.5rem;
 }
@@ -366,7 +366,8 @@ footer {
   flex-wrap: wrap;
 }
 
-.adminbox {
+.adminboxuser,
+.adminboxflight {
   gap: 20px;
   padding: 5px;
   height: fit-content;
@@ -386,7 +387,6 @@ footer {
 
 .adminflightsettings {
   justify-content: flex-start;
-  width: 20%;
   height: fit-content;
   outline-color: #737373;
   outline-width: 4px;
@@ -600,7 +600,6 @@ footer {
 }
 
 .createflightcontainer {
-  width: 20%;
   height: fit-content;
   color: white;
   background-color: var(--color-cfdde0);
@@ -617,7 +616,7 @@ footer {
 }
 
 .admincreateflightsection {
-  margin-top: 5vh;
+  margin-top: 25px;
 }
 
 * {
@@ -690,7 +689,6 @@ textarea {
 
 .adminusersettings {
   justify-content: flex-start;
-  width: 20%;
   height: fit-content;
   outline-color: #737373;
   outline-width: 4px;
