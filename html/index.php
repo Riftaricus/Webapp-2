@@ -16,7 +16,7 @@ login("admin", "admin");
     <main>
 
         <div class="indexbox backgroundcolorcfdde0 flex justifyselfcenter justifycontentcenter alignitemscenter">
-            <h1 class="herotext">We bring you to your dreams</h1>
+            <h1 class="herotext" id="slogan">We bring you to your dreams</h1>
         </div>
 
         <a href="admin.php">Go to Admin</a>

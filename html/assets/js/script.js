@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const slogan = document.getElementById("slogan");
+  
+  if (Math.random() > 0.95) {
+    slogan.innerText = "We Bring You to Your Nightmares";
+  }
+
   const stars = document.querySelectorAll(".star");
   const ratingInput = document.getElementById("rating");
 
@@ -141,7 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
             userSettingContainer.removeAttribute("inert");
             userSettingContainer.style.display = "flex";
 
-            const closeButton = userSettingContainer.querySelector(".closehitbox");
+            const closeButton =
+              userSettingContainer.querySelector(".closehitbox");
             if (closeButton) {
               closeButton.addEventListener("click", (event) => {
                 userSettingContainer.setAttribute("inert", "");
