@@ -13,7 +13,7 @@ body {
 header {
   width: 100%;
   max-width: 100vw;
-  height: 10vh;
+  height: 15vh;
   font-family: Tahoma;
 }
 
@@ -620,4 +620,20 @@ footer {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
+}
+
+#contactmessage{
+  width: 50vw;
+  height: 30vh;
+  border-radius: 20px;
+  background-color: rgb(188, 188, 188);
+  padding: 5px;
+}
+
+#contactemail{
+  width: 50vw;
+  height: 5vh;
+  border-radius: 20px;
+  padding: 5px;
+  background-color: rgb(188, 188, 188);
 }

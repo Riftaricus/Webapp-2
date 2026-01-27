@@ -141,3 +141,17 @@ function showTransactionMenu(flightId) {
 
   transaction.style.display = "flex";
 }
+
+function updateCounter() {
+  const counter = document.getElementById("contactmessagecounter");
+
+  const message = document.getElementById("contactmessage");
+
+  let amountOfChars = message.value.length.toString();
+
+  if (amountOfChars.includes("67")){
+    amountOfChars = "*Censored*"
+  }
+
+  counter.textContent = amountOfChars + "/1000";
+}

@@ -8,8 +8,15 @@
 <body>
     <?php include './assets/php/header.php' ?>
     <main>
-        <div class="backgroundcolorcfdde0 box flex justifyselfcenter justifycontentcenter alignitemscenter"><h1 class="herotext">We bring you to your dreams</h1></div>
+        <form action="" method="post">
+            <div class="flex alignitemscenter">
+                <input type="email" name="email" id="contactemail" placeholder="Enter your email here...">
+            </div>
+            <label for="message" id="contactmessagecounter">0/1000</label>
+            <textarea name="message" id="contactmessage" maxlength="1000" oninput="updateCounter()"></textarea>
 
+            <button type="submit">Submit message</button>
+        </form>
 
     </main>
     <?php include './assets/php/footer.php' ?>
