@@ -103,7 +103,7 @@ if (count(getFlights()) == 0) {
 
                     <form action="./assets/php/forms/flightSettingsForm.php" method="post" id="flightSettingsForm" class="flex flexcolumn">
                         <input type="hidden" name="flightid" id="flightid">
-                        
+
                         <label for="cost">Flight cost:</label>
                         <input type="number" min="-1" max="1000000" name="flightcost" id="flightcost">
 
@@ -122,20 +122,56 @@ if (count(getFlights()) == 0) {
             <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminbox">
                 <?php
                 for ($i = 0; $i < count($accounts); $i++) {
-                    echo "<div class='adminlist flex alignitemscenter justifycontentcenter flexcolumn'>";
                     $username = $accounts[$i]["Username"];
                     $creationDate = $accounts[$i]["CreationDate"];
 
                     $hasAdmin = $accounts[$i]["IsAdmin"] == 1 ? "true" : "False";
 
+                    echo "<div class='adminuserlist flex alignitemscenter justifycontentcenter flexcolumn'>";
                     echo "<h2>" . $username . "</h2>";
-                    echo "<h2>Creation Date:" . $creationDate . "</h2>";
+                    echo "<h2>Creation Date:<br>" . $creationDate . "</h2>";
                     echo "<h2>Admin: " . $hasAdmin . "</h2>";
-                    //echo "<h2>Cost: " . $accounts[$i]["Flight_Cost"] . "$</h2>";
-                    //echo "<h2>Duration: " . $accounts[$i]["Flight_Duration"] . " Hours</h2>";
                     echo "</div>";
                 }
                 ?>
+            </div>
+        </section>
+
+        <section class="adminusersettingcontainer flex justifycontentcenter alignitemscenter">
+            <div
+                class="adminusersettings backgroundcolorCFDDE0 flex flexcolumn justifycontentcenter alignitemscenter">
+                <div class="settingclosemenu flex alignitemsflexend">
+                    <div class="flex window-option-close justifycontentcenter alignitemscenter"><img
+                            class="window-option-img" src="assets/img/Close.svg" alt="Close"></div>
+                </div>
+
+                <div class="useroptioninfosection">
+                    <div class="flex flexcolumn usersettinginfo justifycontentcenter aligncontentscenter"></div>
+
+                    <form action="./assets/php/forms/userSettingsForm.php" method="post" id="userSettingsForm" class="flex flexcolumn">
+                        <input type="hidden" name="userid" id="userid">
+
+                        <label for="username">Username: </label>
+                        <input type="text" name="username" id="username">
+
+                        <label for="language">Language: </label>
+                        <select name="language" id="userlanguage">
+                            <option value="dutch">Dutch</option>
+                        </select>
+
+                        <label for="isadmin">Is admin: </label>
+                        <div class="flex flexrow flexstart">  
+                            <input type="radio" id="isnotadmin" name="isadmin" value="isnotadmin">
+                            <label for="isnotadmin">False</label><br>
+                            <input type="radio" id="isadmin" name="isadmin" value="isadmin">
+                            <label for="isadmin">True</label><br>
+                        </div>
+
+                        <button type="submit" name="save" id="useroptionsave">Save</button>
+
+                        <button type="submit" name="delete" id="useroptiondelete">Delete</button>
+                    </form>
+                </div>
             </div>
         </section>
 
