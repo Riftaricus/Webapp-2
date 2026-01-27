@@ -111,4 +111,15 @@ function createAccount($username, $password)
 
     return $connect->lastInsertId();
 }
+
+function getUserById($id)
+{
+    global $connect;
+
+    $sql = "SELECT * FROM Account_Data WHERE UserId = :id";
+    $stmt = $connect->prepare($sql);
+    $stmt->execute([':id' => $id]);
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
 ?>

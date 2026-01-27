@@ -24,7 +24,7 @@ if (count(getFlights()) == 0) {
 
 <body>
     <?php include './assets/php/header.php' ?>
-    <main class="gap-100 flex justifycontentcenter flexcolumn">
+    <main class="gap-25 flex justifycontentcenter flexcolumn">
         <section class="flex justifycontentcenter admincreateflightsection">
             <div class="flex justifycontentcenter aligncontentscenter createflightcontainer">
                 <form action="./assets/php/forms/createflightform.php" method="post" id="createflightform" class="flex flexcolumn">
@@ -60,7 +60,7 @@ if (count(getFlights()) == 0) {
         </section>
 
         <section class="flex justifycontentcenter adminflightsection">
-            <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminbox">
+            <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminboxflight">
                 <?php
                 for ($i = 0; $i < count($flights); $i++) {
                     echo "<div id=" . "adminflightbyid" . $flights[$i]["Flight_Id"] . " class='adminflightlist flex alignitemscenter justifycontentcenter flexcolumn'>";
@@ -119,15 +119,16 @@ if (count(getFlights()) == 0) {
         </section>
 
         <section class="flex justifycontentcenter">
-            <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminbox">
+            <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminboxuser">
                 <?php
                 for ($i = 0; $i < count($accounts); $i++) {
+                    $userId = $accounts[$i]["UserId"];
                     $username = $accounts[$i]["Username"];
                     $creationDate = $accounts[$i]["CreationDate"];
 
                     $hasAdmin = $accounts[$i]["IsAdmin"] == 1 ? "true" : "False";
 
-                    echo "<div class='adminuserlist flex alignitemscenter justifycontentcenter flexcolumn'>";
+                    echo "<div id='adminuserbyid" . $userId . "' class='adminuserlist flex alignitemscenter justifycontentcenter flexcolumn'>";
                     echo "<h2>" . $username . "</h2>";
                     echo "<h2>Creation Date:<br>" . $creationDate . "</h2>";
                     echo "<h2>Admin: " . $hasAdmin . "</h2>";
@@ -156,7 +157,8 @@ if (count(getFlights()) == 0) {
 
                         <label for="language">Language: </label>
                         <select name="language" id="userlanguage">
-                            <option value="dutch">Dutch</option>
+                            <option value="english">English</option>
+                            <option value="dutch">Dutch (not fully supported)</option>
                         </select>
 
                         <label for="isadmin">Is admin: </label>
