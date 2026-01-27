@@ -119,6 +119,36 @@ if (count(getFlights()) == 0) {
             </div>
         </section>
 
+        <section class="flex justifycontentcenter admincreateflightsection">
+            <div class="flex justifycontentcenter aligncontentscenter createflightcontainer">
+                <form action="./assets/php/forms/createuserform.php" method="post" id="createflightform" class="flex flexcolumn">
+                    <input type="hidden" name="userid" id="userid">
+
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" id="username">
+
+                    <label for="password">Password: </label>
+                    <input type="text" name="password" id="password">
+
+                    <label for="language">Language: </label>
+                    <select name="language" id="userlanguage">
+                        <option value="EN">English</option>
+                        <option value="NL">Dutch (not fully supported)</option>
+                    </select>
+
+                    <label for="isadmin">Is admin: </label>
+                    <div class="flex flexrow flexstart">  
+                        <input type="radio" id="isnotadmin" name="isadmin" value="isnotadmin">
+                        <label for="isnotadmin">False</label><br>
+                        <input type="radio" id="isadmin" name="isadmin" value="isadmin">
+                        <label for="isadmin">True</label><br>
+                    </div>
+
+                    <button type="submit" name="save" id="createuser">Create</button>
+                </form>
+            </div>
+        </section>
+
         <section class="flex justifycontentcenter">
             <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminboxuser">
                 <?php
@@ -159,8 +189,8 @@ if (count(getFlights()) == 0) {
 
                         <label for="language">Language: </label>
                         <select name="language" id="userlanguage">
-                            <option value="english">English</option>
-                            <option value="dutch">Dutch (not fully supported)</option>
+                            <option value="EN">English</option>
+                            <option value="NL">Dutch (not fully supported)</option>
                         </select>
 
                         <label for="isadmin">Is admin: </label>
@@ -175,6 +205,11 @@ if (count(getFlights()) == 0) {
 
                         <button type="submit" name="delete" id="useroptiondelete">Delete</button>
                     </form>
+                </div>
+                <div class="bookedflightsbuttoncontainer flexend">
+                    <button class="bookedflightsbutton">
+                        Show Booked Flights
+                    </button>
                 </div>
             </div>
         </section>

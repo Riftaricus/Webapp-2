@@ -98,7 +98,7 @@ function runLoginSQL($username)
 }
 
 
-function createAccount($username, $password)
+function createAccount($username, $password, $language = 'EN', $isAdmin = false)
 {
     global $connect;
 
@@ -109,7 +109,7 @@ function createAccount($username, $password)
         INSERT INTO Account_Data 
         (Username, Password, CreationDate, Language, IsAdmin)
         VALUES 
-        (:username, :hash, :today, :language, 0)
+        (:username, :hash, :today, :language, :isAdmin)
     ";
 
     $stmt = $connect->prepare($sql);
@@ -117,7 +117,8 @@ function createAccount($username, $password)
         ':username' => $username,
         ':hash' => $hash,
         ':today' => $today,
-        ':language' => 'EN'
+        ':language' => $language,
+        ':isAdmin' => $isAdmin ? 1 : 0
     ]);
 
     return $connect->lastInsertId();
@@ -132,5 +133,36 @@ function getUserById($id)
     $stmt->execute([':id' => $id]);
 
     return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function editUser($id, $username, $language, $isAdmin)
+{
+    if (!is_numeric($id) || empty($username)) {
+        return false;
+    }
+
+    global $connect;
+    $sql = "UPDATE Account_Data SET Username = :username, Language = :language, IsAdmin = :isAdmin WHERE UserId = :id";
+    $stmt = $connect->prepare($sql);
+    
+    return $stmt->execute([
+        ':id' => $id,
+        ':username' => $username,
+        ':language' => $language,
+        ':isAdmin' => $isAdmin ? 1 : 0
+    ]);
+}
+
+function deleteUser($id)
+{
+    if (!is_numeric($id)) {
+        return false;
+    }
+
+    global $connect;
+    $sql = "DELETE FROM Account_Data WHERE UserId = :id";
+    $stmt = $connect->prepare($sql);
+    
+    return $stmt->execute([':id' => $id]);
 }
 ?>

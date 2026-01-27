@@ -758,3 +758,36 @@ textarea {
   width: 2rem;
   height: 2rem;
 }
+
+.bookedflightsbuttoncontainer {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: auto;
+}
+
+.bookedflightsbutton {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.35rem;
+  border: 1px solid #b5b5b5;
+  background-color: #e6e6e6;
+  color: #2b2b2b;
+  opacity: 0.9;
+  cursor: pointer;
+  transition:
+    transform 120ms ease,
+    background-color 120ms ease,
+    opacity 120ms ease;
+}
+
+.bookedflightsbutton:hover {
+  background-color: #dcdcdc;
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.bookedflightsbutton:active {
+  transform: translateY(0px) scale(0.99);
+}
