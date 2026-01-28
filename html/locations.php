@@ -10,7 +10,7 @@ require_once("assets/php/functions/locations.php");
 
 <body>
     <?php include './assets/php/header.php' ?>
-    <main class="flex gap-100 flexcolumn">
+    <main class="flex gap-100 flexcolumn alignitemscenter">
         <?php
 
         $i = 1;

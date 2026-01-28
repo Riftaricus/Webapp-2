@@ -206,7 +206,8 @@ document.addEventListener("DOMContentLoaded", () => {
             userSettingContainer.removeAttribute("inert");
             userSettingContainer.style.display = "flex";
 
-            const closeButton = userSettingContainer.querySelector(".closehitbox");
+            const closeButton =
+              userSettingContainer.querySelector(".closehitbox");
             if (closeButton) {
               closeButton.addEventListener("click", (event) => {
                 userSettingContainer.setAttribute("inert", "");
@@ -294,10 +295,6 @@ window.onload = () => {
 
   const splitTransaction = splitUrl[1]?.split("=") || [];
 
-  console.log(splitUrl);
-
-  console.log(splitTransaction);
-
   if (typeof splitTransaction[1] !== "undefined") {
     if (typeof splitUrl[1] !== "undefined") {
       if (splitUrl[1].includes("transaction")) {
@@ -327,7 +324,7 @@ function changeReview(delta) {
 function hideTransactionMenu() {
   const transaction = document.getElementById("transaction");
 
-  transaction.style.display = "none";
+  if (transaction) transaction.style.display = "none";
 }
 
 function showTransactionMenu(flightId) {
@@ -337,7 +334,7 @@ function showTransactionMenu(flightId) {
 
   hiddenFlightId.value = flightId;
 
-  transaction.style.display = "flex";
+  if (transaction) transaction.style.display = "flex";
 }
 
 function updateCounter() {
