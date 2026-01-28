@@ -98,8 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (window.location.href.includes("admin.php")) {
-    const flightContainer = document.querySelector(".adminboxflight");
-    const userContainer = document.querySelector(".adminboxuser");
+    const flightContainer = document.querySelector(".admin-grid");
+    const userContainer = document.querySelectorAll(".admin-grid")[1];
     const flightSettingContainer = document.querySelector(
       ".adminflightsettingcontainer",
     );
@@ -146,6 +146,50 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    // Close flight modal when clicking outside or on close button
+    if (flightSettingContainer) {
+      flightSettingContainer.addEventListener("click", (e) => {
+        if (e.target === flightSettingContainer) {
+          flightSettingContainer.setAttribute("inert", "");
+          flightSettingContainer.style.display = "none";
+        }
+      });
+
+      const flightCloseBtn = flightSettingContainer.querySelector(".admin-modal-close");
+      if (flightCloseBtn) {
+        flightCloseBtn.addEventListener("click", () => {
+          flightSettingContainer.setAttribute("inert", "");
+          flightSettingContainer.style.display = "none";
+        });
+      }
+    }
+
+    // Close user modal when clicking outside or on close button
+    if (userSettingContainer) {
+      userSettingContainer.addEventListener("click", (e) => {
+        if (e.target === userSettingContainer) {
+          userSettingContainer.setAttribute("inert", "");
+          userSettingContainer.style.display = "none";
+          const bookedFlightsContainer = document.querySelector(".bookedflightscontainer");
+          if (bookedFlightsContainer) {
+            bookedFlightsContainer.style.display = "none";
+          }
+        }
+      });
+
+      const userCloseBtn = userSettingContainer.querySelector(".admin-modal-close:not(.booked-close)");
+      if (userCloseBtn) {
+        userCloseBtn.addEventListener("click", () => {
+          userSettingContainer.setAttribute("inert", "");
+          userSettingContainer.style.display = "none";
+          const bookedFlightsContainer = document.querySelector(".bookedflightscontainer");
+          if (bookedFlightsContainer) {
+            bookedFlightsContainer.style.display = "none";
+          }
+        });
+      }
+    }
+
     function openFlightSettingMenu(id) {
       fetch(`assets/php/api/get-flight.php?id=${id}`)
         .then((response) => response.json())
@@ -156,9 +200,9 @@ document.addEventListener("DOMContentLoaded", () => {
               flightSettingContainer.querySelector(".flightsettinginfo");
             if (infoDiv) {
               infoDiv.innerHTML = `
-              <h2>${flight.fromCountry}<br>↓<br>${flight.toCountry}</h2>
-              <h2>Cost: ${flight.cost}$</h2>
-              <h2>Duration: ${flight.duration} Hours</h2>
+              <div class="admin-item-header" style="text-align: center; margin-bottom: 1rem;">
+                <strong>${flight.fromCountry}</strong> → <strong>${flight.toCountry}</strong>
+              </div>
             `;
             }
 
@@ -171,14 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             flightSettingContainer.removeAttribute("inert");
             flightSettingContainer.style.display = "flex";
-
-            const closeButton = document.querySelector(".closehitbox");
-            if (closeButton) {
-              closeButton.addEventListener("click", (event) => {
-                flightSettingContainer.setAttribute("inert", "");
-                flightSettingContainer.style.display = "none";
-              });
-            }
           } else {
             console.error("Failed to load flight:", data.error);
           }
@@ -196,8 +232,10 @@ document.addEventListener("DOMContentLoaded", () => {
               userSettingContainer.querySelector(".usersettinginfo");
             if (infoDiv) {
               infoDiv.innerHTML = `
-              <h2>${user.username}</h2>
-              <h2>Created: ${user.creationDate}</h2>
+              <div class="admin-item-header" style="text-align: center; margin-bottom: 1rem;">
+                <strong>${user.username}</strong>
+                <div style="font-size: 0.8rem; color: #4a4a4a;">Created: ${user.creationDate}</div>
+              </div>
             `;
             }
 
@@ -219,22 +257,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             userSettingContainer.removeAttribute("inert");
             userSettingContainer.style.display = "flex";
-
-            const closeButton =
-              userSettingContainer.querySelector(".closehitbox");
-            if (closeButton) {
-              closeButton.addEventListener("click", (event) => {
-                userSettingContainer.setAttribute("inert", "");
-                userSettingContainer.style.display = "none";
-
-                const bookedFlightsContainer = document.querySelector(
-                  ".bookedflightscontainer",
-                );
-                if (bookedFlightsContainer) {
-                  bookedFlightsContainer.style.display = "none";
-                }
-              });
-            }
           } else {
             console.error("Failed to load user:", data.error);
           }
@@ -247,7 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ".bookedflightscontainer",
     );
     const closeBookedFlightsButton =
-      bookedFlightsContainer.querySelector(".closehitbox");
+      bookedFlightsContainer?.querySelector(".booked-close");
 
     if (bookedFlightsButton && bookedFlightsContainer) {
       bookedFlightsButton.addEventListener("click", () => {

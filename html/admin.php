@@ -24,204 +24,235 @@ if (count(getFlights()) == 0) {
 
 <body>
     <?php include './assets/php/header.php' ?>
-    <main class="gap-25 flex justifycontentcenter flexcolumn">
-        <section class="flex justifycontentcenter admincreateflightsection">
-            <div class="flex justifycontentcenter aligncontentscenter createflightcontainer">
-                <form action="./assets/php/forms/createflightform.php" method="post" id="createflightform" class="flex flexcolumn">
-                    <label for="createflightfrom">From:</label>
-                    <select name="from" id="createflightfrom">
-                        <?php
-                            $countries = getCountries();
-                            foreach ($countries as $country) {
-                                echo("<option value=" . $country['Country_Id'] . ">" . $country['Country_Name'] . "</option>");
-                            }
-                        ?>
-                    </select>
+    <main class="admin-main flex flexcolumn alignitemscenter">
+        <section class="admin-section">
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <h2>Create New Flight</h2>
+                </div>
+                <form action="./assets/php/forms/createflightform.php" method="post" class="admin-form flex flexcolumn">
+                    <div class="form-group">
+                        <label for="createflightfrom">From:</label>
+                        <select name="from" id="createflightfrom" class="admin-select">
+                            <?php
+                                $countries = getCountries();
+                                foreach ($countries as $country) {
+                                    echo("<option value=" . $country['Country_Id'] . ">" . $country['Country_Name'] . "</option>");
+                                }
+                            ?>
+                        </select>
+                    </div>
 
-                    <label for="createflightto">To:</label>
-                    <select name="to" id="createflightto">
-                        <?php
-                            $countries = getCountries();
-                            foreach ($countries as $country) {
-                                echo("<option value=" . $country['Country_Id'] . ">" . $country['Country_Name'] . "</option>");
-                            }
-                        ?>
-                    </select>
+                    <div class="form-group">
+                        <label for="createflightto">To:</label>
+                        <select name="to" id="createflightto" class="admin-select">
+                            <?php
+                                $countries = getCountries();
+                                foreach ($countries as $country) {
+                                    echo("<option value=" . $country['Country_Id'] . ">" . $country['Country_Name'] . "</option>");
+                                }
+                            ?>
+                        </select>
+                    </div>
 
-                    <label for="cost">Flight cost:</label>
-                    <input type="number" min="-1" max="1000000" name="flightcost" id="createflightcost">
+                    <div class="form-group">
+                        <label for="createflightcost">Flight cost:</label>
+                        <input type="number" min="0" max="1000000" name="flightcost" id="createflightcost" class="admin-input">
+                    </div>
 
-                    <label for="duration">Flight duration:</label>
-                    <input type="number" min="-1" max="1000000" name="flightduration" id="createflightduration">
+                    <div class="form-group">
+                        <label for="createflightduration">Flight duration:</label>
+                        <input type="number" min="0" max="1000000" name="flightduration" id="createflightduration" class="admin-input">
+                    </div>
 
-                    <button type="submit" name="save" id="createflight">Create</button>
+                    <button type="submit" name="save" class="admin-btn admin-btn-primary">Create Flight</button>
                 </form>
             </div>
         </section>
 
-        <section class="flex justifycontentcenter adminflightsection">
-            <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminboxflight">
-                <?php
-                for ($i = 0; $i < count($flights); $i++) {
-                    echo "<div id=" . "adminflightbyid" . $flights[$i]["Flight_Id"] . " class='adminflightlist flex alignitemscenter justifycontentcenter flexcolumn'>";
-                    $from = $flights[$i]["From_Country_Id"];
-                    $to = $flights[$i]["To_Country_Id"];
+        <section class="admin-section">
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <h2>Manage Flights</h2>
+                </div>
+                <div class="admin-grid">
+                    <?php
+                    for ($i = 0; $i < count($flights); $i++) {
+                        $flightId = $flights[$i]["Flight_Id"];
+                        $from = $flights[$i]["From_Country_Id"];
+                        $to = $flights[$i]["To_Country_Id"];
 
-                    if (!is_array($from)) {
-                        $from = [$from];
+                        if (!is_array($from)) { $from = [$from]; }
+                        if (!is_array($to)) { $to = [$to]; }
+
+                        $fromName = getCountryNameFromId($from[0]);
+                        $toName = getCountryNameFromId($to[0]);
+                        $cost = $flights[$i]["Flight_Cost"];
+                        $duration = $flights[$i]["Flight_Duration"];
+
+                        echo "<div id='adminflightbyid{$flightId}' class='admin-item admin-flight-item'>";
+                        echo "<div class='admin-item-header'><strong>{$fromName}</strong> → <strong>{$toName}</strong></div>";
+                        echo "<div class='admin-item-details'>";
+                        echo "<span>Cost: €{$cost}.00</span>";
+                        echo "<span>Duration: {$duration}h</span>";
+                        echo "</div>";
+                        echo "</div>";
                     }
-
-                    if (!is_array($to)) {
-                        $to = [$to];
-                    }
-
-                    echo "<h2>"
-                        . getCountryNameFromId($from[0])
-                        . "<br>"
-                        . " ↓ "
-                        . "<br>"
-                        . getCountryNameFromId($to[0])
-                        . "</h2>";
-                    echo "<h2>Cost: " . $flights[$i]["Flight_Cost"] . "$</h2>";
-                    echo "<h2>Duration: " . $flights[$i]["Flight_Duration"] . " Hours</h2>";
-                    echo "</div>";
-                }
-                ?>
+                    ?>
+                </div>
             </div>
         </section>
 
-        <section class="adminflightsettingcontainer flex justifycontentcenter alignitemscenter">
-            <div class="adminflightsettings backgroundcolorCFDDE0 flex flexcolumn justifycontentcenter alignitemscenter">
-                <div class="settingclosemenu flex alignitemsflexend">
-                    <div class="flex window-option-close justifycontentcenter alignitemscenter">
-                        <img class="window-option-img" src="assets/img/Close.svg" alt="Close">
-                        <div class="closehitbox"></div>
-                    </div>
+        <section class="admin-modal adminflightsettingcontainer" style="display: none;">
+            <div class="admin-modal-content">
+                <div class="admin-modal-header flex justifycontentspacebetween alignitemscenter">
+                    <h3>Edit Flight</h3>
+                    <div class="admin-modal-close">✕</div>
                 </div>
-
-                <div class="flightoptioninfosection">
-                    <div class="flex flexcolumn flightsettinginfo justifycontentcenter aligncontentscenter"></div>
-
-                    <form action="./assets/php/forms/flightSettingsForm.php" method="post" id="flightSettingsForm" class="flex flexcolumn">
+                <div class="admin-modal-body">
+                    <div class="flightsettinginfo"></div>
+                    <form action="./assets/php/forms/flightSettingsForm.php" method="post" id="flightSettingsForm" class="admin-form flex flexcolumn">
                         <input type="hidden" name="flightid" id="flightid">
 
-                        <label for="cost">Flight cost:</label>
-                        <input type="number" min="-1" max="1000000" name="flightcost" id="flightcost">
+                        <div class="form-group">
+                            <label for="flightcost">Flight cost: </label>
+                            <input type="number" min="0" max="1000000" name="flightcost" id="flightcost" class="admin-input">
+                        </div>
 
-                        <label for="duration">Flight duration:</label>
-                        <input type="number" min="-1" max="1000000" name="flightduration" id="flightduration">
+                        <div class="form-group">
+                            <label for="flightduration">Flight duration:</label>
+                            <input type="number" min="0" max="1000000" name="flightduration" id="flightduration" class="admin-input">
+                        </div>
 
-                        <button type="submit" name="save" id="flightoptionsave">Save</button>
-
-                        <button type="submit" name="delete" id="flightoptiondelete">Delete</button>
+                        <div class="admin-btn-group">
+                            <button type="submit" name="save" class="admin-btn admin-btn-primary">Save Changes</button>
+                            <button type="submit" name="delete" class="admin-btn admin-btn-danger">Delete Flight</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </section>
 
-        <section class="flex justifycontentcenter admincreateflightsection">
-            <div class="flex justifycontentcenter aligncontentscenter createflightcontainer">
-                <form action="./assets/php/forms/createuserform.php" method="post" id="createaccountform" class="flex flexcolumn">
-                    <label for="username">Username: </label>
-                    <input type="text" name="username" id="createausername">
-
-                    <label for="password">Password: </label>
-                    <input type="text" name="password" id="createpassword">
-
-                    <label for="language">Language: </label>
-                    <select name="language" id="createuserlanguage">
-                        <option value="EN">English</option>
-                        <option value="NL">Dutch (not fully supported)</option>
-                    </select>
-
-                    <label for="isadmin">Is admin: </label>
-                    <div class="flex flexrow flexstart">  
-                        <input type="radio" id="createisnotadmin" name="isadmin" value="isnotadmin">
-                        <label for="isnotadmin">False</label><br>
-                        <input type="radio" id="createisadmin" name="isadmin" value="isadmin">
-                        <label for="isadmin">True</label><br>
-                    </div>
-
-                    <button type="submit" name="save" id="createuser">Create</button>
-                </form>
-            </div>
-        </section>
-
-        <section class="flex justifycontentcenter">
-            <div class="backgroundcolorcfdde0 box flex flexrow alignitemscenter justifycontentcenter wrap adminboxuser">
-                <?php
-                for ($i = 0; $i < count($accounts); $i++) {
-                    $userId = $accounts[$i]["UserId"];
-                    $username = $accounts[$i]["Username"];
-                    $creationDate = $accounts[$i]["CreationDate"];
-
-                    $hasAdmin = $accounts[$i]["IsAdmin"] == 1 ? "true" : "False";
-
-                    echo "<div id='adminuserbyid" . $userId . "' class='adminuserlist flex alignitemscenter justifycontentcenter flexcolumn'>";
-                    echo "<h2>" . $username . "</h2>";
-                    echo "<h2>Creation Date:<br>" . $creationDate . "</h2>";
-                    echo "<h2>Admin: " . $hasAdmin . "</h2>";
-                    echo "</div>";
-                }
-                ?>
-            </div>
-        </section>
-
-        <section class="adminusersettingcontainer gap-25 flex justifycontentcenter alignitemscenter">
-            <div class="adminusersettings backgroundcolorCFDDE0 flex flexcolumn justifycontentcenter alignitemscenter">
-                <div class="settingclosemenu flex alignitemsflexend">
-                    <div class="flex window-option-close justifycontentcenter alignitemscenter">
-                        <img class="window-option-img" src="assets/img/Close.svg" alt="Close">
-                        <div class="closehitbox"></div>
-                    </div>
+        <section class="admin-section">
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <h2>Create New User</h2>
                 </div>
+                <form action="./assets/php/forms/createuserform.php" method="post" class="admin-form flex flexcolumn">
+                    <div class="form-group">
+                        <label for="createausername">Username:</label>
+                        <input type="text" name="username" id="createausername" class="admin-input">
+                    </div>
 
-                <div class="useroptioninfosection">
-                    <div class="flex flexcolumn usersettinginfo justifycontentcenter aligncontentscenter"></div>
+                    <div class="form-group">
+                        <label for="createpassword">Password:</label>
+                        <input type="password" name="password" id="createpassword" class="admin-input">
+                    </div>
 
-                    <form action="./assets/php/forms/userSettingsForm.php" method="post" id="userSettingsForm" class="flex flexcolumn">
-                        <input type="hidden" name="userid" id="userid">
-
-                        <label for="username">Username: </label>
-                        <input type="text" name="username" id="username">
-
-                        <label for="language">Language: </label>
-                        <select name="language" id="userlanguage">
+                    <div class="form-group">
+                        <label for="createuserlanguage">Language:</label>
+                        <select name="language" id="createuserlanguage" class="admin-select">
                             <option value="EN">English</option>
                             <option value="NL">Dutch (not fully supported)</option>
                         </select>
+                    </div>
 
-                        <label for="isadmin">Is admin: </label>
-                        <div class="flex flexrow flexstart">  
-                            <input type="radio" id="isnotadmin" name="isadmin" value="isnotadmin">
-                            <label for="isnotadmin">False</label><br>
-                            <input type="radio" id="isadmin" name="isadmin" value="isadmin">
-                            <label for="isadmin">True</label><br>
+                    <div class="form-group">
+                        <label>Admin privileges:</label>
+                        <div class="admin-radio-group flex flexrow gap-25">
+                            <label class="admin-radio-label">
+                                <input type="radio" name="isadmin" value="isnotadmin" checked> No
+                            </label>
+                            <label class="admin-radio-label">
+                                <input type="radio" name="isadmin" value="isadmin"> Yes
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" name="save" class="admin-btn admin-btn-primary">Create User</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="admin-section">
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <h2>Manage Users</h2>
+                </div>
+                <div class="admin-grid">
+                    <?php
+                    for ($i = 0; $i < count($accounts); $i++) {
+                        $userId = $accounts[$i]["UserId"];
+                        $username = $accounts[$i]["Username"];
+                        $creationDate = $accounts[$i]["CreationDate"];
+                        $hasAdmin = $accounts[$i]["IsAdmin"] == 1 ? "Yes" : "No";
+
+                        echo "<div id='adminuserbyid{$userId}' class='admin-item admin-user-item'>";
+                        echo "<div class='admin-item-header'><strong>{$username}</strong></div>";
+                        echo "<div class='admin-item-details'>";
+                        echo "<span>Creation date: {$creationDate}</span>";
+                        echo "<span>Admin: {$hasAdmin}</span>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
+                    ?>
+                </div>
+            </div>
+        </section>
+
+        <section class="admin-modal adminusersettingcontainer" style="display: none;">
+            <div class="admin-modal-content">
+                <div class="admin-modal-header flex justifycontentspacebetween alignitemscenter">
+                    <h3>Edit User</h3>
+                    <div class="admin-modal-close">✕</div>
+                </div>
+                <div class="admin-modal-body">
+                    <div class="usersettinginfo"></div>
+                    <form action="./assets/php/forms/userSettingsForm.php" method="post" id="userSettingsForm" class="admin-form flex flexcolumn">
+                        <input type="hidden" name="userid" id="userid">
+
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" name="username" id="username" class="admin-input">
                         </div>
 
-                        <button type="submit" name="save" id="useroptionsave">Save</button>
+                        <div class="form-group">
+                            <label for="userlanguage">Language:</label>
+                            <select name="language" id="userlanguage" class="admin-select">
+                                <option value="EN">English</option>
+                                <option value="NL">Dutch (not fully supported)</option>
+                            </select>
+                        </div>
 
-                        <button type="submit" name="delete" id="useroptiondelete">Delete</button>
+                        <div class="form-group">
+                            <label>Admin privileges:</label>
+                            <div class="admin-radio-group flex flexrow gap-25">
+                                <label class="admin-radio-label">
+                                    <input type="radio" id="isnotadmin" name="isadmin" value="isnotadmin"> No
+                                </label>
+                                <label class="admin-radio-label">
+                                    <input type="radio" id="isadmin" name="isadmin" value="isadmin"> Yes
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="admin-btn-group">
+                            <button type="submit" name="save" class="admin-btn admin-btn-primary">Save Changes</button>
+                            <button type="submit" name="delete" class="admin-btn admin-btn-danger">Delete User</button>
+                        </div>
                     </form>
                 </div>
-                <div class="bookedflightsbuttoncontainer flexend">
-                    <button class="bookedflightsbutton">
-                        Show Booked Flights
-                    </button>
+                <div class="admin-modal-footer">
+                    <button class="bookedflightsbutton admin-btn">Show Booked Flights</button>
                 </div>
             </div>
 
-            <div class="bookedflightscontainer" style="display: none;">
-                <div class="bookedflightsheader flex justifycontentspacebetween alignitemscenter">
-                    <h2>Booked Flights</h2>
-                    <div class="settingclosemenu flex alignitemsflexend">
-                        <div class="flex window-option-close justifycontentcenter alignitemscenter">
-                            <img class="window-option-img" src="assets/img/Close.svg" alt="Close">
-                            <div class="closehitbox"></div>
-                        </div>
-                    </div>
+            <div class="bookedflightscontainer admin-modal-content" style="display: none;">
+                <div class="admin-modal-header flex justifycontentspacebetween alignitemscenter">
+                    <h3>Booked Flights</h3>
+                    <div class="admin-modal-close booked-close">✕</div>
                 </div>
-                <div class="bookedflightslist flex flexcolumn gap-10"></div>
+                <div class="bookedflightslist admin-modal-body flex flexcolumn gap-25"></div>
             </div>
         </section>
 

@@ -19,7 +19,7 @@ if (
     $language = $_POST['language'];
     $isAdmin = $_POST['isadmin'] === 'isadmin';
 
-    if (strlen($username) >= 3 && strlen($password) >= 6) {
+    if (strlen($username) >= 3 && strlen($password) <= 45) {
         createAccount($username, $password, $language, $isAdmin);
         $success = 1;
     }
