@@ -117,7 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function openUserSettingMenu(id) {
-      console.log(id);
       fetch(`assets/php/api/get-user.php?id=${id}`)
         .then((response) => response.json())
         .then((data) => {
