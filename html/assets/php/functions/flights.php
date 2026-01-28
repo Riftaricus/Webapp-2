@@ -1,8 +1,7 @@
 <?php
 
-require_once("connection.php");
-
-require_once("session.php");
+require_once(__DIR__ . "/connection.php");
+require_once(__DIR__ . "/session.php");
 
 function getRandomCountry()
 {

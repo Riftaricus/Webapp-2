@@ -1,6 +1,6 @@
 <?php
-require_once("connection.php");
-require_once("flights.php");
+require_once(__DIR__ . "/connection.php");
+require_once(__DIR__ . "/flights.php");
 
 function getBookedFlights()
 {

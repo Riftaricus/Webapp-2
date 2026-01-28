@@ -1,8 +1,8 @@
 <?php
 $database = "mysql_db";
 $databaseName = "Flights";
-$username = "VolareWebsite";
-$password = "root";
+$username = "root";
+$password = "rootpassword";
 
 $charset = "utf8mb4";
 
