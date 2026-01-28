@@ -172,4 +172,29 @@ function deleteUser($id)
 
     return $result;
 }
+
+function updateUserPassword($id, $newPassword)
+{
+    if (!isset($_SESSION['userId'])) {
+        return false;
+    }
+
+    $id = (int) $id;
+    $sessionUserId = (int) $_SESSION['userId'];
+
+    if ($id <= 0 || $id !== $sessionUserId || empty($newPassword)) {
+        return false;
+    }
+
+    global $connect;
+    $hash = password_hash($newPassword, PASSWORD_DEFAULT);
+    
+    $sql = "UPDATE Account_Data SET Password = :password WHERE UserId = :id";
+    $stmt = $connect->prepare($sql);
+
+    return $stmt->execute([
+        ':id' => $id,
+        ':password' => $hash
+    ]);
+}
 ?>

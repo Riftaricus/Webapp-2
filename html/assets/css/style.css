@@ -989,6 +989,13 @@ textarea {
   gap: 1rem;
 }
 
+.menu-settings-menu .settings-item {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0.25rem;
+}
+
 .settings-item label {
   font-size: 0.85rem;
   color: #2b2b2b;
@@ -1002,6 +1009,58 @@ textarea {
   font-size: 0.8rem;
   color: #2b2b2b;
   cursor: pointer;
+}
+
+.settings-item input {
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.35rem;
+  border: 1px solid #b5b5b5;
+  background-color: #e6e6e6;
+  font-size: 0.85rem;
+  color: #2b2b2b;
+  outline: none;
+  transition: border-color 120ms ease;
+}
+
+.settings-item input:focus {
+  border-color: #737373;
+}
+
+.settings-confirm-password-container {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.booked-flights-list {
+  gap: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.booked-flight-item {
+  background-color: #e6e6e6;
+  padding: 0.75rem;
+  border-radius: 0.35rem;
+  border: 1px solid #b5b5b5;
+}
+
+.booked-flight-item h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.95rem;
+  color: #2b2b2b;
+}
+
+.booked-flight-item p {
+  margin: 0.15rem 0;
+  font-size: 0.8rem;
+  color: #4a4a4a;
+}
+
+.no-flights-message {
+  font-size: 0.85rem;
+  color: #4a4a4a;
+  text-align: center;
+  padding: 1rem;
 }
 
 .gap-10 {

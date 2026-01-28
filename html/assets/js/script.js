@@ -83,6 +83,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Show/hide confirm password field based on password input
+  const settingsPasswordInput = document.getElementById("settings-password");
+  const confirmPasswordContainer = document.querySelector(".settings-confirm-password-container");
+  
+  if (settingsPasswordInput && confirmPasswordContainer) {
+    settingsPasswordInput.addEventListener("input", () => {
+      if (settingsPasswordInput.value.length > 0) {
+        confirmPasswordContainer.style.display = "flex";
+      } else {
+        confirmPasswordContainer.style.display = "none";
+      }
+    });
+  }
+
   if (window.location.href.includes("admin.php")) {
     const flightContainer = document.querySelector(".adminboxflight");
     const userContainer = document.querySelector(".adminboxuser");
