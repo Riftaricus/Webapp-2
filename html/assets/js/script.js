@@ -338,18 +338,78 @@ function changeReview(delta) {
 function hideTransactionMenu() {
   const transaction = document.getElementById("transaction");
 
-  if (transaction) transaction.style.display = "none";
+  if (transaction) {
+    transaction.style.display = "none";
+    transaction.setAttribute("inert", "");
+  }
 }
 
 function showTransactionMenu(flightId) {
   const transaction = document.getElementById("transaction");
-
   const hiddenFlightId = document.getElementById("flightId");
 
   hiddenFlightId.value = flightId;
 
-  if (transaction) transaction.style.display = "flex";
+  if (transaction) {
+    transaction.style.display = "flex";
+    transaction.removeAttribute("inert");
+    
+    // Focus the first input for better UX
+    const firstInput = transaction.querySelector("input:not([type='hidden'])");
+    if (firstInput) firstInput.focus();
+  }
 }
+
+// Transaction popup - click outside to close & close button
+document.addEventListener("DOMContentLoaded", function() {
+  const transactionSection = document.getElementById("transaction");
+  const transactionClose = document.querySelector(".transaction-close");
+
+  if (transactionSection) {
+    // Click outside to close
+    transactionSection.addEventListener("click", (e) => {
+      if (e.target === transactionSection) {
+        hideTransactionMenu();
+      }
+    });
+
+    // Close button
+    if (transactionClose) {
+      transactionClose.addEventListener("click", () => {
+        hideTransactionMenu();
+      });
+    }
+
+    // Escape key to close
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && transactionSection.style.display === "flex") {
+        hideTransactionMenu();
+      }
+    });
+  }
+
+  // Auto-format expiry date input (MM/YY)
+  const expiryInput = document.getElementById("baExpiry");
+  if (expiryInput) {
+    expiryInput.addEventListener("input", (e) => {
+      let value = e.target.value.replace(/\D/g, "");
+      if (value.length >= 2) {
+        value = value.substring(0, 2) + "/" + value.substring(2, 4);
+      }
+      e.target.value = value;
+    });
+  }
+
+  // Format card number with spaces
+  const cardInput = document.getElementById("baCaNum");
+  if (cardInput) {
+    cardInput.addEventListener("input", (e) => {
+      let value = e.target.value.replace(/\s/g, "").replace(/\D/g, "");
+      value = value.match(/.{1,4}/g)?.join(" ") || value;
+      e.target.value = value;
+    });
+  }
+});
 
 function updateCounter() {
   const counter = document.getElementById("contactmessagecounter");

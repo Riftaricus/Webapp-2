@@ -70,26 +70,44 @@ if (count(getFlights()) == 0) {
         }
         ?>
 
-        <div class="flex justifycontentcenter alignitemscenter hidden" id="transaction">
-            <form action="./assets/php/forms/transaction.php" method="post" class="transaction-form">
-                <h2>Bank Information</h2>
+        <section class="transaction-section flex justifycontentcenter alignitemscenter" id="transaction" style="display: none;" inert>
+            <div class="transaction-container">
+                <form action="./assets/php/forms/transaction.php" method="post" class="transaction-form flex flexcolumn">
+                    <div class="transaction-header flex justifycontentspacebetween alignitemscenter">
+                        <h2>Bank Information</h2>
+                        <div class="transaction-close">✕</div>
+                    </div>
 
-                <div class="form-group">
-                    <label for="baAcNum">Bank Account Number</label>
-                    <input type="number" name="baAcNum" id="baAcNum" placeholder="Enter your bank account number"
-                        minlength="8" maxlength="12" required>
-                </div>
+                    <div class="form-group">
+                        <label for="baAcNum">Bank Account Number</label>
+                        <input type="text" name="baAcNum" id="baAcNum" placeholder="Enter your bank account number"
+                            minlength="8" maxlength="18" required>
+                    </div>
 
-                <input type="hidden" name="flightId" id="flightId">
+                    <input type="hidden" name="flightId" id="flightId">
 
-                <div class="form-group">
-                    <label for="baCaNum">Bank Card Number</label>
-                    <input type="number" name="baCaNum" id="baCaNum" placeholder="Enter your bank card number" required>
-                </div>
+                    <div class="form-group">
+                        <label for="baCaNum">Bank Card Number</label>
+                        <input type="text" name="baCaNum" id="baCaNum" placeholder="Enter your bank card number" 
+                            minlength="13" maxlength="19" required>
+                    </div>
 
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
-        </div>
+                    <div class="form-group">
+                        <label for="baCvv">CVV</label>
+                        <input type="password" name="baCvv" id="baCvv" placeholder="CVV" 
+                            minlength="3" maxlength="4" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="baExpiry">Expiry Date</label>
+                        <input type="text" name="baExpiry" id="baExpiry" placeholder="MM/YY" 
+                            maxlength="5" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Complete Payment</button>
+                </form>
+            </div>
+        </section>
     </main>
 
     <?php include './assets/php/footer.php' ?>
