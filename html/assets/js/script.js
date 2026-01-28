@@ -27,6 +27,62 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const menuSection = document.querySelector(".menu-section");
+  const accountToggle = document.getElementById("account-menu-toggle");
+  const menuItems = document.querySelectorAll(".menu-item");
+  const submenus = document.querySelectorAll(".menu-submenu");
+  const menuClose = document.querySelector(".menu-close");
+  const submenuBacks = document.querySelectorAll(".submenu-back");
+
+  if (accountToggle && menuSection) {
+    accountToggle.addEventListener("click", () => {
+      menuSection.style.display = "flex";
+      menuSection.removeAttribute("inert");
+    });
+  }
+
+  menuItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const submenuId = item.dataset.submenu;
+      const submenu = document.querySelector(`[data-submenu-id="${submenuId}"]`);
+      
+      submenus.forEach((sm) => sm.classList.remove("active"));
+      
+      if (submenu) {
+        submenu.classList.add("active");
+      }
+    });
+  });
+
+  submenuBacks.forEach((back) => {
+    back.addEventListener("click", () => {
+      const submenu = back.closest(".menu-submenu");
+      if (submenu) {
+        submenu.classList.remove("active");
+      }
+    });
+  });
+
+  if (menuClose) {
+    menuClose.addEventListener("click", () => {
+      if (menuSection) {
+        menuSection.style.display = "none";
+        menuSection.setAttribute("inert", "");
+        submenus.forEach((sm) => sm.classList.remove("active"));
+      }
+    });
+  }
+
+  if (menuSection) {
+    menuSection.addEventListener("click", (e) => {
+      if (e.target === menuSection) {
+        menuSection.style.display = "none";
+        menuSection.setAttribute("inert", "");
+        submenus.forEach((sm) => sm.classList.remove("active"));
+      }
+    });
+  }
+
   if (window.location.href.includes("admin.php")) {
     const flightContainer = document.querySelector(".adminboxflight");
     const userContainer = document.querySelector(".adminboxuser");

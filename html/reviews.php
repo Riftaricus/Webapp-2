@@ -2,8 +2,6 @@
 require_once("assets/php/functions/session.php");
 require_once("assets/php/functions/ratings.php");
 require_once("assets/php/functions/user.php");
-
-login("admin", "admin");
 ?>
 
 <!DOCTYPE html>

@@ -1,7 +1,5 @@
 <?php
-// if (isset($_GET["page"]) && $_GET["page"] === "account") {
-//     include("assets/php/menu.php");
-// }
+    include("assets/php/menu.php");
 ?>
 
 <header class="backgroundcolor399DDB flex justifycontentaround alignitemscenter flexrow">
@@ -19,7 +17,6 @@
     </nav>
     <div class="flex flexrow justifycontentcenter alignitemscenter">
         <div>
-            <!-- Negotiable usage -->
             <input type="text" id="searchbar" oninput="showHiddenSearch()" class="searchbar flex alignitemscenter"
                 placeholder="Search Flights...">
             <div id="searchhidden">
@@ -28,7 +25,6 @@
                 <div class="searchbox"></div>
             </div>
         </div>
-        <a href="?page=account" class="flex justifycontentflexend"><img class="user-icon"
-                src="assets/img/account_icon.png" alt="account icon"></a>
+        <button type="button" id="account-menu-toggle" class="flex justifycontentflexend" style="background: none; border: none; cursor: pointer;"><img class="user-icon" src="assets/img/account_icon.png" alt="account icon"></button>
     </div>
 </header>
