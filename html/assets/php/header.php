@@ -1,9 +1,3 @@
-<?php
-// if (isset($_GET["page"]) && $_GET["page"] === "account") {
-//     include("assets/php/menu.php");
-// }
-?>
-
 <header class="backgroundcolor399DDB flex justifycontentaround alignitemscenter flexrow">
     <a href="index.php">
         <h1 class="color396ADB">Volare Airways</h1>
