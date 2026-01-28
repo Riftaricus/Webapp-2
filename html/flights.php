@@ -16,7 +16,7 @@ if (count(getFlights()) == 0) {
 
     <?php include './assets/php/header.php'; ?>
 
-    <main class="flex gap-100 flexcolumn alignitemscenter">
+    <main class="flex gap-25 flexcolumn alignitemscenter" style="padding: 2rem;">
         <?php
         $i = 1;
         $flights = getFlights();
@@ -29,18 +29,21 @@ if (count(getFlights()) == 0) {
                     <div class="leftflightbox flex flexrow">
                         <div class="leftflightboxmain">
                             <h2>
-                                From ' . getCountryNameFromId($flight['From_Country_Id']) . '<br>
-                                To ' . getCountryNameFromId($flight['To_Country_Id']) . '
+                                ' . getCountryNameFromId($flight['From_Country_Id']) . ' → ' . getCountryNameFromId($flight['To_Country_Id']) . '
                             </h2>
                         </div>
 
-                        <div class="leftflightboxsecondary flex flexcolumn justifycontentcenter alignitemscenter">
+                        <div class="leftflightboxsecondary flex flexrow justifycontentspaceevenly alignitemscenter">
                             <form method="post" action="/assets/php/forms/booking.php">
                                 <input type="hidden" name="flight_id" value="' . $flight["Flight_Id"] . '">
                                 <button type="submit" class="green-button">
                                     Book Flight
                                 </button>
                             </form>
+                            <div class="flight-meta">
+                                <div>Cost: $' . htmlspecialchars((string) $flight['Flight_Cost']) . '</div>
+                                <div>Duration: ' . htmlspecialchars((string) $flight['Flight_Duration']) . 'h</div>
+                            </div>
                         </div>
                     </div>';
                     break;
@@ -49,7 +52,11 @@ if (count(getFlights()) == 0) {
                     $i = 1;
                     echo '
                     <div class="rightflightbox flex flexrow">
-                        <div class="rightflightboxsecondary flex flexcolumn justifycontentcenter alignitemscenter">
+                        <div class="rightflightboxsecondary flex flexrow justifycontentspaceevenly alignitemscenter">
+                            <div class="flight-meta">
+                                <div>Cost: $' . htmlspecialchars((string) $flight['Flight_Cost']) . '</div>
+                                <div>Duration: ' . htmlspecialchars((string) $flight['Flight_Duration']) . 'h</div>
+                            </div>
                             <form method="post" action="/assets/php/forms/booking.php">
                                 <input type="hidden" name="flight_id" value="' . $flight["Flight_Id"] . '">
                                 <button type="submit" class="green-button">
@@ -60,8 +67,7 @@ if (count(getFlights()) == 0) {
 
                         <div class="rightflightboxmain">
                             <h2>
-                                From ' . getCountryNameFromId($flight['From_Country_Id']) . '<br>
-                                To ' . getCountryNameFromId($flight['To_Country_Id']) . '
+                                <strong>' . getCountryNameFromId($flight['From_Country_Id']) . '</strong> → <strong>' . getCountryNameFromId($flight['To_Country_Id']) . '</strong>
                             </h2>
                         </div>
                     </div>';

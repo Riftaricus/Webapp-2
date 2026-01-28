@@ -7,22 +7,23 @@
 
 <body>
     <?php include './assets/php/header.php' ?>
-    <main class="flex flexcolumn alignitemscenter">
-        <div class="flex alignitemscenter flexcolumn contactbox">
+    <main class="flex flexcolumn alignitemscenter" style="padding: 2rem;">
+        <div class="contactbox">
             <h1>Email: Volare@vola.com</h1>
-            <h1>Phone Number: +1 505-646-7257</h1>
+            <h1>Phone: +1 505-646-7257</h1>
         </div>
-        <form action="./assets/php/forms/contact.php" method="post" class="flex alignitemscenter flexcolumn contactform">
-            <h1>Contact us here!</h1>
-            <div class="flex alignitemscenter">
-                <input type="email" name="email" id="contactemail" placeholder="Enter your email here...">
+        <form action="./assets/php/forms/contact.php" method="post" class="flex alignitemscenter justifycontentcenter flexcolumn contactform">
+            <h1>Contact Us</h1>
+            <div class="form-group" style="width: 100%;">
+                <label for="contactemail">Your Email</label>
+                <input type="email" name="email" id="contactemail" placeholder="Enter your email address..." required>
             </div>
-            <label for="message" id="contactmessagecounter">0/1000</label>
-            <textarea name="message" id="contactmessage" maxlength="1000" oninput="updateCounter()" required placeholder="Write a message here..."></textarea>
-
-            <button type="submit">Submit message</button>
+            <div class="form-group" style="width: 100%;">
+                <label for="contactmessage">Your Message <span id="contactmessagecounter" style="float: right;">0/1000</span></label>
+                <textarea name="message" id="contactmessage" maxlength="1000" oninput="updateCounter()" required placeholder="Write your message here..."></textarea>
+            </div>
+            <button type="submit">Send Message</button>
         </form>
-
     </main>
     <?php include './assets/php/footer.php' ?>
 </body>

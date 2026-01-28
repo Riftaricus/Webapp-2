@@ -12,6 +12,10 @@
                 <li><a href="/flights.php">Flights</a></li>
                 <li><a href="/about.php">About Us</a></li>
                 <li><a href="/reviews.php">Reviews</a></li>
+                <?php
+                    if (isset($_SESSION['isAdmin']) and $_SESSION['isAdmin'] === true and isUserAdmin($_SESSION['username']))
+                        echo "<li><a href='/admin.php'>Admin</a></li>";
+                ?>
             </ul>
         </div>
 

@@ -109,58 +109,51 @@ body {
   display: block;
 }
 
-main {
-  font-family: Tahoma;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-}
-
-.leftflightbox {
-  width: 50vw;
-  height: 15vh;
-  background-color: #d9d9d9;
-}
-
-.leftflightboxmain {
-  width: 50%;
-  height: 100%;
-  background-color: #adadad;
-
-  -webkit-text-stroke: #00ddff 0.2px;
-
-  text-align: center;
-}
-
-.leftflightboxsecondary {
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  font-size: 10px;
-  font-weight: normal;
-}
-
+.leftflightbox,
 .rightflightbox {
-  width: 50vw;
-  height: 15vh;
-  background-color: #d9d9d9;
+  width: 80vw;
+  max-width: 1200px;
+  background-color: #cfdde0;
+  border-radius: 0.5rem;
+  outline: 4px outset #737373;
+  overflow: hidden;
 }
 
+.leftflightboxmain,
 .rightflightboxmain {
-  width: 50%;
-  height: 100%;
-  background-color: #adadad;
-
-  -webkit-text-stroke: #00ddff 0.2px;
-
+  width: 40%;
+  padding: 1.5rem;
+  background-color: #b5b5b5;
   text-align: center;
 }
 
+.leftflightboxmain h1,
+.leftflightboxmain h2,
+.rightflightboxmain h1,
+.rightflightboxmain h2 {
+  margin: 0;
+  color: #2b2b2b;
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 1.6;
+}
+
+.leftflightboxsecondary,
 .rightflightboxsecondary {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  padding: 1rem;
   align-items: center;
-  font-size: 10px;
+  font-size: 0.85rem;
+  color: #2b2b2b;
+}
+
+.leftflightboxsecondary h2,
+.rightflightboxsecondary h2 {
+  margin: 0;
+  font-size: 1.25rem;
   font-weight: normal;
+  color: #4a4a4a;
+  line-height: 1.5;
 }
 
 ul {
@@ -169,7 +162,7 @@ ul {
 }
 
 a {
-  font-size: 1.5vw;
+  font-size: 1.25vw;
   text-decoration: none;
   color: white;
 
@@ -276,6 +269,14 @@ main a {
   justify-content: space-between;
 }
 
+.justifycontentspaceevenly {
+  justify-content: space-evenly;
+}
+
+.justifycontentspacearound {
+  justify-content: space-around;
+}
+
 .flexrow {
   flex-direction: row;
 }
@@ -341,7 +342,7 @@ header div img {
 }
 
 .aboutboxright {
-  margin: 20vh 0px 5vh auto;
+  margin: 25vh 0px 10vh auto;
   p {
     padding: 1%;
   }
@@ -809,7 +810,8 @@ header div img {
 .airplane {
   position: absolute;
   z-index: -1;
-  left: 10vw;
+  bottom: 7.5vw;
+  left: 15vw;
   width: 60vh;
 }
 
@@ -817,84 +819,178 @@ header div img {
   margin-bottom: 5vh;
 }
 
+.flight-meta {
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px outset #399ddb;
+  padding: 0.5rem 1rem;
+  border-radius: 0.35rem;
+}
+
 .paragraftext {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .green-button {
-  margin-top: 20px;
-  background-color: #98cd7f;
-  padding: 5px;
-  border-radius: 6px;
+  padding: 0.75rem 2rem;
+  border-radius: 0.35rem;
+  border: 2px outset #399ddb;
+  background-color: #cfdde0;
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.green-button:hover {
+  background-color: #6ab04c33;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.green-button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .averagestar {
   cursor: default;
-  width: 150px;
-  height: 150px;
+  width: 80px;
+  height: 80px;
 }
 
 .ratingstar {
   cursor: default;
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
 }
 
 .star {
-  width: 50px;
-  height: 50px;
-
+  width: 40px;
+  height: 40px;
   cursor: pointer;
+  transition: transform 120ms ease;
+}
+
+.star:hover {
+  transform: scale(1.1);
 }
 
 .reviewform {
-  width: 40vw;
-  background-color: #868686;
+  margin-top: 5vh;
+  width: fit-content;
+  min-width: 350px;
+  background-color: #B5B5B5;
+  color: #2b2b2b;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  outline: 4px outset #737373;
+  gap: 1rem;
+}
+
+.reviewform h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #737373;
+}
+
+.reviewform input[type="submit"] {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.35rem;
+  border: 1px solid #b5b5b5;
+  background-color: #737373;
   color: white;
-  height: 40vh;
-  margin-top: 100px;
-  border-radius: 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 120ms ease;
+}
+
+.reviewform input[type="submit"]:hover {
+  background-color: #5a5a5a;
+}
+
+.reviewform input[type="submit"]:active {
+  transform: scale(0.98);
 }
 
 #reviewinput {
-  margin-top: 10px;
-  width: 40%;
-  height: 30%;
+  width: 100%;
+  min-width: 280px;
+  height: 100px;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.35rem;
+  border: 1px solid #b5b5b5;
+  background-color: #e6e6e6;
+  font-size: 0.85rem;
+  color: #2b2b2b;
+  outline: none;
+  transition: border-color 120ms ease;
+  font-family: Tahoma, sans-serif;
+}
 
-  max-width: 40%;
-  max-height: 30%;
-
-  min-width: 40%;
-  min-height: 30%;
-
-  background-color: white;
-  border: #929292 1px;
-  border-radius: 6px;
-
-  text-align: left;
-
-  padding: 10px;
+#reviewinput:focus {
+  border-color: #737373;
 }
 
 .nextreview {
-  width: 5vw;
-  height: 40vh;
-  background-color: #d9d9d9;
-  border-radius: 9px;
+  width: 3rem;
+  height: 15rem;
+  background-color: #e6e6e6;
+  border-radius: 0.35rem;
+  border: 1px solid #b5b5b5;
+  transition: background-color 120ms ease;
+}
+
+.nextreview:hover {
+  background-color: #B5B5B5;
+}
+
+.nextreview img {
+  width: 1.5rem;
+  height: auto;
+  opacity: 0.6;
 }
 
 .review {
   width: 50vw;
-  height: 45vh;
-  background-color: #a3a3a3;
-  border-radius: 9px;
-  padding: 15px;
+  max-width: 500px;
+  min-height: 15rem;
+  background-color: #B5B5B5;
+  border-radius: 0.5rem;
+  outline: 4px outset #737373;
+  padding: 1.5rem;
   text-align: center;
 }
 
 #review {
-  margin-bottom: 100px;
+  gap: 1rem;
+}
+
+.rating-section {
+  background-color: #B5B5B5;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  outline: 4px outset #737373;
+  text-align: center;
+}
+
+.rating-section h1 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: #2b2b2b;
+}
+
+.rating-section h2 {
+  margin: 1rem 0 0 0;
+  font-size: 1rem;
+  color: #4a4a4a;
+  font-weight: normal;
 }
 
 .transaction-section {
@@ -1031,21 +1127,30 @@ textarea {
   resize: none;
 }
 
+#contactemail,
 #contactmessage {
-  width: 50vw;
-  height: 30vh;
-  overflow: hidden;
-  border-radius: 20px;
-  background-color: rgb(188, 188, 188);
-  padding: 5px;
+  min-width: 280px;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.35rem;
+  border: 1px solid #b5b5b5;
+  background-color: #e6e6e6;
+  font-size: 0.85rem;
+  color: #2b2b2b;
+  outline: none;
+  transition: border-color 120ms ease;
+  font-family: Tahoma, sans-serif;
 }
 
-#contactemail {
-  width: 50vw;
-  height: 5vh;
-  border-radius: 20px;
-  padding: 5px;
-  background-color: rgb(188, 188, 188);
+#contactmessage:focus {
+  border-color: #737373;
+}
+
+#contactmessage {
+  height: 150px;
+}
+
+#contactemail:focus {
+  border-color: #737373;
 }
 
 .adminuserlist {
@@ -1117,32 +1222,71 @@ textarea {
 }
 
 .contactform {
-  gap: 20px;
-
+  gap: 1rem;
   width: fit-content;
-  padding: 10px;
+  min-width: 350px;
+  padding: 1.5rem;
+  background-color: #cfdde0;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+  outline: 4px outset #737373;
+}
+
+.contactform h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2b2b2b;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #737373;
+}
+
+.contactform button[type="submit"] {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.35rem;
+  border: 1px solid #b5b5b5;
   background-color: #737373;
+  color: white;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 120ms ease;
+}
 
-  margin-top: 100px;
+.contactform button[type="submit"]:hover {
+  background-color: #5a5a5a;
+}
 
-  border-radius: 30px;
+.contactform button[type="submit"]:active {
+  transform: scale(0.98);
+}
 
-  margin-bottom: 100px;
+.contactform label {
+  font-size: 0.8rem;
+  color: #4a4a4a;
 }
 
 .reviewtext {
-  max-width: 50%;
+  max-width: 80%;
   justify-self: center;
   overflow-wrap: break-word;
+  color: #2b2b2b;
+  font-size: 1.25rem;
 }
 
 .contactbox {
-  margin-top: 100px;
+  margin-top: 2rem;
   width: fit-content;
   height: fit-content;
-  background-color: #d9d9d9;
-  padding: 10px;
-  border-radius: 10px;
+  background-color: #cfdde0;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  outline: 4px outset #737373;
+}
+
+.contactbox h1 {
+  margin: 0.5rem 0;
+  font-size: 1.25rem;
+  color: #2b2b2b;
+  font-weight: normal;
 }
 
 .closehitbox {

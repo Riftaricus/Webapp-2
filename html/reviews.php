@@ -11,11 +11,11 @@ require_once("assets/php/functions/user.php");
 
 <body>
     <?php include './assets/php/header.php' ?>
-    <main class="flex alignitemscenter flexcolumn gap-100">
+    <main class="flex alignitemscenter flexcolumn gap-25">
         <form action="/assets/php/forms/leaveReview.php" method="post"
             class="flex flexcolumn alignitemscenter reviewform">
             <h1>Leave your review here!</h1>
-            <div class="flex row" id="star-container">
+            <div class="flex flexrow gap-25" id="star-container">
                 <?php
                 for ($i = 0; $i < 5; $i++) {
                     echo "<img src='assets/img/empty_star.png' class='star' data-index='$i' style='cursor: pointer;'>";
@@ -23,28 +23,10 @@ require_once("assets/php/functions/user.php");
                 ?>
             </div>
             <input type="hidden" name="rating" id="rating" value="">
-            <textarea maxlength="197" name="message" id="reviewinput" placeholder="Write a comment here..."
+            <textarea maxlength="197" name="message" id="reviewinput" placeholder="Write your review here..."
                 required></textarea>
-            <input type="submit" value="Leave review">
+            <input type="submit" value="Submit Review">
         </form>
-
-        <div class="flex alignitemscenter flexcolumn">
-            <h1>Our average rating</h1>
-            <div>
-                <?php
-                $rating = round(getAverageRating());
-
-                for ($i = 0; $i < 5; $i++) {
-                    if ($i < $rating) {
-                        echo "<img src='assets/img/star.png' class='averagestar'>";
-                    } else {
-                        echo "<img src='assets/img/empty_star.png' class='averagestar'>";
-                    }
-                }
-                ?>
-            </div>
-            <h2>We are currently rated <?php echo $rating ?> / 5 stars average!</h2>
-        </div>
 
         <?php
         $ratings = getRatings();
@@ -102,6 +84,24 @@ require_once("assets/php/functions/user.php");
                 <h2>No reviews yet. Be the first to leave one!</h2>
             </div>
         <?php endif; ?>
+
+        <div class="rating-section">
+            <h1>Our Average Rating</h1>
+            <div>
+                <?php
+                $rating = round(getAverageRating());
+
+                for ($i = 0; $i < 5; $i++) {
+                    if ($i < $rating) {
+                        echo "<img src='assets/img/star.png' class='averagestar'>";
+                    } else {
+                        echo "<img src='assets/img/empty_star.png' class='averagestar'>";
+                    }
+                }
+                ?>
+            </div>
+            <h2>We are currently rated <?php echo $rating ?> / 5 stars average!</h2>
+        </div>
     </main>
     <?php include './assets/php/footer.php' ?>
 
