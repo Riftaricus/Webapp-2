@@ -117,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function openUserSettingMenu(id) {
+      console.log(id);
       fetch(`assets/php/api/get-user.php?id=${id}`)
         .then((response) => response.json())
         .then((data) => {
@@ -133,12 +134,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const userIdInput = document.getElementById("userid");
             const usernameInput = document.getElementById("username");
+            const languageSelect = document.getElementById("userlanguage");
             const isAdminRadio = document.getElementById("isadmin");
             const isNotAdminRadio = document.getElementById("isnotadmin");
 
             if (userIdInput) userIdInput.value = id;
 
             if (usernameInput) usernameInput.value = user.username;
+            if (languageSelect) languageSelect.value = user.language;
             if (user.isAdmin && isAdminRadio) {
               isAdminRadio.checked = true;
             } else if (isNotAdminRadio) {
@@ -148,8 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
             userSettingContainer.removeAttribute("inert");
             userSettingContainer.style.display = "flex";
 
-            const closeButton =
-              userSettingContainer.querySelector(".closehitbox");
+            const closeButton = userSettingContainer.querySelector(".closehitbox");
             if (closeButton) {
               closeButton.addEventListener("click", (event) => {
                 userSettingContainer.setAttribute("inert", "");

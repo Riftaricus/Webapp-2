@@ -4,6 +4,8 @@ require_once("../functions/user.php");
 
 $success = 0;
 
+var_dump($_POST);
+
 if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != true || !isUserAdmin($_SESSION['username'])) {
     header("Location: /admin.php?userSuccess=0");
     exit;
