@@ -10,14 +10,14 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != true || !isUserAdmin
 }
 
 if (
-    isset($_POST['save'], $_POST['username'], $_POST['password'], $_POST['language'], $_POST['isadmin']) &&
-    !empty($_POST['username']) &&
-    !empty($_POST['password'])
+    isset($_POST['save'], $_POST['createusername'], $_POST['createpassword'], $_POST['createlanguage'], $_POST['createisadmin']) &&
+    !empty($_POST['createusername']) &&
+    !empty($_POST['createpassword'])
 ) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $language = $_POST['language'];
-    $isAdmin = $_POST['isadmin'] === 'isadmin';
+    $username = $_POST['createusername'];
+    $password = $_POST['createpassword'];
+    $language = $_POST['createlanguage'];
+    $isAdmin = $_POST['createisadmin'] === 'isadmin';
 
     if (strlen($username) >= 3 && strlen($password) >= 6) {
         createAccount($username, $password, $language, $isAdmin);
