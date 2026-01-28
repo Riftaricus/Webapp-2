@@ -460,8 +460,6 @@ header div img {
   gap: 25px;
 }
 
-/* ==================== ADMIN PAGE STYLES ==================== */
-
 .admin-main {
   padding: 2rem;
   gap: 2rem;
@@ -580,7 +578,6 @@ header div img {
   accent-color: #737373;
 }
 
-/* Admin Grid for items */
 .admin-grid {
   display: flex;
   flex-wrap: wrap;
@@ -624,7 +621,6 @@ header div img {
   color: #4a4a4a;
 }
 
-/* Admin Modals */
 .admin-modal {
   position: fixed;
   inset: 0;
@@ -695,7 +691,6 @@ header div img {
   }
 }
 
-/* Keep old class names for JS compatibility */
 .adminflightlist {
   width: 5%;
   height: 10%;
