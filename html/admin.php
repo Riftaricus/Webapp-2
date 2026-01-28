@@ -122,25 +122,25 @@ if (count(getFlights()) == 0) {
         <section class="flex justifycontentcenter admincreateflightsection">
             <div class="flex justifycontentcenter aligncontentscenter createflightcontainer">
                 <form action="./assets/php/forms/createuserform.php" method="post" id="createflightform" class="flex flexcolumn">
-                    <input type="hidden" name="userid" id="userid">
+                    <input type="hidden" name="userid" id="createuserid">
 
                     <label for="username">Username: </label>
-                    <input type="text" name="username" id="username">
+                    <input type="text" name="username" id="createausername">
 
                     <label for="password">Password: </label>
-                    <input type="text" name="password" id="password">
+                    <input type="text" name="password" id="createpassword">
 
                     <label for="language">Language: </label>
-                    <select name="language" id="userlanguage">
+                    <select name="language" id="createuserlanguage">
                         <option value="EN">English</option>
                         <option value="NL">Dutch (not fully supported)</option>
                     </select>
 
                     <label for="isadmin">Is admin: </label>
                     <div class="flex flexrow flexstart">  
-                        <input type="radio" id="isnotadmin" name="isadmin" value="isnotadmin">
+                        <input type="radio" id="createisnotadmin" name="isadmin" value="isnotadmin">
                         <label for="isnotadmin">False</label><br>
-                        <input type="radio" id="isadmin" name="isadmin" value="isadmin">
+                        <input type="radio" id="createisadmin" name="isadmin" value="isadmin">
                         <label for="isadmin">True</label><br>
                     </div>
 

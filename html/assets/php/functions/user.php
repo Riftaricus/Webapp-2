@@ -42,11 +42,12 @@ function getAccounts()
     return $result;
 }
 
-function getNameFromId($id){
+function getNameFromId($id)
+{
     global $connect;
     $sql = "SELECT * FROM Account_Data WHERE UserId = :userid";
     $stmt = $connect->prepare($sql);
-    $stmt->execute([":userid"=> $id]);
+    $stmt->execute([":userid" => $id]);
 
     $result = $stmt->fetch();
 
@@ -63,7 +64,8 @@ function logout()
     }
 }
 
-function isUserAdmin($username) {
+function isUserAdmin($username)
+{
     global $connect;
 
     $sql = "SELECT * FROM Account_Data WHERE Username = :username";
@@ -73,8 +75,10 @@ function isUserAdmin($username) {
         $stmt->execute([':username' => $username]);
         $result = $stmt->fetch();
 
-        if ($result["IsAdmin"] === 1) return true;
-        else return false;
+        if ($result["IsAdmin"] === 1)
+            return true;
+        else
+            return false;
     } catch (Exception $e) {
         return false;
     }
@@ -142,9 +146,9 @@ function editUser($id, $username, $language, $isAdmin)
     }
 
     global $connect;
-    $sql = "UPDATE Account_Data SET Username = :username, Language = :language, IsAdmin = :isAdmin WHERE UserId = :id";
+    $sql = ($username != null) ? "UPDATE Account_Data SET Username = :username, Language = :language, IsAdmin = :isAdmin WHERE UserId = :id" : "UPDATE Account_Data SET Language = :language, IsAdmin = :isAdmin WHERE UserId = :id";
     $stmt = $connect->prepare($sql);
-    
+
     return $stmt->execute([
         ':id' => $id,
         ':username' => $username,
@@ -162,7 +166,10 @@ function deleteUser($id)
     global $connect;
     $sql = "DELETE FROM Account_Data WHERE UserId = :id";
     $stmt = $connect->prepare($sql);
-    
-    return $stmt->execute([':id' => $id]);
+
+    $stmt->execute([':id' => $id]);
+    $result = $stmt->fetch();
+
+    return $result;
 }
 ?>

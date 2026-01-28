@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const slogan = document.getElementById("slogan");
-  
+
   if (Math.random() > 0.95) {
     slogan.innerText = "We Bring You to Your Nightmares";
   }
@@ -137,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const isNotAdminRadio = document.getElementById("isnotadmin");
 
             if (userIdInput) userIdInput.value = id;
+
             if (usernameInput) usernameInput.value = user.username;
             if (user.isAdmin && isAdminRadio) {
               isAdminRadio.checked = true;
@@ -154,7 +155,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 userSettingContainer.setAttribute("inert", "");
                 userSettingContainer.style.display = "none";
 
-                const bookedFlightsContainer = document.querySelector(".bookedflightscontainer");
+                const bookedFlightsContainer = document.querySelector(
+                  ".bookedflightscontainer",
+                );
                 if (bookedFlightsContainer) {
                   bookedFlightsContainer.style.display = "none";
                 }
@@ -168,8 +171,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const bookedFlightsButton = document.querySelector(".bookedflightsbutton");
-    const bookedFlightsContainer = document.querySelector(".bookedflightscontainer");
-    const closeBookedFlightsButton = bookedFlightsContainer.querySelector(".closehitbox");
+    const bookedFlightsContainer = document.querySelector(
+      ".bookedflightscontainer",
+    );
+    const closeBookedFlightsButton =
+      bookedFlightsContainer.querySelector(".closehitbox");
 
     if (bookedFlightsButton && bookedFlightsContainer) {
       bookedFlightsButton.addEventListener("click", () => {
@@ -180,31 +186,39 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const userId = userIdInput.value;
-        
+
         fetch(`assets/php/api/get-booked-flights.php?userId=${userId}`)
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
-              const bookedFlightsList = bookedFlightsContainer.querySelector(".bookedflightslist");
-              
+              const bookedFlightsList =
+                bookedFlightsContainer.querySelector(".bookedflightslist");
+
               if (data.bookedFlights.length === 0) {
-                bookedFlightsList.innerHTML = "<p>No booked flights for this user.</p>";
+                bookedFlightsList.innerHTML =
+                  "<p>No booked flights for this user.</p>";
               } else {
-                bookedFlightsList.innerHTML = data.bookedFlights.map(flight => `
+                bookedFlightsList.innerHTML = data.bookedFlights
+                  .map(
+                    (flight) => `
                   <div class="bookedflightitem flex flexcolumn">
                     <h3>${flight.fromCountry} → ${flight.toCountry}</h3>
                     <p>Duration: ${flight.duration} Hours</p>
                     <p>Flight ID: ${flight.flightId}</p>
                   </div>
-                `).join("");
+                `,
+                  )
+                  .join("");
               }
-              
+
               bookedFlightsContainer.style.display = "flex";
             } else {
               console.error("Failed to load booked flights:", data.error);
             }
           })
-          .catch((error) => console.error("Error fetching booked flights:", error));
+          .catch((error) =>
+            console.error("Error fetching booked flights:", error),
+          );
       });
     }
 
