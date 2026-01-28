@@ -10,7 +10,6 @@ body {
   padding: 0;
 }
 
-/* Header Styles */
 .site-header {
   background-color: #cfdde0;
   width: 100%;
@@ -667,7 +666,6 @@ header div img {
   margin-bottom: 100px;
 }
 
-/* Transaction Section - matches menu-section pattern */
 .transaction-section {
   position: fixed;
   inset: 0;
@@ -1076,7 +1074,6 @@ textarea {
   scale: 1;
 }
 
-/* Sub-menus */
 .menu-container {
   position: relative;
 }
