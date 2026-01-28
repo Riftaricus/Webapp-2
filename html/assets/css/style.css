@@ -989,6 +989,48 @@ textarea {
   gap: 1rem;
 }
 
+.booked-flight-item {
+  background-color: #e6e6e6;
+  padding: 0.75rem;
+  border-radius: 0.35rem;
+  border: 1px solid #b5b5b5;
+}
+
+.booked-flight-item h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.95rem;
+  color: #2b2b2b;
+}
+
+.booked-flight-item p {
+  margin: 0.15rem 0 0.5rem 0;
+  font-size: 0.8rem;
+  color: #4a4a4a;
+}
+
+.cancel-booking-form {
+  margin: 0;
+}
+
+.cancel-booking-btn {
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.35rem;
+  border: 1px solid #b54545;
+  background-color: #c75050;
+  color: white;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 120ms ease;
+}
+
+.cancel-booking-btn:hover {
+  background-color: #a83c3c;
+}
+
+.cancel-booking-btn:active {
+  transform: scale(0.98);
+}
+
 .menu-settings-menu .settings-item {
   flex-direction: column;
   align-items: stretch;

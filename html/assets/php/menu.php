@@ -113,10 +113,15 @@ require_once("assets/php/functions/flights.php");
                             $flight = getFlights($booking['Flight_Id']);
 
                             $duration = $flight[0]["Flight_Duration"];
+                            $bookingId = $booking['id'];
                             
                             echo "<div class='booked-flight-item'>";
                             echo "<h4>{$fromCountry} → {$toCountry}</h4>";
                             echo "<p>Duration: {$duration} Hours</p>";
+                            echo "<form action='/assets/php/forms/cancelbooking.php' method='post' class='cancel-booking-form flex justifycontentflexend'>";
+                            echo "<input type='hidden' name='booking_id' value='{$bookingId}'>";
+                            echo "<button type='submit' name='cancel' class='cancel-booking-btn'>Cancel</button>";
+                            echo "</form>";
                             echo "</div>";
                         }
                     }

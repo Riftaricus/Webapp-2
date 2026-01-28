@@ -56,4 +56,16 @@ function bookFlight($id)
     ]);
 }
 
+function cancelBooking($bookingId, $userId)
+{
+    if (!is_numeric($bookingId) || !is_numeric($userId)) {
+        return false;
+    }
+
+    global $connect;
+    $sql = 'DELETE FROM Booked_Flights WHERE id = :bookingId AND UserId = :userId';
+    $stmt = $connect->prepare($sql);
+    return $stmt->execute([':bookingId' => $bookingId, ':userId' => $userId]);
+}
+
 ?>
