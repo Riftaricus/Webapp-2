@@ -121,7 +121,7 @@ if (count(getFlights()) == 0) {
 
         <section class="flex justifycontentcenter admincreateflightsection">
             <div class="flex justifycontentcenter aligncontentscenter createflightcontainer">
-                <form action="./assets/php/forms/createuserform.php" method="post" id="createflightform" class="flex flexcolumn">
+                <form action="./assets/php/forms/createuserform.php" method="post" id="createaccountform" class="flex flexcolumn">
                     <input type="hidden" name="userid" id="createuserid">
 
                     <label for="username">Username: </label>
