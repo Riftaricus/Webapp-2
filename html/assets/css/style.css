@@ -1066,3 +1066,23 @@ textarea {
 .gap-10 {
   gap: 10px;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e4f4ff95;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bababa;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #5555556d;
+}
