@@ -109,7 +109,10 @@ require_once("assets/php/functions/flights.php");
                         foreach ($userBookedFlights as $booking) {
                             $fromCountry = getCountryNameFromId($booking['From_Country_Id']);
                             $toCountry = getCountryNameFromId($booking['To_Country_Id']);
-                            $duration = $booking['Flight_Duration'];
+
+                            $flight = getFlights($booking['Flight_Id']);
+
+                            $duration = $flight[0]["Flight_Duration"];
                             
                             echo "<div class='booked-flight-item'>";
                             echo "<h4>{$fromCountry} → {$toCountry}</h4>";
