@@ -43,13 +43,12 @@ function bookFlight($id)
     }
 
     global $connect;
-    $sql = 'INSERT INTO Booked_Flights (Flight_Id, Flight_Duration, From_Country_Id, To_Country_Id, UserId)
-    VALUES (:Flight_Id, :Flight_Duration, :From_Country_Id, :To_Country_Id, :UserId)';
+    $sql = 'INSERT INTO Booked_Flights (Flight_Id, From_Country_Id, To_Country_Id, UserId)
+    VALUES (:Flight_Id, :From_Country_Id, :To_Country_Id, :UserId)';
 
     $stmt = $connect->prepare($sql);
     $stmt->execute([
         ':Flight_Id' => $flights[0]['Flight_Id'],
-        ':Flight_Duration' => $flights[0]['Flight_Duration'],
         ':From_Country_Id' => $flights[0]['From_Country_Id'],
         ':To_Country_Id' => $flights[0]['To_Country_Id'],
         ':UserId' => $_SESSION['userId']
