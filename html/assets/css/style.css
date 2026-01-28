@@ -608,6 +608,7 @@ footer {
   padding: 0.5rem;
 }
 
+#createaccountform,
 #createflightform {
   background-color: #737373;
   padding: 0.5rem;
@@ -638,7 +639,7 @@ textarea {
   resize: none;
 }
 
-#contactmessage{
+#contactmessage {
   width: 50vw;
   height: 30vh;
   overflow: hidden;
@@ -647,7 +648,7 @@ textarea {
   padding: 5px;
 }
 
-#contactemail{
+#contactemail {
   width: 50vw;
   height: 5vh;
   border-radius: 20px;
@@ -723,7 +724,7 @@ textarea {
   margin-top: 5vh;
 }
 
-.contactform{
+.contactform {
   gap: 20px;
 
   width: fit-content;
@@ -737,17 +738,17 @@ textarea {
   margin-bottom: 100px;
 }
 
-.reviewtext{
+.reviewtext {
   max-width: 50%;
   justify-self: center;
   overflow-wrap: break-word;
 }
 
-.contactbox{
+.contactbox {
   margin-top: 100px;
   width: fit-content;
   height: fit-content;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   padding: 10px;
   border-radius: 10px;
 }
@@ -794,7 +795,7 @@ textarea {
 
 .bookedflightscontainer {
   flex-direction: column;
-  background-color: #CFDDE0;
+  background-color: #cfdde0;
   padding: 1rem;
   border-radius: 0.5rem;
   outline: 4px outset #737373;
