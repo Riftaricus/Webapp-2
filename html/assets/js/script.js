@@ -104,18 +104,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const menuSection = document.querySelector(".menu-section");
-  const accountToggle = document.getElementById("account-menu-toggle");
+  const accountToggle = Array.from(
+    document.getElementsByClassName("account-menu-toggle"),
+  );
   const menuItems = document.querySelectorAll(".menu-item");
   const submenus = document.querySelectorAll(".menu-submenu");
   const menuClose = document.querySelector(".menu-close");
   const submenuBacks = document.querySelectorAll(".submenu-back");
-
-  if (accountToggle && menuSection) {
-    accountToggle.addEventListener("click", () => {
-      menuSection.style.display = "flex";
-      menuSection.removeAttribute("inert");
-    });
-  }
+  accountToggle.forEach((element) => {
+    if (element && menuSection) {
+      element.addEventListener("click", () => {
+        menuSection.style.display = "flex";
+        menuSection.removeAttribute("inert");
+      });
+    }
+  });
 
   menuItems.forEach((item) => {
     item.addEventListener("click", () => {
