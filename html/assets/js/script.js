@@ -71,7 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchmenu = document.getElementById("searchmenu");
   if (
     window.location.href.includes("searchmenu") &&
-    window.location.href.includes("flights")
+    window.location.href.includes("flights") &&
+    searchmenu
   ) {
     searchmenu.style.display = "flex";
   }
