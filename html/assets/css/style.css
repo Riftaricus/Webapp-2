@@ -9,9 +9,11 @@ body {
   margin: 0;
   padding: 0;
 }
+
 * {
   scroll-behavior: smooth;
 }
+
 .site-header {
   background-color: #cfdde0;
   width: 100%;
@@ -90,6 +92,7 @@ body {
   color: #737373;
 }
 
+.header-menu-btn,
 .header-account-btn {
   background-color: #e6e6e6;
   border: 1px solid #b5b5b5;
@@ -109,6 +112,7 @@ body {
   transform: scale(0.95);
 }
 
+.header-menu-btn .menu-icon,
 .header-account-btn .user-icon {
   width: 24px;
   height: 24px;

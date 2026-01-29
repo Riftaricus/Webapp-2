@@ -1,3 +1,7 @@
+if (window.innerWidth <= 850) {
+  
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const searchmenu = document.getElementById("searchmenu");
@@ -152,7 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Close flight modal when clicking outside or on close button
     if (flightSettingContainer) {
       flightSettingContainer.addEventListener("click", (e) => {
         if (e.target === flightSettingContainer) {
@@ -170,7 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Close user modal when clicking outside or on close button
     if (userSettingContainer) {
       userSettingContainer.addEventListener("click", (e) => {
         if (e.target === userSettingContainer) {
@@ -381,34 +383,29 @@ function showTransactionMenu(flightId) {
   if (transaction) {
     transaction.style.display = "flex";
     transaction.removeAttribute("inert");
-    
-    // Focus the first input for better UX
+
     const firstInput = transaction.querySelector("input:not([type='hidden'])");
     if (firstInput) firstInput.focus();
   }
 }
 
-// Transaction popup - click outside to close & close button
 document.addEventListener("DOMContentLoaded", function() {
   const transactionSection = document.getElementById("transaction");
   const transactionClose = document.querySelector(".transaction-close");
 
   if (transactionSection) {
-    // Click outside to close
     transactionSection.addEventListener("click", (e) => {
       if (e.target === transactionSection) {
         hideTransactionMenu();
       }
     });
 
-    // Close button
     if (transactionClose) {
       transactionClose.addEventListener("click", () => {
         hideTransactionMenu();
       });
     }
 
-    // Escape key to close
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && transactionSection.style.display === "flex") {
         hideTransactionMenu();
@@ -416,7 +413,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Auto-format expiry date input (MM/YY)
   const expiryInput = document.getElementById("baExpiry");
   if (expiryInput) {
     expiryInput.addEventListener("input", (e) => {
@@ -428,7 +424,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Format card number with spaces
   const cardInput = document.getElementById("baCaNum");
   if (cardInput) {
     cardInput.addEventListener("input", (e) => {
