@@ -69,16 +69,17 @@ body {
   scale: 1;
 }
 
+.header-actions-small,
 .header-actions {
   gap: 1rem;
 }
 
-.search-wrapper-small {
+.header-actions-small {
+  margin-top: 0.75rem;
   padding-top: 0.5rem;
   border-top: 2px solid #737373;
 }
 
-.search-wrapper-small,
 .search-wrapper {
   position: relative;
 }

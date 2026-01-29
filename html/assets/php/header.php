@@ -25,7 +25,7 @@ include("assets/php/menu.php");
             <div class="header-actions flex flexrow alignitemscenter gap-25">
                 <?php
                     if ($_SERVER['REQUEST_URI'] === "/flights.php") {
-                        echo '<form class="search-wrapper" method="post" action="assets/php/forms/searchFlights.php">';
+                        echo '<form class="search-wrapper search-wrapper flex flexrow gap-10" method="post" action="assets/php/forms/searchFlights.php">';
                         echo '<select id="searchbar" name="searchbar" class="header-search" placeholder="Search Flights...">';
                         $set = [];
                         foreach (getFlights() as $flight) {
@@ -46,7 +46,7 @@ include("assets/php/menu.php");
 
                     if (str_contains($_SERVER['REQUEST_URI'], "/locations.php")) {
 
-                        echo '<form class="search-wrapper" method="post" action="assets/php/forms/searchLocations.php">';
+                        echo '<form class="search-wrapper search-wrapper flex flexrow gap-10" method="post" action="assets/php/forms/searchLocations.php">';
                         echo '<select id="searchbar" name="searchbar" class="header-search" placeholder="Search Flights...">';
                         $set = [];
                         foreach (getCountries() as $country) {
@@ -64,7 +64,7 @@ include("assets/php/menu.php");
                         echo '</form>';
                     }
                 ?>
-                <button type="button" id="account-menu-toggle" class="header-account-btn">
+                <button type="button" class="header-account-btn account-menu-toggle">
                     <img class="user-icon" src="assets/img/account_icon.png" alt="Account">
                 </button>
             </div>
@@ -92,10 +92,10 @@ include("assets/php/menu.php");
                             <li><a href="/contact.php" class="header-nav-link">Contact</a></li>
                         </ul>
                     </nav>
-                    <div class="header-actions flex flexrow alignitemscenter gap-25">
+                    <div class="header-actions-small flex flexrow alignitemscenter gap-25">
                         <?php
                         if ($_SERVER['REQUEST_URI'] === "/flights.php") {
-                            echo '<form class="search-wrapper-small" method="post" action="assets/php/forms/searchFlights.php">';
+                            echo '<form class="search-wrapper flex flexrow gap-10" method="post" action="assets/php/forms/searchFlights.php">';
                             echo '<select id="searchbar" name="searchbar" class="header-search" placeholder="Search Flights...">';
                             $set = [];
                             foreach (getFlights() as $flight) {
@@ -116,7 +116,7 @@ include("assets/php/menu.php");
 
                         if (str_contains($_SERVER['REQUEST_URI'], "/locations.php")) {
 
-                            echo '<form class="search-wrapper-small" method="post" action="assets/php/forms/searchLocations.php">';
+                            echo '<form class="search-wrapper flex flexrow gap-10" method="post" action="assets/php/forms/searchLocations.php">';
                             echo '<select id="searchbar" name="searchbar" class="header-search" placeholder="Search Flights...">';
                             $set = [];
                             foreach (getCountries() as $country) {
@@ -135,7 +135,7 @@ include("assets/php/menu.php");
                         }
                         ?>
 
-                        <button type="button" id="account-menu-toggle" class="header-account-btn" style="margin-left:16px;">
+                        <button type="button" class="header-account-btn account-menu-toggle" style="margin-left:16px;">
                             <img class="user-icon" src="assets/img/account_icon.png" alt="Account">
                         </button>
                     </div>
