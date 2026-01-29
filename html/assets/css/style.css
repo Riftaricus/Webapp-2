@@ -162,7 +162,7 @@ ul {
 }
 
 a {
-  font-size: 1.25vw;
+  font-size: 1rem;
   text-decoration: none;
   color: white;
 
@@ -821,11 +821,7 @@ header div img {
 
 .flight-meta {
   color: black;
-  font-size: 1rem;
-  font-weight: bold;
-  border: 2px outset #399ddb;
-  padding: 0.5rem 1rem;
-  border-radius: 0.35rem;
+  font-size: 0.85rem;
 }
 
 .paragraftext {
@@ -1433,7 +1429,7 @@ textarea {
 }
 
 .menu a {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #2b2b2b;
   text-decoration: none;
   transition: color 120ms ease;
