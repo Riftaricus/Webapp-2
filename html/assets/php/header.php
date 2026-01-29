@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Soap\Url;
 
@@ -24,7 +24,7 @@ include("assets/php/menu.php");
 
             <div class="header-actions flex flexrow alignitemscenter gap-25">
                 <?php
-                    if ($_SERVER['REQUEST_URI'] === "/flights.php") {
+                    if (str_contains($_SERVER['REQUEST_URI'], "/flights.php")) {
                         echo '<form class="search-wrapper" method="post" action="assets/php/forms/searchFlights.php">';
                         echo '<select id="searchbar" name="searchbar" class="header-search" placeholder="Search Flights...">';
                         $set = [];
@@ -94,7 +94,7 @@ include("assets/php/menu.php");
 
                 <div class="header-actions flex flexrow alignitemscenter gap-25">
                     <?php
-                    if ($_SERVER['REQUEST_URI'] === "/flights.php") {
+                    if (str_contains($_SERVER['REQUEST_URI'], "/flights.php")) {
                         echo '<form class="search-wrapper" method="post" action="assets/php/forms/searchFlights.php">';
                         echo '<select id="searchbar" name="searchbar" class="header-search" placeholder="Search Flights...">';
                         $set = [];
