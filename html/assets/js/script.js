@@ -432,7 +432,7 @@ window.onload = () => {
 
 var reviewIndex = 0;
 
-changeReview(0);
+changeReview(1);
 
 function changeReview(delta) {
   fetch("assets/php/api/get-reviews.php", {
@@ -442,13 +442,14 @@ function changeReview(delta) {
     .then((res) => res.json())
     .then((data) => {
       if (data.success) {
-        reviewIndex++;
+        reviewIndex += delta;
 
-        if (reviewIndex > data.ratings.length) {
+        if (reviewIndex >= data.ratings.length) {
           reviewIndex = 0;
-        } else if (reviewIndex < 0) {
-          reviewIndex = data.ratings.length;
+        } else if (reviewIndex <= 0) {
+          reviewIndex = data.ratings.length - 1;
         }
+
         message = data.ratings[reviewIndex]["Message"];
         rating = data.ratings[reviewIndex]["Rating"];
         if (message) {
