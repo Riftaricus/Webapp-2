@@ -1819,6 +1819,10 @@ textarea {
   position: fixed;
   bottom: 20px;
   gap: 20px;
+  background-color: rgba(149, 149, 149, 0.686);
+  padding: 15px;
+  border-radius: 30px;
+  border: 1px solid black;
 }
 
 .close {
