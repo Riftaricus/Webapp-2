@@ -109,7 +109,7 @@ if (count(getFlights()) == 0) {
                 echo "</a>";
             }
             ?>
-            <a href="flights.php"><img src="assets/img/Close.svg" class="close"></a>
+            <a href="flights.php"><img src="assets/img/Close.svg" class="close" alt="close"></a>
         </section>
 
         <section class="transaction-section flex justifycontentcenter alignitemscenter" id="transaction"

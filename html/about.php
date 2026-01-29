@@ -8,7 +8,7 @@
 <body>
     <?php include './assets/php/header.php' ?>
     <main class="about">
-        <img src="assets/img/airplane.png" class="airplane">
+        <img src="assets/img/airplane.png" class="airplane" alt="airplane">
         <div class="aboutboxleft backgroundcolorcfdde0 flex">
             <div class="line"></div>
             <p class="paragraftext">At Volare Airways, we specialize in making air travel simple, reliable, and
