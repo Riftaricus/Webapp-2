@@ -1,5 +1,5 @@
 <?php
-    include("assets/php/menu.php");
+include("assets/php/menu.php");
 ?>
 
 <header class="site-header">
@@ -19,15 +19,25 @@
         </nav>
 
         <div class="header-actions flex flexrow alignitemscenter gap-25">
-            <div class="search-wrapper">
-                <input type="text" id="searchbar" oninput="showHiddenSearch()" class="header-search"
+            <form class="search-wrapper" method="post" action="assets/php/forms/search.php">
+                <select id="searchbar" name="searchbar" class="header-search"
                     placeholder="Search Flights...">
-                <div id="searchhidden">
-                    <div class="searchbox"></div>
-                    <div class="searchbox"></div>
-                    <div class="searchbox"></div>
-                </div>
-            </div>
+                    <?php 
+                    $set = [];
+                    foreach (getFlights() as $flight) {
+                        $set[] = getCountryNameFromId($flight["To_Country_Id"]);
+                        $set[] = getCountryNameFromId($flight["From_Country_Id"]);
+                    }
+
+                    $set = array_unique($set);
+
+                    foreach ($set as $country) {
+                        echo "<option>" . $country . "</option>";
+                    }
+                    ?>
+                </select>
+                <button type="submit">Search</button>
+            </form>
             <button type="button" id="account-menu-toggle" class="header-account-btn">
                 <img class="user-icon" src="assets/img/account_icon.png" alt="Account">
             </button>

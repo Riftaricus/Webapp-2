@@ -9,7 +9,7 @@ $password = isset($_POST['password']) ? (string) $_POST['password'] : '';
 $confirm = isset($_POST['confirm']) ? (string) $_POST['confirm'] : '';
 
 if ($username !== '' && $password !== '' && $confirm !== '') {
-    $isValid = (strlen($username) >= 3) && (strlen($password) >= 6) && ($password === $confirm);
+    $isValid = (strlen($username) >= 3) && (strlen($password) <= 45) && ($password === $confirm);
 
     if ($isValid) {
         $existing = runLoginSQL($username);

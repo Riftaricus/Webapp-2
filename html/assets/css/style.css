@@ -9,7 +9,9 @@ body {
   margin: 0;
   padding: 0;
 }
-
+* {
+  scroll-behavior: smooth;
+}
 .site-header {
   background-color: #cfdde0;
   width: 100%;
@@ -74,7 +76,9 @@ body {
   color: #2b2b2b;
   outline: none;
   width: 180px;
-  transition: border-color 120ms ease, width 200ms ease;
+  transition:
+    border-color 120ms ease,
+    width 200ms ease;
 }
 
 .header-search:focus {
@@ -92,7 +96,9 @@ body {
   border-radius: 0.35rem;
   padding: 0.4rem;
   cursor: pointer;
-  transition: background-color 120ms ease, transform 120ms ease;
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease;
 }
 
 .header-account-btn:hover {
@@ -530,7 +536,9 @@ header div img {
   border: 1px solid #b5b5b5;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: background-color 120ms ease, transform 120ms ease;
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease;
 }
 
 .admin-btn-primary {
@@ -593,7 +601,10 @@ header div img {
   padding: 0.75rem;
   min-width: 180px;
   cursor: pointer;
-  transition: background-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease,
+    box-shadow 120ms ease;
 }
 
 .admin-item:hover {
@@ -843,7 +854,10 @@ header div img {
   font-weight: bold;
   letter-spacing: 0.5px;
   cursor: pointer;
-  transition: background-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease,
+    box-shadow 120ms ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
@@ -885,7 +899,7 @@ header div img {
   margin-top: 5vh;
   width: fit-content;
   min-width: 350px;
-  background-color: #B5B5B5;
+  background-color: #b5b5b5;
   color: #2b2b2b;
   padding: 1.5rem;
   border-radius: 0.5rem;
@@ -908,7 +922,9 @@ header div img {
   color: white;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: background-color 120ms ease, transform 120ms ease;
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease;
 }
 
 .reviewform input[type="submit"]:hover {
@@ -948,7 +964,7 @@ header div img {
 }
 
 .nextreview:hover {
-  background-color: #B5B5B5;
+  background-color: #b5b5b5;
 }
 
 .nextreview img {
@@ -961,7 +977,7 @@ header div img {
   width: 50vw;
   max-width: 500px;
   min-height: 15rem;
-  background-color: #B5B5B5;
+  background-color: #b5b5b5;
   border-radius: 0.5rem;
   outline: 4px outset #737373;
   padding: 1.5rem;
@@ -973,7 +989,7 @@ header div img {
 }
 
 .rating-section {
-  background-color: #B5B5B5;
+  background-color: #b5b5b5;
   padding: 1.5rem;
   border-radius: 0.5rem;
   outline: 4px outset #737373;
@@ -1078,7 +1094,9 @@ header div img {
   color: white;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: background-color 120ms ease, transform 120ms ease;
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease;
 }
 
 .submit-btn:hover {
@@ -1248,7 +1266,9 @@ textarea {
   color: white;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: background-color 120ms ease, transform 120ms ease;
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease;
 }
 
 .contactform button[type="submit"]:hover {
@@ -1407,7 +1427,9 @@ textarea {
   padding: 0.5rem 0.75rem;
   border-radius: 0.35rem;
   border: 1px solid #b5b5b5;
-  transition: background-color 120ms ease, transform 120ms ease;
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease;
 }
 
 .menu-close:hover,
@@ -1528,7 +1550,9 @@ textarea {
   color: white;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: background-color 120ms ease, transform 120ms ease;
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease;
 }
 
 .submenu-btn:hover {
@@ -1578,7 +1602,9 @@ textarea {
   color: white;
   font-size: 0.75rem;
   cursor: pointer;
-  transition: background-color 120ms ease, transform 120ms ease;
+  transition:
+    background-color 120ms ease,
+    transform 120ms ease;
 }
 
 .cancel-booking-btn:hover {
@@ -1681,4 +1707,15 @@ textarea {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #5555556d;
+}
+
+#searchmenu {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  gap: 20px;
+}
+
+.close {
+  width: 50px;
 }

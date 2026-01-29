@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  const searchmenu = document.getElementById("searchmenu");
+  if (window.location.href.includes("searchmenu") && window.location.href.includes("flights")){
+    searchmenu.style.display = "flex"
+  }
+
   const slogan = document.getElementById("slogan");
 
   if (Math.random() > 0.95) {
@@ -446,3 +452,4 @@ function updateCounter() {
 
   counter.textContent = amountOfChars + "/1000";
 }
+

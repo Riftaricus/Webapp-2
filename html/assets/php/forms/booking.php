@@ -20,7 +20,7 @@ $flightId = (int) $_POST['flight_id'];
         }
 
         // Run on page load
-        window.onload = showTransaction;
+        window.onload = showTransaction();
     </script>
 </head>
 

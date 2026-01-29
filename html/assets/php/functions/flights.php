@@ -113,6 +113,26 @@ function getFlights($id = null)
     return $result;
 }
 
+function getFlightFromName(string $flight_name){
+    global $connect;
+    $sql = 'SELECT * FROM Available_Flights WHERE Flight_Name = :flight_name';
+    $stmt = $connect->prepare($sql);
+    $stmt->execute([':flight_name'=> $flight_name]);
+    $result = $stmt->fetchAll();
+    return $result;
+}
+
+function getFlightFromCountry(string $country){
+    global $connect;
+
+    $country = getCountryIdFromName($country);
+    $sql = 'SELECT * FROM Available_Flights WHERE From_Country_Id = :country OR To_Country_Id = :country';
+    $stmt = $connect->prepare($sql);
+    $stmt->execute([':country'=> $country]);
+    $result = $stmt->fetchAll();
+    return $result;
+}
+
 function editFlight($cost, $duration, $id)
 {
     if (!is_numeric($cost) || !is_numeric($duration) || !is_numeric($id)) {
