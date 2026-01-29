@@ -37,7 +37,6 @@ require_once("assets/php/functions/user.php");
         if ($total > 0):
             $number = isset($_GET['comment']) ? (int) $_GET['comment'] : 0;
 
-            // Wrap around
             if ($number < 0) {
                 $number = $total - 1;
             }
