@@ -12,9 +12,10 @@
                 <li><a href="/flights.php">Flights</a></li>
                 <li><a href="/about.php">About Us</a></li>
                 <li><a href="/reviews.php">Reviews</a></li>
+                <li><a href="/contact.php">Contact</a></li>
                 <?php
-                    if (isset($_SESSION['isAdmin']) and $_SESSION['isAdmin'] === true and isUserAdmin($_SESSION['username']))
-                        echo "<li><a href='/admin.php'>Admin</a></li>";
+                if (isset($_SESSION['isAdmin']) and $_SESSION['isAdmin'] === true and isUserAdmin($_SESSION['username']))
+                    echo "<li><a href='/admin.php'>Admin</a></li>";
                 ?>
             </ul>
         </div>
@@ -22,8 +23,8 @@
         <div class="footer-section">
             <h3>Contact Us</h3>
             <ul>
-                <li>Email: Volare@vola.com</li>
-                <li>Tel: +1 505-646-7257</li>
+                <li><a href="mailto:Volare@vola.com">Email: Volare@vola.com</a></li>
+                <li><a href="tel:+15056467257">Tel: +1 505-646-7257</a></li>
                 <li><a href="/contact.php">Send a Message</a></li>
             </ul>
         </div>

@@ -18,7 +18,7 @@ require_once("assets/php/functions/user.php");
             <div class="flex flexrow gap-25" id="star-container">
                 <?php
                 for ($i = 0; $i < 5; $i++) {
-                    echo "<img src='assets/img/empty_star.png' class='star' data-index='$i' style='cursor: pointer;'>";
+                    echo "<img src='assets/img/empty_star.png' class='star' data-index='$i' style='cursor: pointer;' alt='full star'>";
                 }
                 ?>
             </div>
@@ -64,7 +64,7 @@ require_once("assets/php/functions/user.php");
                                     ? 'assets/img/star.png'
                                     : 'assets/img/empty_star.png';
 
-                                echo "<img src='$img' class='ratingstar'>";
+                                echo "<img src='$img' class='ratingstar'> alt='star'";
                             }
                             ?>
                         </div>
@@ -93,9 +93,9 @@ require_once("assets/php/functions/user.php");
 
                 for ($i = 0; $i < 5; $i++) {
                     if ($i < $rating) {
-                        echo "<img src='assets/img/star.png' class='averagestar'>";
+                        echo "<img src='assets/img/star.png' class='averagestar' alt='full star'>";
                     } else {
-                        echo "<img src='assets/img/empty_star.png' class='averagestar'>";
+                        echo "<img src='assets/img/empty_star.png' class='averagestar' alt='star'>";
                     }
                 }
                 ?>
