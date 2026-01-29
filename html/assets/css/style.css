@@ -1695,7 +1695,7 @@ textarea {
   padding: 3rem;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   line-height: 1.7;
   color: #333;
 }
