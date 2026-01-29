@@ -6,7 +6,7 @@ include("assets/php/menu.php");
 ?>
 
 <header class="site-header">
-    <div class="big-header">
+    <div class="big-header" id="big-header">
         <div class="header-container flex justifycontentspacebetween alignitemscenter">
             <a href="/index.php" class="header-logo">
                 <h1>Volare Airways</h1>
@@ -71,7 +71,7 @@ include("assets/php/menu.php");
         </div>
     </div>
 
-    <div class="small-header">
+    <div class="small-header" id="small-header">
         <div class="header-container flex justifycontentspacebetween alignitemscenter">
             <a href="/index.php" class="header-logo">
                 <h1>Volare Airways</h1>

@@ -33,12 +33,34 @@ if (window.innerWidth <= 850) {
   });
 }
 
+function hideMenu() {
+  const popdown = document.getElementById("popdown-menu");
+
+  popdown.style.display = "none";
+}
+
+function showMenu() {
+  const popdown = document.getElementById("popdown-menu");
+
+  popdown.style.display = "flex";
+}
+
+function toggleMenu() {
+  const popdown = document.getElementById("popdown-menu");
+
+  if (popdown.style.display == "none") {
+    showMenu();
+  } else {
+    hideMenu();
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   screenWidth = window.screen.width;
 
-  const phoneHeader = document.getElementById("phoneHeader");
+  const phoneHeader = document.getElementById("small-header");
 
-  const normalHeader = document.getElementById("normalHeader");
+  const normalHeader = document.getElementById("big-header");
 
   if (screenWidth > 750) {
     phoneHeader.remove();
