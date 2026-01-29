@@ -430,19 +430,46 @@ window.onload = () => {
   }
 };
 
+var reviewIndex = 0;
+
+changeReview(0);
+
 function changeReview(delta) {
-  const params = new URLSearchParams(window.location.search);
-  let index = parseInt(params.get("comment")) || 0;
+  fetch("assets/php/api/get-reviews.php", {
+    method: "GET",
+    credentials: "include",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success) {
+        reviewIndex++;
 
-  if (index + delta >= total) {
-    index = 0;
-    delta = 0;
-  }
-  if (index + delta < 0) {
-    index = total;
-  }
+        if (reviewIndex > data.ratings.length) {
+          reviewIndex = 0;
+        } else if (reviewIndex < 0) {
+          reviewIndex = data.ratings.length;
+        }
 
-  window.location.href = `/reviews.php?comment=${index + delta}#review`;
+        message = data.ratings[reviewIndex]["Message"];
+        rating = data.ratings[reviewIndex]["Rating"];
+
+        const reviewmessage = document.getElementById("reviewmessage");
+        reviewmessage.innerText = message;
+
+        const stars = document.querySelectorAll(".reviewstar");
+
+        stars.forEach((star, index) => {
+          if (index + 1 <= rating){
+            star.src = "assets/img/star.png"
+          } else{
+            star.src = "assets/img/empty_star.png"
+          }
+        })
+
+      } else {
+        console.error(data.error);
+      }
+    });
 }
 
 function hideTransactionMenu() {
