@@ -10,16 +10,22 @@ if (window.innerWidth <= 850) {
         menuOpen = !menuOpen;
         if (menuOpen) {
           menu.style.display = "block";
-          setTimeout(() => { menu.style.opacity = 1; }, 10);
+          setTimeout(() => {
+            menu.style.opacity = 1;
+          }, 10);
         } else {
           menu.style.opacity = 0;
-          setTimeout(() => { menu.style.display = "none"; }, 200);
+          setTimeout(() => {
+            menu.style.display = "none";
+          }, 200);
         }
       });
       document.addEventListener("click", function (e) {
         if (menuOpen && !menu.contains(e.target) && e.target !== menuToggle) {
           menu.style.opacity = 0;
-          setTimeout(() => { menu.style.display = "none"; }, 200);
+          setTimeout(() => {
+            menu.style.display = "none";
+          }, 200);
           menuOpen = false;
         }
       });
@@ -28,9 +34,24 @@ if (window.innerWidth <= 850) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  screenWidth = window.screen.width;
+
+  const phoneHeader = document.getElementById("phoneHeader");
+
+  const normalHeader = document.getElementById("normalHeader");
+
+  if (screenWidth > 750) {
+    phoneHeader.remove();
+  } else {
+    normalHeader.remove();
+  }
+
   const searchmenu = document.getElementById("searchmenu");
-  if (window.location.href.includes("searchmenu") && window.location.href.includes("flights")) {
-    searchmenu.style.display = "flex"
+  if (
+    window.location.href.includes("searchmenu") &&
+    window.location.href.includes("flights")
+  ) {
+    searchmenu.style.display = "flex";
   }
 
   const slogan = document.getElementById("slogan");
@@ -77,7 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
   menuItems.forEach((item) => {
     item.addEventListener("click", () => {
       const submenuId = item.dataset.submenu;
-      const submenu = document.querySelector(`[data-submenu-id="${submenuId}"]`);
+      const submenu = document.querySelector(
+        `[data-submenu-id="${submenuId}"]`,
+      );
 
       submenus.forEach((sm) => sm.classList.remove("active"));
 
@@ -118,7 +141,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Show/hide confirm password field based on password input
   const settingsPasswordInput = document.getElementById("settings-password");
-  const confirmPasswordContainer = document.querySelector(".settings-confirm-password-container");
+  const confirmPasswordContainer = document.querySelector(
+    ".settings-confirm-password-container",
+  );
 
   if (settingsPasswordInput && confirmPasswordContainer) {
     settingsPasswordInput.addEventListener("input", () => {
@@ -187,7 +212,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      const flightCloseBtn = flightSettingContainer.querySelector(".admin-modal-close");
+      const flightCloseBtn =
+        flightSettingContainer.querySelector(".admin-modal-close");
       if (flightCloseBtn) {
         flightCloseBtn.addEventListener("click", () => {
           flightSettingContainer.setAttribute("inert", "");
@@ -201,19 +227,25 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target === userSettingContainer) {
           userSettingContainer.setAttribute("inert", "");
           userSettingContainer.style.display = "none";
-          const bookedFlightsContainer = document.querySelector(".bookedflightscontainer");
+          const bookedFlightsContainer = document.querySelector(
+            ".bookedflightscontainer",
+          );
           if (bookedFlightsContainer) {
             bookedFlightsContainer.style.display = "none";
           }
         }
       });
 
-      const userCloseBtn = userSettingContainer.querySelector(".admin-modal-close:not(.booked-close)");
+      const userCloseBtn = userSettingContainer.querySelector(
+        ".admin-modal-close:not(.booked-close)",
+      );
       if (userCloseBtn) {
         userCloseBtn.addEventListener("click", () => {
           userSettingContainer.setAttribute("inert", "");
           userSettingContainer.style.display = "none";
-          const bookedFlightsContainer = document.querySelector(".bookedflightscontainer");
+          const bookedFlightsContainer = document.querySelector(
+            ".bookedflightscontainer",
+          );
           if (bookedFlightsContainer) {
             bookedFlightsContainer.style.display = "none";
           }
@@ -470,4 +502,3 @@ function updateCounter() {
 
   counter.textContent = amountOfChars + "/1000";
 }
-
