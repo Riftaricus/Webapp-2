@@ -449,23 +449,22 @@ function changeReview(delta) {
         } else if (reviewIndex < 0) {
           reviewIndex = data.ratings.length;
         }
-
         message = data.ratings[reviewIndex]["Message"];
         rating = data.ratings[reviewIndex]["Rating"];
+        if (message) {
+          const reviewmessage = document.getElementById("reviewmessage");
+          reviewmessage.innerText = message;
 
-        const reviewmessage = document.getElementById("reviewmessage");
-        reviewmessage.innerText = message;
+          const stars = document.querySelectorAll(".reviewstar");
 
-        const stars = document.querySelectorAll(".reviewstar");
-
-        stars.forEach((star, index) => {
-          if (index + 1 <= rating){
-            star.src = "assets/img/star.png"
-          } else{
-            star.src = "assets/img/empty_star.png"
-          }
-        })
-
+          stars.forEach((star, index) => {
+            if (index + 1 <= rating) {
+              star.src = "assets/img/star.png";
+            } else {
+              star.src = "assets/img/empty_star.png";
+            }
+          });
+        }
       } else {
         console.error(data.error);
       }
