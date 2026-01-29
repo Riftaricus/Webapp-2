@@ -452,8 +452,8 @@ function changeReview(delta) {
 
         message = data.ratings[reviewIndex]["Message"];
         rating = data.ratings[reviewIndex]["Rating"];
-        if (message) {
-          const reviewmessage = document.getElementById("reviewmessage");
+        const reviewmessage = document.getElementById("reviewmessage");
+        if (reviewmessage) {
           reviewmessage.innerText = message;
 
           const stars = document.querySelectorAll(".reviewstar");
