@@ -135,7 +135,7 @@ include("assets/php/menu.php");
                         }
                         ?>
 
-                        <button type="button" class="header-account-btn account-menu-toggle" style="margin-left:16px;">
+                        <button type="button" class="header-account-btn account-menu-toggle">
                             <img class="user-icon" src="assets/img/account_icon.png" alt="Account">
                         </button>
                     </div>

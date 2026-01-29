@@ -53,10 +53,6 @@ if (count(getFlights()) == 0) {
                     echo '
                     <div class="rightflightbox flex flexrow">
                         <div class="rightflightboxsecondary flex flexrow justifycontentspaceevenly alignitemscenter" id="' . $flight["Flight_Id"] . '">
-                            <div class="flight-meta">
-                                <div>Cost: $' . htmlspecialchars((string) $flight['Flight_Cost']) . '</div>
-                                <div>Duration: ' . htmlspecialchars((string) $flight['Flight_Duration']) . 'h</div>
-                            </div>
                             <form method="post" action="/assets/php/forms/booking.php">
                                 <input type="hidden" name="flight_id" value="' . $flight["Flight_Id"] . '">
                                 <button type="submit" class="green-button">
