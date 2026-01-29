@@ -1,16 +1,39 @@
 if (window.innerWidth <= 850) {
-  
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("header-menu-toggle");
+    const menu = document.getElementById("popdown-menu");
+    let menuOpen = false;
+
+    if (menuToggle && menu) {
+      menuToggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        menuOpen = !menuOpen;
+        if (menuOpen) {
+          menu.style.display = "block";
+          setTimeout(() => { menu.style.opacity = 1; }, 10);
+        } else {
+          menu.style.opacity = 0;
+          setTimeout(() => { menu.style.display = "none"; }, 200);
+        }
+      });
+      document.addEventListener("click", function (e) {
+        if (menuOpen && !menu.contains(e.target) && e.target !== menuToggle) {
+          menu.style.opacity = 0;
+          setTimeout(() => { menu.style.display = "none"; }, 200);
+          menuOpen = false;
+        }
+      });
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const searchmenu = document.getElementById("searchmenu");
-  if (window.location.href.includes("searchmenu") && window.location.href.includes("flights")){
+  if (window.location.href.includes("searchmenu") && window.location.href.includes("flights")) {
     searchmenu.style.display = "flex"
   }
 
   const slogan = document.getElementById("slogan");
-
   if (Math.random() > 0.95) {
     slogan.innerText = "We Bring You to Your Nightmares";
   }
@@ -55,9 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
     item.addEventListener("click", () => {
       const submenuId = item.dataset.submenu;
       const submenu = document.querySelector(`[data-submenu-id="${submenuId}"]`);
-      
+
       submenus.forEach((sm) => sm.classList.remove("active"));
-      
+
       if (submenu) {
         submenu.classList.add("active");
       }
@@ -96,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Show/hide confirm password field based on password input
   const settingsPasswordInput = document.getElementById("settings-password");
   const confirmPasswordContainer = document.querySelector(".settings-confirm-password-container");
-  
+
   if (settingsPasswordInput && confirmPasswordContainer) {
     settingsPasswordInput.addEventListener("input", () => {
       if (settingsPasswordInput.value.length > 0) {
@@ -389,7 +412,7 @@ function showTransactionMenu(flightId) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const transactionSection = document.getElementById("transaction");
   const transactionClose = document.querySelector(".transaction-close");
 
