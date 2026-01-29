@@ -3,7 +3,7 @@ require_once("assets/php/functions/locations.php");
 require_once("assets/php/functions/flights.php");
 
 if (count(getFlights()) == 0) {
-    generateRandomFlight(amount: 42);
+    generateRandomFlight(amount: 84);
 }
 ?>
 
@@ -109,7 +109,6 @@ if (count(getFlights()) == 0) {
                 echo "</a>";
             }
             ?>
-
             <a href="flights.php"><img src="assets/img/Close.svg" class="close"></a>
         </section>
 

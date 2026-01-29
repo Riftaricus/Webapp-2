@@ -12,7 +12,7 @@ $flights = getFlights();
 $accounts = getAccounts();
 
 if (count(getFlights()) == 0) {
-    generateRandomFlight(amount: 42);
+    generateRandomFlight(amount: 84);
 }
 
 ?>

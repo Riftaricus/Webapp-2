@@ -23,7 +23,7 @@ require_once("assets/php/functions/locations.php");
                 $i = 0;
                 echo '
                 <div class="leftflightbox flex flexrow">
-                    <div class="leftflightboxmain flex alignitemscenter justifycontentcenter">
+                    <div class="leftflightboxmain flex alignitemscenter justifycontentcenter" id="' . $location["Country_Id"] . '">
                         <h1>' . htmlspecialchars($location["Country_Name"]) . '</h1>
                     </div>
                     <div class="leftflightboxsecondary flex flexcolumn justifycontentcenter">
@@ -34,7 +34,7 @@ require_once("assets/php/functions/locations.php");
                 $i = 1;
                 echo '
                 <div class="rightflightbox flex flexrow">
-                    <div class="rightflightboxsecondary flex flexcolumn justifycontentcenter">
+                    <div class="rightflightboxsecondary flex flexcolumn justifycontentcenter" id="' . $location["Country_Id"] . '">
                         <h2>' . htmlspecialchars($location["Country_Description"]) . '</h2>
                     </div>
                     <div class="rightflightboxmain flex alignitemscenter justifycontentcenter">
