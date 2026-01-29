@@ -31,8 +31,8 @@
         <div class="footer-section">
             <h3>Legal</h3>
             <ul>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
+                <li><a href="/legal.php#pp">Privacy Policy</a></li>
+                <li><a href="/legal.php#tos">Terms of Service</a></li>
             </ul>
         </div>
     </div>

@@ -27,10 +27,14 @@ if (count(getFlights()) == 0) {
                     $i = 0;
                     echo '
                     <div class="leftflightbox flex flexrow">
-                        <div class="leftflightboxmain">
+                        <div class="leftflightboxmain flex justifycontentcenter alignitemscenter flexcolumn">
                             <h2>
                                 ' . getCountryNameFromId($flight['From_Country_Id']) . ' → ' . getCountryNameFromId($flight['To_Country_Id']) . '
                             </h2>
+                            <div class="flight-meta flex flexrow gap-10">
+                                <div>Cost: $' . htmlspecialchars((string) $flight['Flight_Cost']) . '</div>
+                                <div>Duration: ' . htmlspecialchars((string) $flight['Flight_Duration']) . 'h</div>
+                            </div>
                         </div>
 
                         <div class="leftflightboxsecondary flex flexrow justifycontentspaceevenly alignitemscenter" id="' . $flight["Flight_Id"] . '">
@@ -40,10 +44,6 @@ if (count(getFlights()) == 0) {
                                     Book Flight
                                 </button>
                             </form>
-                            <div class="flight-meta">
-                                <div>Cost: $' . htmlspecialchars((string) $flight['Flight_Cost']) . '</div>
-                                <div>Duration: ' . htmlspecialchars((string) $flight['Flight_Duration']) . 'h</div>
-                            </div>
                         </div>
                     </div>';
                     break;
@@ -65,10 +65,14 @@ if (count(getFlights()) == 0) {
                             </form>
                         </div>
 
-                        <div class="rightflightboxmain">
+                        <div class="rightflightboxmain  flex justifycontentcenter alignitemscenter flexcolumn">
                             <h2>
                                 <strong>' . getCountryNameFromId($flight['From_Country_Id']) . '</strong> → <strong>' . getCountryNameFromId($flight['To_Country_Id']) . '</strong>
                             </h2>
+                            <div class="flight-meta flex flexrow gap-10">
+                                <div>Cost: $' . htmlspecialchars((string) $flight['Flight_Cost']) . '</div>
+                                <div>Duration: ' . htmlspecialchars((string) $flight['Flight_Duration']) . 'h</div>
+                            </div>
                         </div>
                     </div>';
                     break;
