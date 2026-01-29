@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const slogan = document.getElementById("slogan");
-  if (Math.random() > 0.95) {
+  if (Math.random() > 0.95 && slogan) {
     slogan.innerText = "We Bring You to Your Nightmares";
   }
 
