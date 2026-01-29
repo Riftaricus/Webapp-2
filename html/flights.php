@@ -21,14 +21,13 @@ if (count(getFlights()) == 0) {
         $i = 1;
         $flights = getFlights();
 
-        if (isset($_GET['flightid'])) {
-
-            $id = $_GET['flightid'];
+        if (isset($_GET['searchmenu'])) {
+            $id = $_GET['searchmenu'];
         }
 
         foreach ($flights as $flight) {
-            if (isset($_GET['flightid'])) {
-                if ($flight['Flight_Id'] != $id) {
+            if (isset($_GET['searchmenu'])) {
+                if ($flight['From_Country_Id'] != $id && $flight['To_Country_Id'] != $id) {
                     continue;
                 }
             }
@@ -84,6 +83,7 @@ if (count(getFlights()) == 0) {
                     break;
             }
         }
+
         ?>
         </section>
 
