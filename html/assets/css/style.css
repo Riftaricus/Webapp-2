@@ -945,7 +945,7 @@ header div img {
 .reviewform {
   margin-top: 5vh;
   width: fit-content;
-  min-width: 350px;
+  min-width: 275px;
   background-color: #b5b5b5;
   color: #2b2b2b;
   padding: 1.5rem;
@@ -1289,7 +1289,7 @@ textarea {
 .contactform {
   gap: 1rem;
   width: fit-content;
-  min-width: 350px;
+  min-width: 275px;
   padding: 1.5rem;
   background-color: #cfdde0;
   margin-top: 2rem;

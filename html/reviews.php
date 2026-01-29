@@ -64,7 +64,7 @@ require_once("assets/php/functions/user.php");
                                     ? 'assets/img/star.png'
                                     : 'assets/img/empty_star.png';
 
-                                echo "<img src='$img' class='ratingstar'> alt='star'";
+                                echo "<img src='$img' class='ratingstar' alt='star'>";
                             }
                             ?>
                         </div>
