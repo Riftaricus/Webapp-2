@@ -17,8 +17,18 @@ require_once("assets/php/functions/locations.php");
 
         $locations = getLocations();
 
+        $id = $_GET['searchmenu'] ?? null;
+
+        if ($id !== null) {
+            $id = getCountryIdFromName($id);
+        }
 
         foreach ($locations as $location) {
+            if ($location['Country_Id'] !== $id) {
+                if ($id !== null) {
+                    continue;
+                }
+            }
             if ($i == 1) {
                 $i = 0;
                 echo '

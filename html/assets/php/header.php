@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 use Soap\Url;
 
@@ -24,45 +24,47 @@ include("assets/php/menu.php");
 
             <div class="header-actions flex flexrow alignitemscenter gap-25">
                 <?php
-                    if (str_contains($_SERVER['REQUEST_URI'], "/flights.php")) {
-                        echo '<form class="search-wrapper search-wrapper flex flexrow gap-10" method="post" action="assets/php/forms/searchFlights.php">';
-                        echo '<select id="searchbar" name="searchbar" class="header-search" placeholder="Search Flights...">';
-                        $set = [];
-                        foreach (getFlights() as $flight) {
-                            $set[] = getCountryNameFromId($flight["To_Country_Id"]);
-                            $set[] = getCountryNameFromId($flight["From_Country_Id"]);
-                        }
+                if (str_contains($_SERVER['REQUEST_URI'], "/flights.php")) {
+                    echo '<form class="search-wrapper search-wrapper flex flexrow gap-10" method="post" action="assets/php/forms/searchFlights.php">';
+                    echo '<select id="searchbar" name="searchbar" class="header-search" placeholder="Search Flights...">';
+                    $set = [];
+                    foreach (getFlights() as $flight) {
+                        $set[] = getCountryNameFromId($flight["To_Country_Id"]);
+                        $set[] = getCountryNameFromId($flight["From_Country_Id"]);
+                    }
 
                     $set = array_unique($set);
 
-                        foreach ($set as $country) {
-                            echo "<option>" . $country . "</option>";
-                        }
-
-                        echo "</select>";
-                        echo "<button type='submit' class='header-account-btn'><img class='user-icon' src='assets/img/search.svg' alt='search'></button>";
-                        echo '</form>';
+                    foreach ($set as $country) {
+                        $selected = ($_GET['searchmenu'] == $country) ? 'selected' : '';
+                        echo "<option value='{$country}' {$selected}>" . $country . "</option>";
                     }
 
-                    if (str_contains($_SERVER['REQUEST_URI'], "/locations.php")) {
+                    echo "</select>";
+                    echo "<button type='submit' class='header-account-btn'><img class='user-icon' src='assets/img/search.svg' alt='search'></button>";
+                    echo '</form>';
+                }
 
-                        echo '<form class="search-wrapper search-wrapper flex flexrow gap-10" method="post" action="assets/php/forms/searchLocations.php">';
-                        echo '<select id="searchbar" name="searchbar" class="header-search" placeholder="Search Flights...">';
-                        $set = [];
-                        foreach (getCountries() as $country) {
-                            $set[] = $country['Country_Name'];
-                        }
+                if (str_contains($_SERVER['REQUEST_URI'], "/locations.php")) {
 
-                        $set = array_unique($set);
-
-                        foreach ($set as $country) {
-                            echo "<option>" . $country . "</option>";
-                        }
-
-                        echo "</select>";
-                        echo "<button type='submit' class='header-account-btn'><img class='user-icon' src='assets/img/search.svg' alt='search'></button>";
-                        echo '</form>';
+                    echo '<form class="search-wrapper search-wrapper flex flexrow gap-10" method="post" action="assets/php/forms/searchLocations.php">';
+                    echo '<select id="searchbar" name="searchbar" class="header-search" placeholder="Search Flights...">';
+                    $set = [];
+                    foreach (getCountries() as $country) {
+                        $set[] = $country['Country_Name'];
                     }
+
+                    $set = array_unique($set);
+
+                    foreach ($set as $country) {
+                        $selected = ($_GET['searchmenu'] == $country) ? 'selected' : '';
+                        echo "<option value='{$country}' {$selected}>" . $country . "</option>";
+                    }
+
+                    echo "</select>";
+                    echo "<button type='submit' class='header-account-btn'><img class='user-icon' src='assets/img/search.svg' alt='search'></button>";
+                    echo '</form>';
+                }
                 ?>
                 <button type="button" class="header-account-btn account-menu-toggle">
                     <img class="user-icon" src="assets/img/account_icon.png" alt="Account">
@@ -106,7 +108,8 @@ include("assets/php/menu.php");
                             $set = array_unique($set);
 
                             foreach ($set as $country) {
-                                echo "<option>" . $country . "</option>";
+                                $selected = ($_GET['searchbar'] == $country) ? 'selected' : '';
+                                echo "<option value='{$country}' {$selected}>" . $country . "</option>";
                             }
 
                             echo "</select>";
@@ -126,7 +129,8 @@ include("assets/php/menu.php");
                             $set = array_unique($set);
 
                             foreach ($set as $country) {
-                                echo "<option>" . $country . "</option>";
+                                $selected = ($_GET['searchmenu'] == $country) ? 'selected' : '';
+                                echo "<option value='{$country}' {$selected}>" . $country . "</option>";
                             }
 
                             echo "</select>";
