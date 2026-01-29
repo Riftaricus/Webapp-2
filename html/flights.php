@@ -21,7 +21,17 @@ if (count(getFlights()) == 0) {
         $i = 1;
         $flights = getFlights();
 
+        if (isset($_GET['flightid'])) {
+
+            $id = $_GET['flightid'];
+        }
+
         foreach ($flights as $flight) {
+            if (isset($_GET['flightid'])) {
+                if ($flight['Flight_Id'] != $id) {
+                    continue;
+                }
+            }
             switch ($i) {
                 case 1:
                     $i = 0;
@@ -75,37 +85,6 @@ if (count(getFlights()) == 0) {
             }
         }
         ?>
-
-        <section class="flex justifycontentcenter alignitemscenter" id="searchmenu">
-            <?php
-
-            $id = $_GET['searchmenu'];
-
-            $set = [];
-
-            foreach (getFlights() as $flight) {
-                if ($flight['From_Country_Id'] == $id) {
-                    $set[] = $flight;
-                }
-                if ($flight['To_Country_Id'] == $id) {
-                    $set[] = $flight;
-                }
-            }
-
-            foreach ($set as $flight) {
-                $fromCountry = getCountryNameFromId($flight['From_Country_Id']);
-                $toCountry = getCountryNameFromId($flight['To_Country_Id']);
-
-                $duration = $flight["Flight_Duration"];
-                $flightId = $flight['Flight_Id'];
-
-                echo "<a class='booked-flight-item' href='#" . $flightId . "'>";
-                echo "<h4>{$fromCountry} → {$toCountry}</h4>";
-                echo "<p>Duration: {$duration} Hours</p>";
-                echo "</a>";
-            }
-            ?>
-            <a href="flights.php"><img src="assets/img/Close.svg" class="close" alt="close"></a>
         </section>
 
         <section class="transaction-section flex justifycontentcenter alignitemscenter" id="transaction"

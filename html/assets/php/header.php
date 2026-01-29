@@ -35,8 +35,10 @@ include("assets/php/menu.php");
 
                     $set = array_unique($set);
 
+                    $countryName = getCountryNameFromId($_GET["searchmenu"]);
+
                     foreach ($set as $country) {
-                        $selected = ($_GET['searchmenu'] == $country) ? 'selected' : '';
+                        $selected = ($countryName == $country) ? 'selected' : '';
                         echo "<option value='{$country}' {$selected}>" . $country . "</option>";
                     }
 
