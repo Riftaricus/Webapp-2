@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Jan 26, 2026 at 12:51 PM
+-- Generation Time: Jan 29, 2026 at 07:08 PM
 -- Server version: 8.4.7
 -- PHP Version: 8.3.29
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `Flights`
 --
+CREATE DATABASE IF NOT EXISTS `Flights` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `Flights`;
 
 -- --------------------------------------------------------
 
@@ -43,9 +45,11 @@ CREATE TABLE `Account_Data` (
 
 INSERT INTO `Account_Data` (`UserId`, `Username`, `Password`, `CreationDate`, `Language`, `Person_Id`, `IsAdmin`) VALUES
 (16, 'Max', '$2y$12$IoQrIWYcG.FsXrOvSsMUUu1cqQE473jQdXDRXJAGhOowNmsgQTYs2', '2026-01-15', 'EN', -1, 1),
-(17, 'Root', '$2y$12$IoQrIWYcG.FsXrOvSsMUUu1cqQE473jQdXDRXJAGhOowNmsgQTYs2', '2026-01-21', 'EN', -1, 1),
-(18, 'admin', '$2y$12$GNrHhsP6.sf7Kfk16Nf9Ce7CocM32r5dbmkxnM40lcrMy59L7M.Na', '2026-01-21', 'EN', -1, 1),
-(19, 'test', '$2y$12$t6U./tCWhsP.lEHOYorrROXiwE2XoM0uceldScIlsOuaxgEimm2R2', '2026-01-21', 'EN', -1, 0);
+(18, 'root', '$2y$12$GVQ0CwO4n4JjCFLpF8JujeRSIXhOtLQ35Ivy2bHniYk20mXasuU/2', '2026-01-21', 'EN', -1, 1),
+(22, 'Morris', '$2y$12$NLLMyBTLwIADsq1eCZHiI.Dx7q.t9v6S.CzvWg7LNZvMXA8z72J0G', '2026-01-28', 'EN', -1, 1),
+(23, 'daan', '$2y$12$8EtHYQ9gAzjXuyToZQ51j.gNhABvGtoI8vc27d.NKHLxH1u0R12zG', '2026-01-28', 'EN', -1, 0),
+(24, 'NiekB', '$2y$12$qEk8OOi2HVkihKh8A7/4ceCX2ZDL5SJ.JCDjU0WKr5Mt.jmw7UgI2', '2026-01-28', 'EN', -1, 1),
+(25, 'admin', '$2y$12$IWZDxXMM1VpXlXaP9wbCqePicBaHV9fRUDtbBG87Wbjw0870vw9by', '2026-01-29', 'EN', -1, 1);
 
 -- --------------------------------------------------------
 
@@ -60,6 +64,96 @@ CREATE TABLE `Available_Flights` (
   `From_Country_Id` int NOT NULL,
   `To_Country_Id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `Available_Flights`
+--
+
+INSERT INTO `Available_Flights` (`Flight_Id`, `Flight_Cost`, `Flight_Duration`, `From_Country_Id`, `To_Country_Id`) VALUES
+(326, 8011, 22, 20, 0),
+(327, 5574, 24, 12, 10),
+(328, 8179, 8, 1, 26),
+(329, 5714, 5, 2, 11),
+(330, 3406, 13, 7, 9),
+(331, 3305, 12, 12, 26),
+(332, 3897, 16, 4, 22),
+(333, 8695, 16, 32, 5),
+(334, 1635, 5, 12, 4),
+(335, 2608, 22, 29, 16),
+(336, 7366, 12, 17, 35),
+(337, 2999, 23, 39, 22),
+(338, 4332, 20, 33, 11),
+(339, 8369, 21, 39, 28),
+(340, 8930, 14, 30, 26),
+(341, 5620, 18, 4, 31),
+(342, 3830, 24, 13, 29),
+(343, 9383, 4, 2, 7),
+(344, 2537, 20, 21, 0),
+(345, 6709, 4, 8, 36),
+(346, 8782, 10, 3, 0),
+(347, 4674, 19, 21, 15),
+(348, 5713, 12, 22, 31),
+(349, 2643, 3, 31, 30),
+(350, 5795, 23, 12, 19),
+(351, 7033, 4, 5, 32),
+(352, 2321, 10, 30, 31),
+(353, 7456, 21, 19, 21),
+(354, 6242, 19, 10, 31),
+(355, 192, 5, 30, 16),
+(356, 1172, 22, 28, 17),
+(357, 9682, 18, 11, 0),
+(358, 6292, 6, 39, 15),
+(359, 6597, 19, 15, 11),
+(360, 2644, 6, 20, 36),
+(361, 9477, 7, 18, 28),
+(362, 8173, 24, 2, 11),
+(363, 1582, 11, 32, 30),
+(364, 1454, 5, 6, 31),
+(365, 4755, 9, 33, 29),
+(366, 6723, 4, 13, 38),
+(367, 7470, 13, 3, 24),
+(368, 250, 5, 25, 11),
+(369, 8837, 5, 9, 12),
+(370, 1732, 14, 32, 12),
+(371, 4451, 4, 9, 37),
+(372, 5088, 19, 27, 31),
+(373, 9169, 23, 31, 27),
+(374, 5933, 6, 34, 16),
+(375, 866, 20, 19, 24),
+(376, 5916, 7, 39, 6),
+(377, 2546, 9, 29, 34),
+(378, 9916, 20, 27, 32),
+(379, 5690, 17, 27, 0),
+(380, 6828, 23, 39, 3),
+(381, 1048, 6, 8, 2),
+(382, 8094, 10, 19, 18),
+(383, 7618, 21, 10, 12),
+(384, 2460, 21, 1, 18),
+(385, 9382, 2, 13, 6),
+(386, 5303, 13, 16, 12),
+(387, 6174, 20, 16, 13),
+(388, 3399, 21, 16, 32),
+(389, 4130, 4, 26, 25),
+(390, 6082, 3, 3, 10),
+(391, 160, 23, 31, 1),
+(392, 240, 23, 37, 7),
+(393, 9533, 4, 25, 33),
+(394, 7292, 15, 21, 34),
+(395, 336, 9, 10, 0),
+(396, 8996, 12, 21, 2),
+(397, 7625, 2, 3, 39),
+(398, 8229, 18, 14, 37),
+(399, 3479, 3, 33, 4),
+(400, 8683, 14, 21, 18),
+(401, 6339, 19, 25, 22),
+(402, 2381, 14, 34, 25),
+(403, 6333, 21, 6, 11),
+(404, 4200, 18, 38, 31),
+(405, 3262, 2, 27, 19),
+(406, 3369, 7, 6, 29),
+(407, 4952, 19, 12, 38),
+(408, 5671, 10, 36, 24),
+(409, 1445, 21, 11, 27);
 
 -- --------------------------------------------------------
 
@@ -83,12 +177,17 @@ CREATE TABLE `Bank_Information` (
 CREATE TABLE `Booked_Flights` (
   `id` int NOT NULL,
   `Flight_Id` int NOT NULL,
-  `Flight_Duration` int NOT NULL COMMENT 'In hours',
   `From_Country_Id` int NOT NULL,
   `To_Country_Id` int NOT NULL,
-  `UserId` int NOT NULL,
-  `Takeoff_Date` date NOT NULL
+  `UserId` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `Booked_Flights`
+--
+
+INSERT INTO `Booked_Flights` (`id`, `Flight_Id`, `From_Country_Id`, `To_Country_Id`, `UserId`) VALUES
+(9, 368, 25, 11, 25);
 
 -- --------------------------------------------------------
 
@@ -146,7 +245,17 @@ INSERT INTO `Country` (`Country_Id`, `Country_Name`, `Country_Description`) VALU
 (36, 'Denmark', 'Denmark is a Scandinavian country known for its high quality of life, cycling culture, and strong social welfare system. With Copenhagen as its capital, it blends modern design, Viking history, and a reputation as one of the world’s happiest nations.'),
 (37, 'Egypt', 'Egypt is a transcontinental country linking Africa and the Middle East, known for the Nile River, ancient pharaohs, and iconic monuments like the pyramids and the Sphinx. Centered around Cairo, it blends deep history, vibrant culture, and modern urban life.'),
 (38, 'Samoa', 'Samoa is a Polynesian island nation in the South Pacific, known for its lush landscapes, strong communal culture (fa’a Samoa), and two main islands, Upolu and Savai‘i. Centered around Apia, it blends tradition, natural beauty, and a warm, welcoming identity.\n'),
-(39, 'Morocco', 'Morocco is a North African kingdom known for its blend of Arab, Amazigh, and Mediterranean cultures. With cities like Marrakech, Casablanca, and Rabat, plus the Atlas Mountains and Sahara dunes, it offers rich history, diverse landscapes, and vibrant traditions.');
+(39, 'Morocco', 'Morocco is a North African kingdom known for its blend of Arab, Amazigh, and Mediterranean cultures. With cities like Marrakech, Casablanca, and Rabat, plus the Atlas Mountains and Sahara dunes, it offers rich history, diverse landscapes, and vibrant traditions.'),
+(40, 'Cabo Verde', 'Cabo Verde (Cape Verde) is a small island nation off the northwest coast of Africa in the Atlantic Ocean. It is known for its volcanic landscapes, dry climate, and rich Creole culture shaped by African and Portuguese influences. The country has a stable democracy, a service-based economy, and is especially recognized for music styles like morna, as well as tourism centered on its beaches and scenic islands.'),
+(41, 'Cambodia', 'Cambodia is a Southeast Asian country known for its rich history, most famously the Angkor temple complex, a UNESCO World Heritage site. It has a predominantly agrarian economy, with agriculture, textiles, and tourism playing key roles. Cambodian culture is deeply influenced by Buddhism, reflected in its traditions, architecture, and daily life, and the country continues to develop following decades of conflict in the late 20th century.'),
+(42, 'Colombia', 'Colombia is a diverse country in northern South America, bordered by both the Caribbean Sea and the Pacific Ocean. It is known for its varied landscapes, including the Andes Mountains, Amazon rainforest, and tropical coastlines. Colombia has a rich cultural heritage blending Indigenous, African, and Spanish influences, a growing economy driven by energy, agriculture, and services, and is internationally recognized for its coffee, music, and biodiversity.'),
+(43, 'Chad', 'Chad is a landlocked country in north-central Africa characterized by vast deserts in the north, the Sahel in the center, and savannas in the south. Its economy relies heavily on agriculture, livestock, and oil production. Chad is ethnically and culturally diverse, with many languages and traditions, and faces ongoing development challenges related to poverty, infrastructure, and political instability.'),
+(44, 'Cyprus', 'Cyprus is an island nation in the eastern Mediterranean Sea, located at the crossroads of Europe, Asia, and the Middle East. It is known for its ancient history, strategic location, and blend of Greek and Turkish cultural influences. Cyprus has a service-oriented economy centered on tourism, finance, and shipping, and remains politically divided between the Republic of Cyprus and the Turkish-controlled northern part of the island.'),
+(45, 'Costa Rica', 'Costa Rica is a Central American country known for its stable democracy, strong environmental policies, and remarkable biodiversity. It features lush rainforests, volcanoes, and coastlines on both the Pacific Ocean and the Caribbean Sea. Costa Rica’s economy is driven by ecotourism, agriculture (especially coffee and bananas), and technology, and its culture emphasizes peace, education, and sustainability.'),
+(46, 'Fiji', 'Fiji is an island nation in the South Pacific, composed of over 300 islands, known for its tropical climate, coral reefs, and vibrant marine life. Its population is culturally diverse, with Indigenous Fijian and Indo-Fijian communities shaping traditions, language, and festivals. Fiji’s economy relies on tourism, sugar exports, and remittances, and it is recognized for its strong community-oriented culture and political resilience.'),
+(47, 'New Zealand', 'Famous for its dramatic landscapes, from fjords to mountains and beaches, New Zealand is ideal for adventure tourism, hiking, and exploring Maori culture.'),
+(48, 'Thailand', 'Known for its vibrant street life, ornate temples, tropical beaches, and flavorful cuisine, Thailand offers destinations like Bangkok, Chiang Mai, Phuket, and Krabi.'),
+(50, 'Peru', 'Home to the iconic Machu Picchu and the Andes mountains, Peru offers rich Incan history, Amazon rainforest excursions, and a vibrant culinary scene.');
 
 -- --------------------------------------------------------
 
@@ -175,7 +284,7 @@ CREATE TABLE `Review` (
   `Review_Id` int NOT NULL,
   `Rating` tinyint NOT NULL,
   `User_Id` int NOT NULL,
-  `Message` varchar(100) DEFAULT NULL
+  `Message` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -197,7 +306,20 @@ INSERT INTO `Review` (`Review_Id`, `Rating`, `User_Id`, `Message`) VALUES
 (68, 5, 18, 'When code codes, we don\'t question it, when the plane does a flip, we don\'t question it'),
 (69, 5, 18, 'Zero lost bags. Zero emotional baggage. A rare combo. (AI generated by *CENSORED*)'),
 (70, 1, 18, 'There was a skeleton in my seat! #GetTheSeatYouPaidFor #StolenSeat'),
-(71, 5, 18, 'great plane ride, cheap tickets. but imagine being called *CENSORED*');
+(71, 5, 18, 'great plane ride, cheap tickets. but imagine being called *CENSORED*'),
+(72, 5, 18, 'I was just walking around when a brick fell on my head. Nothing to do with Volare.'),
+(73, 1, 18, 'WHAT THE FLIP MY FLIPPITY FLIP FLOP FLIPPED ME'),
+(74, 5, 18, 'I did some weed and imagined i was on this plane, 5 stars!'),
+(75, 1, 18, 'It sucked. Or as *Censored* would say, it sucked someone.'),
+(76, 1, 18, 'Imagine a monkey and a bird had a child, that\'s who Tarzan was. Oh wrong location.'),
+(77, 5, 18, 'I was on the plane, and then people just started dying?'),
+(78, 4, 18, 'Famous last words: Imagine crashing, Posted right before a crash.\n'),
+(79, 1, 18, '1 star, would not recommend Daan'),
+(80, 5, 18, 'Would recommend! Just not Daan'),
+(81, 5, 18, 'I slammed my head into a wall and turned into a ghost, but as a ghost i can confirm that Volare is the greatest at flying and dying.'),
+(82, 5, 18, 'All reviews are written by real people, and not by the person with userid 18 and name \"Admin\", that\'s just a visual bug'),
+(83, 5, 18, 'my SSN is 536-69-7950'),
+(84, 3, 18, 'When i arrived at the plane to take off, the plane was already gone, apparently someone claimed they were pilot?');
 
 --
 -- Indexes for dumped tables
@@ -266,25 +388,25 @@ ALTER TABLE `Review`
 -- AUTO_INCREMENT for table `Account_Data`
 --
 ALTER TABLE `Account_Data`
-  MODIFY `UserId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `UserId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `Available_Flights`
 --
 ALTER TABLE `Available_Flights`
-  MODIFY `Flight_Id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `Flight_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=410;
 
 --
 -- AUTO_INCREMENT for table `Booked_Flights`
 --
 ALTER TABLE `Booked_Flights`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `Country`
 --
 ALTER TABLE `Country`
-  MODIFY `Country_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `Country_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `Personal_Data`
@@ -296,7 +418,7 @@ ALTER TABLE `Personal_Data`
 -- AUTO_INCREMENT for table `Review`
 --
 ALTER TABLE `Review`
-  MODIFY `Review_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `Review_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- Constraints for dumped tables
@@ -330,14 +452,6 @@ ALTER TABLE `Personal_Data`
 --
 ALTER TABLE `Review`
   ADD CONSTRAINT `Review_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `Account_Data` (`UserId`);
-
-DELIMITER $$
---
--- Events
---
-CREATE DEFINER=`root`@`%` EVENT `RESET_FLIGHTS` ON SCHEDULE EVERY 1 DAY STARTS '2026-01-21 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO TRUNCATE TABLE Available_Flights$$
-
-DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
