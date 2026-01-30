@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Jan 29, 2026 at 07:08 PM
+-- Generation Time: Jan 30, 2026 at 07:49 AM
 -- Server version: 8.4.7
 -- PHP Version: 8.3.29
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `Flights`
 --
-CREATE DATABASE IF NOT EXISTS `Flights` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `Flights`;
 
 -- --------------------------------------------------------
 
@@ -49,7 +47,8 @@ INSERT INTO `Account_Data` (`UserId`, `Username`, `Password`, `CreationDate`, `L
 (22, 'Morris', '$2y$12$NLLMyBTLwIADsq1eCZHiI.Dx7q.t9v6S.CzvWg7LNZvMXA8z72J0G', '2026-01-28', 'EN', -1, 1),
 (23, 'daan', '$2y$12$8EtHYQ9gAzjXuyToZQ51j.gNhABvGtoI8vc27d.NKHLxH1u0R12zG', '2026-01-28', 'EN', -1, 0),
 (24, 'NiekB', '$2y$12$qEk8OOi2HVkihKh8A7/4ceCX2ZDL5SJ.JCDjU0WKr5Mt.jmw7UgI2', '2026-01-28', 'EN', -1, 1),
-(25, 'admin', '$2y$12$IWZDxXMM1VpXlXaP9wbCqePicBaHV9fRUDtbBG87Wbjw0870vw9by', '2026-01-29', 'EN', -1, 1);
+(25, 'admin', '$2y$12$IWZDxXMM1VpXlXaP9wbCqePicBaHV9fRUDtbBG87Wbjw0870vw9by', '2026-01-29', 'EN', -1, 1),
+(26, 'Mitchel', '$2y$12$A/09KJq.t0gHU1Vc1ayTP.a/GQxqmksORiFpcDPFcBsqS0D96dfs2', '2026-01-30', 'NL', -1, 1);
 
 -- --------------------------------------------------------
 
@@ -73,7 +72,6 @@ INSERT INTO `Available_Flights` (`Flight_Id`, `Flight_Cost`, `Flight_Duration`, 
 (326, 8011, 22, 20, 0),
 (327, 5574, 24, 12, 10),
 (328, 8179, 8, 1, 26),
-(329, 5714, 5, 2, 11),
 (330, 3406, 13, 7, 9),
 (331, 3305, 12, 12, 26),
 (332, 3897, 16, 4, 22),
@@ -120,7 +118,7 @@ INSERT INTO `Available_Flights` (`Flight_Id`, `Flight_Cost`, `Flight_Duration`, 
 (373, 9169, 23, 31, 27),
 (374, 5933, 6, 34, 16),
 (375, 866, 20, 19, 24),
-(376, 5916, 7, 39, 6),
+(376, 5916, 70, 39, 6),
 (377, 2546, 9, 29, 34),
 (378, 9916, 20, 27, 32),
 (379, 5690, 17, 27, 0),
@@ -181,13 +179,6 @@ CREATE TABLE `Booked_Flights` (
   `To_Country_Id` int NOT NULL,
   `UserId` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `Booked_Flights`
---
-
-INSERT INTO `Booked_Flights` (`id`, `Flight_Id`, `From_Country_Id`, `To_Country_Id`, `UserId`) VALUES
-(9, 368, 25, 11, 25);
 
 -- --------------------------------------------------------
 
@@ -388,7 +379,7 @@ ALTER TABLE `Review`
 -- AUTO_INCREMENT for table `Account_Data`
 --
 ALTER TABLE `Account_Data`
-  MODIFY `UserId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `UserId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `Available_Flights`
@@ -452,6 +443,17 @@ ALTER TABLE `Personal_Data`
 --
 ALTER TABLE `Review`
   ADD CONSTRAINT `Review_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `Account_Data` (`UserId`);
+
+DELIMITER $$
+--
+-- Events
+--
+CREATE DEFINER=`root`@`%` EVENT `clear_flights` ON SCHEDULE EVERY 1 DAY STARTS '2026-01-28 08:27:59' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+    DELETE FROM Booked_Flights;
+    DELETE FROM Available_Flights;
+END$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
